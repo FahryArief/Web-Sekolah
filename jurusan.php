@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SMKN 8 Bandar Lampung</title>
 
+    <link rel="icon" href="styling/img/favicon.ico" type="image/x-icon" />
     <!------------ GOOGLE FONTS ------------>
     <link href="https://fonts.googleapis.com/css?family=Anton|Cabin|Lato|Fjalla+One|Montserrat|Roboto&display=swap" rel="stylesheet">
 
