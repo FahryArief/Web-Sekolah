@@ -14,10 +14,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"><!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
+
     <link rel="stylesheet" href="styling/style.css">
 </head>
 
@@ -27,8 +24,8 @@
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
-                <a href="../../index3.html" class="navbar-brand">
-                    <img src="assets/dist/img/logo.png" alt="AdminLTE Logo" height="50" class="d-block w-13">
+                <a href="index.php" class="navbar-brand">
+                    <img src="styling/img/AdminLTELogo.png" alt="AdminLTE Logo" height="50" class="d-block w-13">
                 </a>
 
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +35,7 @@
                 <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                     <!-- Left navbar links -->
 
-                    <ul class="navbar-nav ml-0 ml-md-3">
+                    <ul class="navbar-nav ml-3 ml-md-3">
                         <li class="nav-item">
                             <a href="index.php" class="nav-link">Beranda</a>
                         </li>
@@ -391,12 +388,12 @@
                 <!-- Grid row -->
                 <div class="row mt-3">
                     <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <div class="col">
                         <!-- Content -->
                         <h6 class="text-uppercase fw-bold mb-3">
                             <i class="me-3 text-secondary"></i>SMK NEGERI 8 Bandar Lampung
                         </h6>
-                        <div class="mapouter">
+                        <!-- <div class="mapouter">
                             <div class="gmap_canvas"><iframe width="300" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=smkn%208%20bandar%20lampung&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://fmovies-online.net"></a><br>
                                 <style>
                                     .mapouter {
@@ -415,12 +412,12 @@
                                     }
                                 </style>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <div class="col">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-2">
                             Links
@@ -439,12 +436,12 @@
                         </p>
                     </div>
                     <!-- Grid column -->
-                    <div class="col mb-4">
+                    <div class="col">
                         <img class="d-block" src="styling/logo.png" height="200">
                     </div>
                     <!-- Grid column -->
                     <!-- Grid column -->
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <div class="col">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-2">
                             Useful links
@@ -465,7 +462,7 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <div class="col">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-2">Contact</h6>
                         <p><i class="fas fa-home me-3 text-light"></i> Jl.Imam Bonjol No.52, Kemiling Raya Bandar Lampung</p>
@@ -499,11 +496,5 @@
     <!-- ./wrapper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <!-- jQuery -->
-    <script src="assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="assets/dist/js/adminlte.min.js"></script>
-</body>
 
 </html>
