@@ -9,10 +9,8 @@
     <link rel="icon" href="styling/img/favicon.ico" type="image/x-icon" />
     <!------------ GOOGLE FONTS ------------>
     <link href="https://fonts.googleapis.com/css?family=Anton|Cabin|Lato|Fjalla+One|Montserrat|Roboto&display=swap" rel="stylesheet">
-
     <!------------ FONT AWESOME ------------>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"><!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -61,28 +59,20 @@
                             </ul>
                         </li>
                     </ul>
-
-
                 </div>
-
                 <!-- Right navbar links -->
-
             </div>
         </nav>
         <!-- /.navbar -->
-
         <!-- Main Sidebar Container -->
-
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-
                 <div class="slider">
                     <input type="radio" name="slide" id="slide-1" checked>
                     <input type="radio" name="slide" id="slide-2">
                     <input type="radio" name="slide" id="slide-3">
-
                     <div class="slides">
                         <div class="slide slide-1">
                             <div class="slide-data">
@@ -90,7 +80,6 @@
                                 <P>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam nemo assumenda perferendis
                                     reprehenderit ex nostrum accusantium sed iste eius distinctio mollitia consectetur, nihil quis
                                     ea cupiditate ullam itaque reiciendis ratione.</P>
-
                             </div>
                         </div>
                         <div class="slide slide-2">

@@ -9,7 +9,6 @@
     <link rel="icon" href="styling/img/favicon.ico" type="image/x-icon" />
     <!------------ GOOGLE FONTS ------------>
     <link href="https://fonts.googleapis.com/css?family=Anton|Cabin|Lato|Fjalla+One|Montserrat|Roboto&display=swap" rel="stylesheet">
-
     <!------------ FONT AWESOME ------------>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
@@ -157,7 +156,7 @@
                         <h1 style="margin-top: 25px;">Sambutan Kepala Sekolah </h1>
                         <hr style="width: 15%; margin:auto; color:darkred; height:4px;">
                         <a href="">
-                            <img src="styling/firdaus-bulet.jpeg" style="margin-top:20px; height: 200px;" srcset="">
+                            <img src="styling/img/firdaus-bulet.jpeg" style="margin-top:20px; height: 200px;" srcset="">
                         </a>
                         <p class="font-grey ccenter" style="margin-top: 15px; padding: 20px 10%;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut consequatur ipsum illo praesentium voluptas dignissimos sequi magni, aliquid quis, eos ratione laudantium cum quae beatae tenetur impedit eius, laboriosam tempora similique animi. Vel, iste molestiae dolorum quis repudiandae ipsa necessitatibus.</p>
                         <!-- Start Informasi -->
@@ -352,7 +351,7 @@
     <!-- /.content-wrapper -->
 
     <!-- Footer -->
-    <footer class="text-center text-lg-start text-white " style="background: url('styling/footer.jpg') center no-repeat; background-size:cover; filter:grayscale('100%'); ">
+    <footer class="text-center text-lg-start text-white">
         <!-- Section: Social media -->
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
             <!-- Left -->
@@ -424,10 +423,10 @@
                     <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-2">
-                            Products
+                            Links
                         </h6>
                         <p>
-                            <a href="#!" class="text-reset">Angular</a>
+                            <a href="tentang.php" class="text-reset">Tentang</a>
                         </p>
                         <p>
                             <a href="#!" class="text-reset">React</a>
@@ -469,13 +468,13 @@
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-2">Contact</h6>
-                        <p><i class="fas fa-home me-3 text-secondary"></i> Jl.Imam Bonjol No.52, Kemiling Raya Bandar Lampung</p>
+                        <p><i class="fas fa-home me-3 text-light"></i> Jl.Imam Bonjol No.52, Kemiling Raya Bandar Lampung</p>
                         <p>
-                            <i class="fas fa-envelope me-3 text-secondary"></i>
+                            <i class="fas fa-envelope me-3 text-light"></i>
                             smkn8bdl@yahoo.com
                         </p>
-                        <p><i class="fas fa-phone me-3 text-secondary"></i> + 01 234 567 88</p>
-                        <p><i class="fas fa-print me-3 text-secondary"></i> + 01 234 567 89</p>
+                        <p><i class="fas fa-phone me-3 text-light"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print me-3 text-light"></i> + 01 234 567 89</p>
                     </div>
                     <!-- Grid column -->
                 </div>
@@ -505,8 +504,6 @@
     <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="assets/dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes
-    <script src="assets/dist/js/demo.js"></script> -->
 </body>
 
 </html>
