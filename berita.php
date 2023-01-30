@@ -59,125 +59,107 @@
             </div>
         </nav>
     </div>
-    <div class="content-wrapper">
-        <div class="container-fluid">
-        </div>
-        <div class="row">
-            <div class="col-md-9 mx-auto pt-10" style="width: 1000px;">
-                <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="card">
-                                <div class="img-wrapper"><img src="styling/img/a.jpg" class="d-block w-100" alt="styling/img/a.jpg"> </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title 1</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="events">
+        <div class="container">
+            <div class="row events_row">
+                <!-- Berita -->
+                <div class="col-lg-4 event_col mt-5">
+                    <div class="event event_left">
+                        <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
+                        <div class="event_body d-flex flex-row align-items-start justify-content-start">
+                            <div class="event_date">
+                                <div class="d-flex flex-column align-items-center justify-content-center trans_200">
+                                    <div class="event_day trans_200">21</div>
+                                    <div class="event_month trans_200">Aug</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div class="img-wrapper"><img src="styling/img/a.jpg" class="d-block w-100" alt="styling/img/a.jpg"> </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title 2</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div class="img-wrapper"><img src="styling/img/a.jpg" class="d-block w-100" alt="styling/img/a.jpg"> </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title 3</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div class="img-wrapper"><img src="styling/img/a.jpg" class="d-block w-100" alt="styling/img/a.jpg"> </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title 4</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div class="img-wrapper"><img src="styling/img/a.jpg" class="d-block w-100" alt="styling/img/a.jpg"> </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title 5</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div class="img-wrapper"><img src="styling/img/a.jpg" class="d-block w-100" alt="styling/img/a.jpg"> </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title 6</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div class="img-wrapper"><img src="styling/img/a.jpg" class="d-block w-100" alt="styling/img/a.jpg"> </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title 7</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div class="img-wrapper"><img src="styling/img/a.jpg" class="d-block w-100" alt="styling/img/a.jpg"> </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title 8</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div class="img-wrapper"><img src="..." class="d-block w-100" alt="..."> </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title 9</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <div class="event_content">
+                                <div class="event_title"><a href="#">Peringatan Hari Kemerdekaan</a></div>
+                                <div class="event_info_container">
+                                    <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>15.00 - 19.30</span></div>
+                                    <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
+                                    <div class="event_text">
+                                        <p>Policy analysts generally agree on a need for reform, but not on which path...</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
-
+                <div class="col-lg-4 event_col mt-5">
+                    <div class="event event_mid">
+                        <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
+                        <div class="event_body d-flex flex-row align-items-start justify-content-start">
+                            <div class="event_date">
+                                <div class="d-flex flex-column align-items-center justify-content-center trans_200">
+                                    <div class="event_day trans_200">27</div>
+                                    <div class="event_month trans_200">Aug</div>
+                                </div>
+                            </div>
+                            <div class="event_content">
+                                <div class="event_title"><a href="#">Peringatan Hari Guru Nasional</a></div>
+                                <div class="event_info_container">
+                                    <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>09.00 - 17.30</span></div>
+                                    <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 Brooklyn City</span></div>
+                                    <div class="event_text">
+                                        <p>This Consumer Action News issue covers topics now being debated before...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 event_col">
+                    <div class="event event_left">
+                        <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
+                        <div class="event_body d-flex flex-row align-items-start justify-content-start">
+                            <div class="event_date">
+                                <div class="d-flex flex-column align-items-center justify-content-center trans_200">
+                                    <div class="event_day trans_200">21</div>
+                                    <div class="event_month trans_200">Aug</div>
+                                </div>
+                            </div>
+                            <div class="event_content">
+                                <div class="event_title"><a href="#">Peringatan Hari Kemerdekaan</a></div>
+                                <div class="event_info_container">
+                                    <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>15.00 - 19.30</span></div>
+                                    <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
+                                    <div class="event_text">
+                                        <p>Policy analysts generally agree on a need for reform, but not on which path...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="" class="col-lg-4 event_col mt-5">
+                <div class="event event_mid">
+                    <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
+                    <div class="event_body d-flex flex-row align-items-start justify-content-start">
+                        <div class="event_date">
+                            <div class="d-flex flex-column align-items-center justify-content-center trans_200">
+                                <div class="event_day trans_200">27</div>
+                                <div class="event_month trans_200">Aug</div>
+                            </div>
+                        </div>
+                        <div class="event_content">
+                            <div class="event_title"><a href="#">Peringatan Hari Guru Nasional</a></div>
+                            <div class="event_info_container">
+                                <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>09.00 - 17.30</span></div>
+                                <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 Brooklyn City</span></div>
+                                <div class="event_text">
+                                    <p>This Consumer Action News issue covers topics now being debated before...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
     </div>
     <footer class="text-center text-lg-start text-white">
@@ -314,7 +296,6 @@
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="styling/style.js"></script>
-
 </body>
 
 </html>

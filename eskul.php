@@ -195,7 +195,7 @@
                 <a href="" class="me-4 link-light"><i class="fab fa-twitter"></i></a>
                 <a href="" class="me-4 link-light"><i class="fab fa-google"></i></a>
                 <a href="" class="me-4 link-light"><i class="fab fa-instagram"></i></a>
-                <a href="" class="me-4 link-light"><i class="fab fa-linkedin"></i> </a>
+                <a href="" class="me-4 link-light"><i class="fab fa-linkedin"></i></a>
                 <a href="" class="me-4 link-light"><i class="fab fa-github"></i>
                 </a>
             </div>

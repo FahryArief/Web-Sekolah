@@ -49,9 +49,9 @@
                                 Informasi
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Berita</a></li>
-                                <li><a class="dropdown-item" href="#">Pengumuman</a></li>
-                                <li><a class="dropdown-item" href="#">Kegiatan</a></li>
+                                <li><a class="dropdown-item" href="berita.php">Berita</a></li>
+                                <li><a class="dropdown-item" href="pengumuman.php">Pengumuman</a></li>
+                                <li><a class="dropdown-item" href="kegiatan.php">Kegiatan</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -143,7 +143,7 @@
                         <div class="news">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-md">
                                         <div class="section_title_container text-center">
                                             <h2 class="section_title">Informasi Terkini</h2>
                                             <div class="section_subtitle font-grey">
@@ -153,7 +153,7 @@
                                     </div>
                                 </div>
                                 <div class="row news_row">
-                                    <div class="col-lg-7 news_col">
+                                    <div class="col-md-7 news_col">
 
                                         <!-- News Post Large -->
                                         <div class="news_post_large_container">
@@ -174,7 +174,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-5 news_col">
+                                    <div class="col-md-5 news_col">
                                         <div class="news_posts_small">
 
                                             <!-- News Posts Small -->
@@ -209,7 +209,6 @@
                                                     </ul>
                                                 </div>
                                             </div>
-
                                             <!-- News Posts Small -->
                                             <div class="news_post_small">
                                                 <div class="news_post_small_title"><a href="blog_single.html">Troubled borrowers have fewer repayment or forgiveness options</a></div>
@@ -293,7 +292,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- Event -->
+                                    <!-- Start Kegiatan -->
                                     <div class="col-lg-4 event_col">
                                         <div class="event event_right">
                                             <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
