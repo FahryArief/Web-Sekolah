@@ -110,7 +110,6 @@
                         </div>
                     </div>
                 </div>
-                <h2>Berita</h2>
                 <div class="col-lg-4 event_col mt-5">
                     <div class="event event_mid">
                         <div class="event_image mx-2">
