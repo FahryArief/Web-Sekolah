@@ -59,6 +59,7 @@
             </div>
         </nav>
     </div>
+
     <div class="events">
         <div class="container">
             <div class="row events_row">
@@ -109,58 +110,94 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 event_col">
-                    <div class="event event_left">
-                        <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
-                        <div class="event_body d-flex flex-row align-items-start justify-content-start">
-                            <div class="event_date">
-                                <div class="d-flex flex-column align-items-center justify-content-center trans_200">
-                                    <div class="event_day trans_200">21</div>
-                                    <div class="event_month trans_200">Aug</div>
+                <h2>Berita</h2>
+                <div class="col-lg-4 event_col mt-5">
+                    <div class="event event_mid">
+                        <div class="event_image mx-2">
+                            <p style="text-align:justify; float:left;"><img src="styling/img/siti_cantik.jpg" height="" width="150px" />
+                            <div class=" event_title" style="text-align: center;"> <a href="#">Peringatan Hari Guru Nasional</a></div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="event event_mid">
+                        <div class="event_image mx-2">
+                            <p style="text-align:justify; float:left;"><img src="styling/img/siti_cantik.jpg" height="" width="150px" />
+                            <div class=" event_title" style="text-align: center;"> <a href="#">Peringatan Hari Guru Nasional</a></div>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row events_row">
+                    <!-- Berita -->
+                    <div class="col-lg-4 event_col">
+                        <div class="event event_left">
+                            <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
+                            <div class="event_body d-flex flex-row align-items-start justify-content-start">
+                                <div class="event_date">
+                                    <div class="d-flex flex-column align-items-center justify-content-center trans_200">
+                                        <div class="event_day trans_200">21</div>
+                                        <div class="event_month trans_200">Aug</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="event_content">
-                                <div class="event_title"><a href="#">Peringatan Hari Kemerdekaan</a></div>
-                                <div class="event_info_container">
-                                    <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>15.00 - 19.30</span></div>
-                                    <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
-                                    <div class="event_text">
-                                        <p>Policy analysts generally agree on a need for reform, but not on which path...</p>
+                                <div class="event_content">
+                                    <div class="event_title"><a href="#">Peringatan Hari Kemerdekaan</a></div>
+                                    <div class="event_info_container">
+                                        <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>15.00 - 19.30</span></div>
+                                        <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
+                                        <div class="event_text">
+                                            <p>Policy analysts generally agree on a need for reform, but not on which path...</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div style="" class="col-lg-4 event_col mt-5">
-                <div class="event event_mid">
-                    <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
-                    <div class="event_body d-flex flex-row align-items-start justify-content-start">
-                        <div class="event_date">
-                            <div class="d-flex flex-column align-items-center justify-content-center trans_200">
-                                <div class="event_day trans_200">27</div>
-                                <div class="event_month trans_200">Aug</div>
-                            </div>
-                        </div>
-                        <div class="event_content">
-                            <div class="event_title"><a href="#">Peringatan Hari Guru Nasional</a></div>
-                            <div class="event_info_container">
-                                <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>09.00 - 17.30</span></div>
-                                <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 Brooklyn City</span></div>
-                                <div class="event_text">
-                                    <p>This Consumer Action News issue covers topics now being debated before...</p>
+                    <div class="col-lg-4 event_col">
+                        <div class="event event_mid">
+                            <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
+                            <div class="event_body d-flex flex-row align-items-start justify-content-start">
+                                <div class="event_date">
+                                    <div class="d-flex flex-column align-items-center justify-content-center trans_200">
+                                        <div class="event_day trans_200">27</div>
+                                        <div class="event_month trans_200">Aug</div>
+                                    </div>
+                                </div>
+                                <div class="event_content">
+                                    <div class="event_title"><a href="#">Peringatan Hari Guru Nasional</a></div>
+                                    <div class="event_info_container">
+                                        <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>09.00 - 17.30</span></div>
+                                        <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 Brooklyn City</span></div>
+                                        <div class="event_text">
+                                            <p>This Consumer Action News issue covers topics now being debated before...</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-4 event_col">
+                        <div class="event event_mid">
+                            <div class="event_image mx-2">
+                                <p style="text-align:justify; float:left;"><img src="styling/img/siti_cantik.jpg" height="" width="150px" />
+                                <div class=" event_title" style="text-align: center;"> <a href="#">Peringatan Hari Guru Nasional</a></div>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="event event_mid">
+                            <div class="event_image mx-2">
+                                <p style="text-align:justify; float:left;"><img src="styling/img/siti_cantik.jpg" height="" width="150px" />
+                                <div class=" event_title" style="text-align: center;"> <a href="#">Peringatan Hari Guru Nasional</a></div>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
     </div>
     <footer class="text-center text-lg-start text-white">
         <!-- Section: Social media -->
@@ -177,7 +214,7 @@
                 <a href="" class="me-4 link-light"><i class="fab fa-twitter"></i></a>
                 <a href="" class="me-4 link-light"><i class="fab fa-google"></i></a>
                 <a href="" class="me-4 link-light"><i class="fab fa-instagram"></i></a>
-                <a href="" class="me-4 link-light"><i class="fab fa-linkedin"></i> </a>
+                <a href="" class="me-4 link-light"><i class="fab fa-linkedin"></i></a>
                 <a href="" class="me-4 link-light"><i class="fab fa-github"></i>
                 </a>
             </div>

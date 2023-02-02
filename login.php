@@ -20,7 +20,7 @@
                         <h1 style="text-align: center;">Login</h1>
                     </div>
 
-                    <div style="background-color: url('styling/img/logo.png');" class="card card-primary">
+                    <div style="background-image: url(styling/img/logo.png);" class="card card-primary">
                         <div class="card-header">
                             <h4>Login Admin</h4>
                         </div>
