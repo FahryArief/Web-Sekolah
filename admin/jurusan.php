@@ -1,160 +1,192 @@
-<?php
-    session_start();
-?>
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Panel Admin</title>
-        <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </head>
+<html lang="en">
 
-    <body class="bg-light">
-    
-        <!-- navbar -->
-        <div class="navbar">
+<head>
+    <link rel="shortcut icon" href="../assets/image/favicon.ico">
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Panel Admin - SMKN 8 Bandar Lampung</title>
+    <link rel="icon" href="../styling/img/favicon.ico" type="image/x-icon" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../assets/dist/css/adminlte.min.css">
+</head>
+
+<body class="hold-transition layout-top-nav layout-navbar-fixed">
+    <div class="content-wrapper">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand-md navbar-primary navbar-dark">
             <div class="container">
+                <a href="index.php" class="navbar-brand">
+                    <img width="150px" src="../styling/img/logoe.png" alt="Logo" class="brand-image">
+                </a>
 
-                <!-- navbar brand -->
-                <h2 class="nav-brand float-left"><a href="index.php">Nama Sekolah</a></h2>
+                <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                <!-- navbar menu -->
-                <ul class="nav-menu float-left">
-                    <li><a href="index.php">Dashboard</a></li>
-                    <li><a href="jurusan.php">Jurusan</a></li>
-                    <li><a href="eskul.php">Eskul</a></li>
-                    <li><a href="informasi.php">Informasi</a></li>
-                    <li><a href="tentang.php">Tentang</a></li>
-                    <li>
-                        <a href="">Galeri <i class="fa fa-caret-down"></i></a>
-
-                        <!-- sub menu -->
-                        <ul class="dropdown">
-                            <li><a href="galeri-jurusan.php">Galeri Jurusan</a></li>
-                            <li><a href="galeri-eskul.php">Galeri Eskul</a></li>
-                            <li><a href="galeri-eskul.php">Galeri Eskul</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="">Akun <i class="fa fa-caret-down"></i></a>
-
-                        <!-- sub menu -->
-                        <ul class="dropdown">
-                            <li><a href="ubah-password.php">Ubah Password</a></li>
-                            <li><a href="logout.php">Keluar</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <div class="clearfix"></div>
-            </div>
-
-        </div>
-
-        <!-- content -->
-        <div class="content">
-
-            <div class="container">
-                
-                <div class="box">
-
-                    <div class="box-header">
-                        Jurusan
-                    </div>
-
-                    <div class="box-body">
-                        
-                        <a href="tambah-jurusan.php"><i class="fa fa-plus"></i>Tambah</a>
-
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Jurusan</th>
-                                    <th>Keterangan</th>
-                                    <th>Gambar</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>RPL</td>
-                                    <td>Lorem ipLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electroni</td>
-                                    <td><img src="../styling/img/crush.jpg" height="80px" width="60px"></td>
-                                    <td>
-                                        <a href="" title="Edit Data"><i class="fa fa-edit"></i></a> |
-                                        <a href="" title="Hapus Data"><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody>
-                                <tr>
-                                    <td>2</td>
-                                    <td>APL</td>
-                                    <td>orem ipLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electroni</td>
-                                    <td><img src="../styling/img/crush.jpg" height="80px" width="60px" height="80px"></td>
-                                    <td>
-                                        <a href="" title="Edit Data"><i class="fa fa-edit"></i></a> |
-                                        <a href="" title="Hapus Data"><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Pemasaran</td>
-                                    <td>orem ipLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electroni</td>
-                                    <td><img src="../styling/img/crush.jpg" height="80px" width="60px" height="80px"></td>
-                                    <td>
-                                        <a href="" title="Edit Data"><i class="fa fa-edit"></i></a> |
-                                        <a href="" title="Hapus Data"><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Akutansi</td>
-                                    <td>orem ipLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electroni</td>
-                                    <td><img src="../styling/img/siti_cantik.jpg" height="80px" width="60px" height="80px"></td>
-                                    <td>
-                                        <a href="" title="Edit Data"><i class="fa fa-edit"></i></a> |
-                                        <a href="" title="Hapus Data"><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Kimia Industri</td>
-                                    <td>orem ipLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electroni</td>
-                                    <td><img src="../styling/img/siti_cantik.jpg" height="80px" width="60px" height="80px"></td>
-                                    <td>
-                                        <a href="" title="Edit Data"><i class="fa fa-edit"></i></a> |
-                                        <a href="" title="Hapus Data"><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        
-
-                    </div>
-
+                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                    <!-- Left navbar links -->
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="index.php" class="nav-link">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="eskul.php" class="nav-link">Ekstrakurikuler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="jurusan.php" class="nav-link">Jurusan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="informasi.php" class="nav-link">Informasi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="tentang.php" class="nav-link">Tentang</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Galeri</a>
+                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                                <li><a href="#" class="dropdown-item">Galeri Jurusan</a></li>
+                                <li><a href="#" class="dropdown-item">Galeri Ekstrakurikuler</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="logout.php" class="nav-link">Logout</a>
+                        </li>
+                    </ul>
+                    <!-- SEARCH FORM -->
                 </div>
-
+                <!-- Right navbar links -->
             </div>
+        </nav>
+        <!-- /.navbar -->
 
+        <div class="content-header">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
         </div>
+        <!-- /.content-header -->
 
-        <!-- footer -->
-        <div class="footer">
-            <div class="container text-center">
-                Copyrigt &copy - Panca Team.
+        <!-- Main content -->
+        <div class="content">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="card card-outline card-dark">
+                        <div class="card-header">
+                            <button class="btn btn-sm btn-primary " data-toggle="modal" data-target="#Tambah">Tambah</button>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Ekstrakurikuler</th>
+                                        <th>Keterangan</th>
+                                        <th>Visi</th>
+                                        <th>Misi</th>
+                                        <th>Gambar</th>
+                                        <th>Logo Ekstrakurikuler</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1.</td>
+                                        <td>Crush Panca</td>
+                                        <td>Keterangan</td>
+                                        <td>Visi</td>
+                                        <td>Misi</td>
+                                        <td><img class="d-block" height="150px" src="../styling/img/crush.jpg" alt="" srcset=""></td>
+                                        <td><img class="d-block" height="150px" src="../styling/img/crush.jpg" alt="" srcset=""></td>
+
+                                        <td> <a href="edit_jurusan.php" class="btn btn-primary">Edit</a>
+                                            <a href="hapus_kamar.php?id_kamar=<?php echo $data['id_kamar']; ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
             </div>
+            <!-- /.content -->
         </div>
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- /.content -->
 
-    </body>
+    <!-- /.content-wrapper -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <div class="modal fade" id="Tambah">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tambah Ekstrakurikuler</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Nama Jurusanr</label>
+                                <input type="text" name="nama_jurusan" class="form-control" placeholder="Nama Jurusan">
+                            </div>
+                            <div class="form-group">
+                                <label>Keterangan</label>
+                                <input type="text" name="keterangan" class="form-control" placeholder="Keterangan">
+                            </div>
+                            <div class="form-group">
+                                <label>Visi</label>
+                                <input type="text" name="visi" class="form-control" placeholder="Visi">
+                            </div>
+                            <div class="form-group">
+                                <label>Misi</label>
+                                <input type="text" name="misi" class="form-control" placeholder="Misi">
+                            </div>
+                            <div class="form-group">
+                                <label>Foto Jurusan</label>
+                                <input type="file" name="foto" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Logo Jurusan</label>
+                                <input type="file" name="logo" class="form-control">
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" name="tombol" class="btn btn-primary">Simpan</button>
+                </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- REQUIRED SCRIPTS -->
+
+    <!-- jQuery -->
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../assets/dist/js/adminlte.min.js"></script>
+</body>
+
 </html>

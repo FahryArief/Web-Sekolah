@@ -1,8 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SMKN 8 Bandar Lampung</title>
@@ -12,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css?family=Anton|Cabin|Lato|Fjalla+One|Montserrat|Roboto&display=swap" rel="stylesheet">
     <!------------ FONT AWESOME ------------>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -20,8 +18,10 @@
     <link rel="stylesheet" href="styling/style.css">
 </head>
 
-<body>
+<body class="">
+    <!-- Site wrapper -->
     <div class="wrapper">
+        <!-- Navbar -->
         <nav class="navbar fixed-top navbar-expand-lg bg-light">
             <div class="container-fluid">
                 <a href="index.php" class="navbar-brand">
@@ -58,14 +58,278 @@
                 </div>
             </div>
         </nav>
-    </div>
-    <div class="content-wrapper">
-        <div class="container-fluid">
+        <!-- /end-navbar -->
+
+        <!-- Main Sidebar Container -->
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="slider">
+                    <input type="radio" name="slide" id="slide-1" checked>
+                    <input type="radio" name="slide" id="slide-2">
+                    <input type="radio" name="slide" id="slide-3">
+                    <div class="slides">
+                        <div class="slide slide-1">
+                            <div class="slide-data">
+                                <h1>THIS IS SLIDE # 1</h1>
+                                <P>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam nemo assumenda perferendis
+                                    reprehenderit ex nostrum accusantium sed iste eius distinctio mollitia consectetur, nihil quis
+                                    ea cupiditate ullam itaque reiciendis ratione.</P>
+                            </div>
+                        </div>
+                        <div class="slide slide-2">
+                            <div class="slide-data">
+                                <h1>THIS IS SLIDE # 2</h1>
+                                <P>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam nemo assumenda perferendis
+                                    reprehenderit ex nostrum accusantium sed iste eius distinctio mollitia consectetur, nihil quis
+                                    ea cupiditate ullam itaque reiciendis ratione.</P>
+                            </div>
+                        </div>
+                        <div class="slide slide-3">
+                            <div class="slide-data">
+                                <h1>THIS IS SLIDE # 3</h1>
+                                <P>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam nemo assumenda perferendis
+                                    reprehenderit ex nostrum accusantium sed iste eius distinctio mollitia consectetur, nihil quis
+                                    ea cupiditate ullam itaque reiciendis ratione.</P>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="arrows arrow-left">
+                        <label for="slide-3">
+                            <span><i class="fas fa-angle-left"></i></span>
+                        </label>
+                        <label for="slide-1">
+                            <span><i class="fas fa-angle-left"></i></span>
+                        </label>
+                        <label for="slide-2">
+                            <span><i class="fas fa-angle-left"></i></span>
+                        </label>
+                    </div>
+                    <div class="arrows arrow-right">
+                        <label for="slide-2">
+                            <span><i class="fas fa-angle-right"></i></span>
+                        </label>
+                        <label for="slide-3">
+                            <span><i class="fas fa-angle-right"></i></span>
+                        </label>
+                        <label for="slide-1">
+                            <span><i class="fas fa-angle-right"></i></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
         </div>
+        <!-- /.container-fluid -->
 
-    </div>
-    </div>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row mt-5">
+                    <div class="col-md-12 ccenter">
+                        <!-- Default box -->
+                        <h1>Welcome To SMK NEGERI 8 Bandar Lampung</h1>
+                        <hr style="width: 50%; margin:auto;">
+                        <p class="font-grey" style="margin-top: 5px; padding: 20px 10%;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi minima mollitia unde. Laboriosam a quas asperiores possimus labore? Mollitia, non!</p>
+                        <!-- /.card -->
+                        <h1 style="margin-top: 25px;">Sambutan Kepala Sekolah </h1>
+                        <hr style="width: 15%; margin:auto; color:darkred; height:4px;">
+                        <a href="">
+                            <img src="styling/img/firdaus-bulet.jpeg" style="margin-top:20px; height: 200px;" srcset="">
+                        </a>
+                        <p class="font-grey ccenter" style="margin-top: 15px; padding: 20px 10%;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut consequatur ipsum illo praesentium voluptas dignissimos sequi magni, aliquid quis, eos ratione laudantium cum quae beatae tenetur impedit eius, laboriosam tempora similique animi. Vel, iste molestiae dolorum quis repudiandae ipsa necessitatibus.</p>
+                        <!-- Start Informasi -->
+                        <div class="news">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <div class="section_title_container text-center">
+                                            <h2 class="section_title">Informasi Terkini</h2>
+                                            <div class="section_subtitle font-grey">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row news_row">
+                                    <div class="col-md-7 news_col">
 
+                                        <!-- News Post Large -->
+                                        <div class="news_post_large_container">
+                                            <div class="news_post_large">
+                                                <div class="news_post_image"><img src="styling/img/bg-1.jpg" alt=""></div>
+                                                <div class="news_post_large_title"><a href="blog_single.html">Here’s What You Need to Know About Online Testing for the ACT and SAT</a></div>
+                                                <div class="news_post_meta">
+                                                    <ul>
+                                                        <li><a href="#">admin</a></li>
+                                                        <li><a href="#">november 11, 2017</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="news_post_text">
+                                                    <p>Policy analysts generally agree on a need for reform, but not on which path policymakers should take. Can America learn anything from other nations...</p>
+                                                </div>
+                                                <div class="news_post_link"><a href="blog_single.html">read more</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-5 news_col">
+                                        <div class="news_posts_small">
+
+                                            <!-- News Posts Small -->
+                                            <div class="news_post_small">
+                                                <div class="news_post_small_title"><a href="blog_single.html">Home-based business insurance issue (Spring 2017 - 2018)</a></div>
+                                                <div class="news_post_meta">
+                                                    <ul>
+                                                        <li><a href="#">admin</a></li>
+                                                        <li><a href="#">november 11, 2017</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <!-- News Posts Small -->
+                                            <div class="news_post_small">
+                                                <div class="news_post_small_title"><a href="blog_single.html">2018 Fall Issue: Credit Card Comparison Site Survey (Summer 2018)</a></div>
+                                                <div class="news_post_meta">
+                                                    <ul>
+                                                        <li><a href="#">admin</a></li>
+                                                        <li><a href="#">november 11, 2017</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <!-- News Posts Small -->
+                                            <div class="news_post_small">
+                                                <div class="news_post_small_title"><a href="blog_single.html">Cuentas de cheques gratuitas una encuesta de Consumer Action</a></div>
+                                                <div class="news_post_meta">
+                                                    <ul>
+                                                        <li><a href="#">admin</a></li>
+                                                        <li><a href="#">november 11, 2017</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <!-- News Posts Small -->
+                                            <div class="news_post_small">
+                                                <div class="news_post_small_title"><a href="blog_single.html">Troubled borrowers have fewer repayment or forgiveness options</a></div>
+                                                <div class="news_post_meta">
+                                                    <ul>
+                                                        <li><a href="#">admin</a></li>
+                                                        <li><a href="#">november 11, 2017</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Informasi -->
+                        <!-- Start Kegiatan -->
+                        <div class="events">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="section_title_container text-center">
+                                            <h2 class="section_title">Kegiatan</h2>
+                                            <div class="section_subtitle">
+                                                <p class="font-grey" style="padding: 
+                                                20px 10%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row events_row">
+
+                                    <!-- Event -->
+                                    <div class="col-lg-4 event_col">
+                                        <div class="event event_left">
+                                            <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
+                                            <div class="event_body d-flex flex-row align-items-start justify-content-start">
+                                                <div class="event_date">
+                                                    <div class="d-flex flex-column align-items-center justify-content-center trans_200">
+                                                        <div class="event_day trans_200">21</div>
+                                                        <div class="event_month trans_200">Aug</div>
+                                                    </div>
+                                                </div>
+                                                <div class="event_content">
+                                                    <div class="event_title"><a href="#">Peringatan Hari Kemerdekaan</a></div>
+                                                    <div class="event_info_container">
+                                                        <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>15.00 - 19.30</span></div>
+                                                        <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
+                                                        <div class="event_text">
+                                                            <p>Policy analysts generally agree on a need for reform, but not on which path...</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Event -->
+                                    <div class="col-lg-4 event_col">
+                                        <div class="event event_mid">
+                                            <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
+                                            <div class="event_body d-flex flex-row align-items-start justify-content-start">
+                                                <div class="event_date">
+                                                    <div class="d-flex flex-column align-items-center justify-content-center trans_200">
+                                                        <div class="event_day trans_200">27</div>
+                                                        <div class="event_month trans_200">Aug</div>
+                                                    </div>
+                                                </div>
+                                                <div class="event_content">
+                                                    <div class="event_title"><a href="#">Peringatan Hari Guru Nasional</a></div>
+                                                    <div class="event_info_container">
+                                                        <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>09.00 - 17.30</span></div>
+                                                        <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 Brooklyn City</span></div>
+                                                        <div class="event_text">
+                                                            <p>This Consumer Action News issue covers topics now being debated before...</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Start Kegiatan -->
+                                    <div class="col-lg-4 event_col">
+                                        <div class="event event_right">
+                                            <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
+                                            <div class="event_body d-flex flex-row align-items-start justify-content-start">
+                                                <div class="event_date">
+                                                    <div class="d-flex flex-column align-items-center justify-content-center trans_200">
+                                                        <div class="event_day trans_200">01</div>
+                                                        <div class="event_month trans_200">Sep</div>
+                                                    </div>
+                                                </div>
+                                                <div class="event_content">
+                                                    <div class="event_title"><a href="#">Lomba Classmeeting</a></div>
+                                                    <div class="event_info_container">
+                                                        <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>13.00 - 18.30</span></div>
+                                                        <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
+                                                        <div class="event_text">
+                                                            <p>Policy analysts generally agree on a need for reform, but not on which path...</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Kegiatan -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Footer -->
     <footer class="text-center text-lg-start text-white">
         <!-- Section: Social media -->
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -194,13 +458,15 @@
         </div>
         <!-- Copyright -->
     </footer>
-    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Footer -->
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <!-- End Footer -->
+    <!-- Control Sidebar -->
+    <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="styling/style.js"></script>
-
+    <!-- jQuery -->
 </body>
 
 </html>

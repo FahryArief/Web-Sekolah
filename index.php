@@ -58,7 +58,7 @@
                 </div>
             </div>
         </nav>
-        <!-- /.navbar -->
+        <!-- /end-navbar -->
 
         <!-- Main Sidebar Container -->
 
