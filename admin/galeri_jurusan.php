@@ -72,7 +72,7 @@
             <div class="container">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Galeri Ekstrakurikuler</h1>
+                        <h1 class="m-0">Galeri Jurusan</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -88,11 +88,11 @@
                             <button class="btn btn-sm btn-primary " data-toggle="modal" data-target="#Tambah">Tambah</button>
                         </div>
                         <div class="card-body">
-                        <table id="example2" class="table table-bordered table-striped">
+                            <table id="example2" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Ekstrakurikuler</th>
+                                        <th>Nama Jurusan</th>
                                         <th>Keterangan</th>
                                         <th>Gambar</th>
                                         <th>Aksi</th>
@@ -101,22 +101,22 @@
                                 <tbody>
                                     <tr>
                                         <td>1.</td>
-                                        <td>Basket Ball</td>
-                                        <td>Juara 2 DBL Play SMA/SMK Tingkat Provinsi Lampung</td>
+                                        <td>Rekayasa Perangkat Lunak</td>
+                                        <td>Juara 1 Desain Website Tingkat Nasional</td>
                                         <td><img class="d-block" height="150px" src="../styling/img/crush.jpg" alt="" srcset=""></td>
 
                                         <td> <a data-toggle="modal" data-target="#edit" class="btn btn-primary">Edit</a>
-                                            <a href="hapus_kamar.php" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
+                                            <a href="hapus_galeri_jurusan.php" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>2.</td>
-                                        <td>Basket Ball</td>
-                                        <td>Juara 2 3X3 DBL Play SMA/SMK Tingkat Provinsi Lampung</td>
+                                        <td>Rekayasa Perangkat Lunak</td>
+                                        <td>Juara 2 Desain Website Tingkat Provinsi Lampung</td>
                                         <td><img class="d-block" height="150px" src="../styling/img/crush.jpg" alt="" srcset=""></td>
 
                                         <td> <a data-toggle="modal" data-target="#edit" class="btn btn-primary">Edit</a>
-                                            <a href="hapus_galeri_eskul.php" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
+                                            <a href="hapus_galeri_jurusan.php" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -143,7 +143,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Edit Ekstrakurikuler</h4>
+                    <h4 class="modal-title">Edit Jurusan</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -152,15 +152,15 @@
                     <form method="post" action="" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Nama Ekstrakurikuler</label>
+                                <label>Nama Jurusan</label>
                                 <select name="nama_eskul" class="form-control" id="">
-                                    <option>-- Pilih Nama Eskul --</option>
-                                    <option value="basket">Basket Ball</option>
-                                    <option value="voly">Voly</option>
-                                    <option value="merpati_putih">Merpati Putih</option>
-                                    <option value="taekwondo">Taekwondo</option>
-                                    <option value="futsal">Futsal</option>
-                                    <option value="pramuka">Pramuka</option>
+                                    <option>-- Pilih Nama Jurusan --</option>
+                                    <option value="basket">Rekayasa Perangkat Lunak</option>
+                                    <option value="voly">Multi Media</option>
+                                    <option value="merpati_putih">Akuntansi</option>
+                                    <option value="taekwondo">Kimia Industri</option>
+                                    <option value="futsal">Kimia Analisis</option>
+                                    <option value="pramuka">Pemasaran</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -188,7 +188,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Tambah Ekstrakurikuler</h4>
+                    <h4 class="modal-title">Tambah Jurusan</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -197,15 +197,15 @@
                     <form method="post" action="" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Nama Ekstrakurikuler</label>
+                                <label>Nama Jurusan</label>
                                 <select name="nama_eskul" class="form-control" id="">
-                                    <option>-- Pilih Nama Eskul --</option>
-                                    <option value="basket">Basket Ball</option>
-                                    <option value="voly">Voly</option>
-                                    <option value="merpati_putih">Merpati Putih</option>
-                                    <option value="taekwondo">Taekwondo</option>
-                                    <option value="futsal">Futsal</option>
-                                    <option value="pramuka">Pramuka</option>
+                                    <option>-- Pilih Nama Jurusan --</option>
+                                    <option value="basket">Rekayasa Perangkat Lunak</option>
+                                    <option value="voly">Multi Media</option>
+                                    <option value="merpati_putih">Akuntansi</option>
+                                    <option value="taekwondo">Kimia Industri</option>
+                                    <option value="futsal">Kimia Analisis</option>
+                                    <option value="pramuka">Pemasaran</option>
                                 </select>
                             </div>
                             <div class="form-group">

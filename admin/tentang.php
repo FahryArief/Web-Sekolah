@@ -2,8 +2,6 @@
 <html lang="en">
 
 <head>
-    <link rel="shortcut icon" href="../assets/image/favicon.ico">
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Panel Admin - SMKN 8 Bandar Lampung</title>
@@ -49,8 +47,8 @@
                         <li class="nav-item dropdown">
                             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Galeri</a>
                             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                                <li><a href="galeri_jurusan.php" class="dropdown-item">Galeri Jurusan</a></li>
-                                <li><a href="galeri_eskul.php" class="dropdown-item">Galeri Ekstrakurikuler</a></li>
+                                <li><a href="#" class="dropdown-item">Galeri Jurusan</a></li>
+                                <li><a href="#" class="dropdown-item">Galeri Ekstrakurikuler</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -72,7 +70,7 @@
                 <div class="container">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Edit Galeri Ekstrakurikuler</h1>
+                            <h1 class="m-0">Tentang Sekolah</h1>
                         </div><!-- /.col -->
 
                     </div><!-- /.row -->
@@ -80,16 +78,30 @@
             </div>
             <div class="content">
                 <div class="container">
-                    <div class="col-md-12">
+                    <div class="col-md-auto">
                         <div class="card card-outline card-info">
-                            <div class="card-header">
-                                Edit Galeri Ekstrakurikuler
-                            </div>
                             <div class="card-body">
+                            <div class="form-group col-3">
+                                <img src="../styling/img/firaun.jpeg" height="80px" class="d-block mb-2" alt="" srcset="">
+                                <input type="file" name="nama_jurusan" class="form-control" placeholder="Foto Kepala Sekolah">
+                            </div>
+                            <div class="d-flex align-items-end flex-column" style="height: 200px;">
                             <div class="form-group">
-                                <label>Nama Ekstrakurikuler</label>
+                                <label for="isi">Isi Informasi</label>
+                                <br>
+                               <textarea name="isi" id="isi" cols="40" rows="-3"></textarea>
+                            </div>
+  <div class="p-2">Flex item</div>
+  <div class="mt-auto p-2">Flex item</div>
+</div>
+                           
+                            <div class="form-group">
+                                <label>Tanggal</label>
+                                <input type="text" name="tanggal" class="form-control" placeholder="Tanggal">
+                            </div>
+                            <label>Jenis Informasi</label>
                                 <select name="nama_eskul" class="form-control" id="">
-                                    <option>-- Pilih Nama Eskul --</option>
+                                    <option>-- Pilih Jenis Informasi --</option>
                                     <option value="basket">Basket Ball</option>
                                     <option value="voly">Voly</option>
                                     <option value="merpati_putih">Merpati Putih</option>
@@ -97,14 +109,8 @@
                                     <option value="futsal">Futsal</option>
                                     <option value="pramuka">Pramuka</option>
                                 </select>
-                            </div>
                             <div class="form-group">
-                                <label for="keterangan">Keterangan</label>
-                                <br>
-                               <textarea name="keterangan" id="keterangan" cols="145" rows="-3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Foto Ekstrakurikuler</label>
+                                <label>Foto Jurusan</label>
                                 <input type="file" name="foto" class="form-control">
                             </div>
                                     <button type="submit" class="btn btn-primary">Update</button>
@@ -153,15 +159,6 @@
                             <label>No. Kamar</label>
                             <select name="id_kamar" class="form-control">
                                 <option value="">--- Pilih Kamar ---</option>
-                                <?php
-                include '../koneksi.php';
-                $data = mysqli_query($koneksi, "select * from kamar");
-                while ($d = mysqli_fetch_array($data)) { 
-                  ?>
-                                <option value="<?php echo $d['id_kamar']; ?>"><?php echo $d['tipe_kamar']; ?></option>
-                                <?php
-                }
-                ?>
                             </select>
                         </div>
                         <div class="form-group">

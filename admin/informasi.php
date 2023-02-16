@@ -72,7 +72,7 @@
             <div class="container">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Galeri Ekstrakurikuler</h1>
+                        <h1 class="m-0">Daftar Informasi</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -92,8 +92,9 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Ekstrakurikuler</th>
-                                        <th>Keterangan</th>
+                                        <th>Judul Informasi</th>
+                                        <th>Isi</th>
+                                        <th>Tanggal</th>
                                         <th>Gambar</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -101,22 +102,13 @@
                                 <tbody>
                                     <tr>
                                         <td>1.</td>
-                                        <td>Basket Ball</td>
-                                        <td>Juara 2 DBL Play SMA/SMK Tingkat Provinsi Lampung</td>
+                                        <td>Crush Panca</td>
+                                        <td>Hallo</td>
+                                        <td>11-01-2023</td>
                                         <td><img class="d-block" height="150px" src="../styling/img/crush.jpg" alt="" srcset=""></td>
 
                                         <td> <a data-toggle="modal" data-target="#edit" class="btn btn-primary">Edit</a>
-                                            <a href="hapus_kamar.php" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2.</td>
-                                        <td>Basket Ball</td>
-                                        <td>Juara 2 3X3 DBL Play SMA/SMK Tingkat Provinsi Lampung</td>
-                                        <td><img class="d-block" height="150px" src="../styling/img/crush.jpg" alt="" srcset=""></td>
-
-                                        <td> <a data-toggle="modal" data-target="#edit" class="btn btn-primary">Edit</a>
-                                            <a href="hapus_galeri_eskul.php" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
+                                            <a href="hapus_informasi.php?id_kamar=<?php echo $data['id_kamar']; ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -143,7 +135,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Edit Ekstrakurikuler</h4>
+                    <h4 class="modal-title">Edit Informasi</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -152,9 +144,21 @@
                     <form method="post" action="" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Nama Ekstrakurikuler</label>
+                                <label for="judul">Judul Informasi</label>
+                                <input id="judul" type="text" name="judul_informasi" class="form-control" placeholder="Judul Informasi">
+                            </div>
+                            <div class="form-group">
+                                <label for="isi">Isi</label>
+                                <br>
+                               <textarea name="isi" id="isi" cols="56" rows="-3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Tanggal</label>
+                                <input type="text" name="tanggal" class="form-control" placeholder="Tanggal">
+                            </div>
+                            <label>Jenis Informasi</label>
                                 <select name="nama_eskul" class="form-control" id="">
-                                    <option>-- Pilih Nama Eskul --</option>
+                                    <option>-- Pilih Jenis Informasi --</option>
                                     <option value="basket">Basket Ball</option>
                                     <option value="voly">Voly</option>
                                     <option value="merpati_putih">Merpati Putih</option>
@@ -162,14 +166,8 @@
                                     <option value="futsal">Futsal</option>
                                     <option value="pramuka">Pramuka</option>
                                 </select>
-                            </div>
                             <div class="form-group">
-                                <label for="keterangan">Keterangan</label>
-                                <br>
-                               <textarea name="keterangan" id="keterangan" cols="56" rows="-3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Foto Ekstrakurikuler</label>
+                                <label>Foto Informasi</label>
                                 <input type="file" name="foto" class="form-control">
                             </div>
                         </div>
@@ -188,7 +186,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Tambah Ekstrakurikuler</h4>
+                    <h4 class="modal-title">Tambah Informasi</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -197,9 +195,21 @@
                     <form method="post" action="" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Nama Ekstrakurikuler</label>
+                                <label for="judul">Judul Informasi</label>
+                                <input id="judul" type="text" name="judul_informasi" class="form-control" placeholder="Judul Informasi">
+                            </div>
+                            <div class="form-group">
+                                <label for="isi">Isi</label>
+                                <br>
+                               <textarea name="isi" id="isi" cols="56" rows="-3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Tanggal</label>
+                                <input type="text" name="tanggal" class="form-control" placeholder="Tanggal">
+                            </div>
+                            <label>Jenis Informasi</label>
                                 <select name="nama_eskul" class="form-control" id="">
-                                    <option>-- Pilih Nama Eskul --</option>
+                                    <option>-- Pilih Jenis Informasi --</option>
                                     <option value="basket">Basket Ball</option>
                                     <option value="voly">Voly</option>
                                     <option value="merpati_putih">Merpati Putih</option>
@@ -207,14 +217,8 @@
                                     <option value="futsal">Futsal</option>
                                     <option value="pramuka">Pramuka</option>
                                 </select>
-                            </div>
                             <div class="form-group">
-                                <label for="keterangan">Keterangan</label>
-                                <br>
-                               <textarea name="keterangan" id="keterangan" cols="56" rows="-3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Foto Ekstrakurikuler</label>
+                                <label>Foto Informasi</label>
                                 <input type="file" name="foto" class="form-control">
                             </div>
                         </div>
@@ -250,8 +254,6 @@
 <script src="../assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="../assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- AdminLTE App -->
-<!-- AdminLTE for demo purposes -->
 <!-- Page specific script -->
 <script>
   $(function () {

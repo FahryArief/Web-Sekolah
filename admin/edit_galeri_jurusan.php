@@ -72,7 +72,7 @@
                 <div class="container">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Edit Galeri Ekstrakurikuler</h1>
+                            <h1 class="m-0">Edit Galeri Jurusan</h1>
                         </div><!-- /.col -->
 
                     </div><!-- /.row -->
@@ -83,19 +83,19 @@
                     <div class="col-md-12">
                         <div class="card card-outline card-info">
                             <div class="card-header">
-                                Edit Galeri Ekstrakurikuler
+                                Edit Galeri Jurusan
                             </div>
                             <div class="card-body">
                             <div class="form-group">
-                                <label>Nama Ekstrakurikuler</label>
+                                <label>Nama Jurusan</label>
                                 <select name="nama_eskul" class="form-control" id="">
-                                    <option>-- Pilih Nama Eskul --</option>
-                                    <option value="basket">Basket Ball</option>
-                                    <option value="voly">Voly</option>
-                                    <option value="merpati_putih">Merpati Putih</option>
-                                    <option value="taekwondo">Taekwondo</option>
-                                    <option value="futsal">Futsal</option>
-                                    <option value="pramuka">Pramuka</option>
+                                    <option>-- Pilih Nama Jurusan --</option>
+                                    <option value="basket">Rekayasa Perangkat Lunak</option>
+                                    <option value="voly">Multi Media</option>
+                                    <option value="merpati_putih">Akuntansi</option>
+                                    <option value="taekwondo">Kimia Industri</option>
+                                    <option value="futsal">Kimia Analisis</option>
+                                    <option value="pramuka">Pemasaran</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -104,7 +104,7 @@
                                <textarea name="keterangan" id="keterangan" cols="145" rows="-3"></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Foto Ekstrakurikuler</label>
+                                <label>Foto Jurusan</label>
                                 <input type="file" name="foto" class="form-control">
                             </div>
                                     <button type="submit" class="btn btn-primary">Update</button>

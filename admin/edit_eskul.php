@@ -54,6 +54,9 @@
                             </ul>
                         </li>
                         <li class="nav-item">
+                            <a href="data_users.php" class="nav-link">Data Users</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="logout.php" class="nav-link">Logout</a>
                         </li>
                     </ul>
@@ -88,8 +91,9 @@
                                 <input type="text" name="nama_ekstrakurikuler" class="form-control" placeholder="Nama Ekstrakurikuler">
                             </div>
                             <div class="form-group">
-                                <label>Keterangan</label>
-                                <input type="text" name="keterangan" class="form-control" placeholder="Keterangan">
+                                <label for="keterangan">Keterangan</label>
+                                <br>
+                               <textarea name="keterangan" id="keterangan" cols="145" rows="-3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Visi</label>
@@ -107,7 +111,6 @@
                                 <label>Logo Ekstrakurikuler</label>
                                 <input type="file" name="logo" class="form-control">
                             </div>
-                        </div>
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </form>
                             </div>

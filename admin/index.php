@@ -52,6 +52,9 @@
                             </ul>
                         </li>
                         <li class="nav-item">
+                            <a href="data_users.php" class="nav-link">Data Users</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="logout.php" class="nav-link">Logout</a>
                         </li>
                     </ul>
@@ -85,13 +88,13 @@
                                             <div class="inner">
                                                 <h3>1</h3>
 
-                                                <p>Kamar</p>
+                                                <p>Ekstrakurikuler</p>
                                             </div>
                                             <div class="icon">
                                                 <i class="fas fa-home"></i>
                                             </div>
-                                            <a href="kamar.php" class="small-box-footer">
-                                                Lihat Data Kamar <i class="fas fa-arrow-circle-right"></i>
+                                            <a href="eskul.php" class="small-box-footer">
+                                                Lihat Data Ekstrakurikuler <i class="fas fa-arrow-circle-right"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -103,13 +106,13 @@
                                                 <h3><?php # echo $id_fasilitas_kamar;
                                                     ?> 5</h3>
 
-                                                <p>Fasilitas Kamar</p>
+                                                <p>jurusan</p>
                                             </div>
                                             <div class="icon">
                                                 <i class="fas fa-list-alt"></i>
                                             </div>
-                                            <a href="fasilitas.php" class="small-box-footer">
-                                                Lihat Data Fasilitas <i class="fas fa-arrow-circle-right"></i>
+                                            <a href="jurusan.php" class="small-box-footer">
+                                                Lihat Data Jurusan <i class="fas fa-arrow-circle-right"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -121,13 +124,13 @@
                                                 <h3>6 <?php # echo $id_fasilitas;
                                                         ?></h3>
 
-                                                <p>Fasilitas Hotel</p>
+                                                <p>Informasi</p>
                                             </div>
                                             <div class="icon">
                                                 <i class="fas fa-image"></i>
                                             </div>
-                                            <a href="fasilitas_hotel.php" class="small-box-footer">
-                                                Lihat Data Fasilitas Hotel <i class="fas fa-arrow-circle-right"></i>
+                                            <a href="informasi.php" class="small-box-footer">
+                                                Lihat Data Informasi <i class="fas fa-arrow-circle-right"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -137,13 +140,13 @@
                                             <div class="inner">
                                                 <h3><?php #echo $row['jmlh_kamar'];
                                                     ?></h3>
-                                                <p>Jumlah Kamar Hotel</p>
+                                                <p>Tentang</p>
                                             </div>
                                             <div class="icon">
                                                 <i class="fas fa-home"></i>
                                             </div>
-                                            <a href="kamar.php" class="small-box-footer">
-                                                Lihat Data Kamar <i class="fas fa-arrow-circle-right"></i>
+                                            <a href="tentang.php" class="small-box-footer">
+                                                Lihat Data Tentang <i class="fas fa-arrow-circle-right"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -217,8 +220,6 @@
     <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-    <!-- REQUIRED SCRIPTS -->
-
     <!-- jQuery -->
     <script src="../assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->

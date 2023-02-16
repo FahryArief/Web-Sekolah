@@ -72,7 +72,7 @@
                 <div class="container">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Edit Galeri Ekstrakurikuler</h1>
+                            <h1 class="m-0">Edit Data Users</h1>
                         </div><!-- /.col -->
 
                     </div><!-- /.row -->
@@ -83,30 +83,30 @@
                     <div class="col-md-12">
                         <div class="card card-outline card-info">
                             <div class="card-header">
-                                Edit Galeri Ekstrakurikuler
+                                Edit Data Users
                             </div>
                             <div class="card-body">
                             <div class="form-group">
-                                <label>Nama Ekstrakurikuler</label>
+                                <label for="nama">Nama Lengkap</label>
+                                <input id="nama" type="text" name="nama_lengkap" class="form-control" placeholder="Nama Lengkap">
+                            </div>
+                            <div class="form-group">
+                                <label>Nama Pengguna</label>
+                                <input type="text" name="nama" class="form-control" placeholder="Nama Pengguna">
+                            </div>
+                            <label>Jenis Role</label>
                                 <select name="nama_eskul" class="form-control" id="">
-                                    <option>-- Pilih Nama Eskul --</option>
-                                    <option value="basket">Basket Ball</option>
-                                    <option value="voly">Voly</option>
-                                    <option value="merpati_putih">Merpati Putih</option>
-                                    <option value="taekwondo">Taekwondo</option>
-                                    <option value="futsal">Futsal</option>
-                                    <option value="pramuka">Pramuka</option>
+                                    <option>-- Pilih Role --</option>
+                                    <option value="basket">Administrator</option>
+                                    <option value="voly">Petugas</option>
                                 </select>
-                            </div>
                             <div class="form-group">
-                                <label for="keterangan">Keterangan</label>
-                                <br>
-                               <textarea name="keterangan" id="keterangan" cols="145" rows="-3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Foto Ekstrakurikuler</label>
-                                <input type="file" name="foto" class="form-control">
-                            </div>
+                                    <label for="password" class="control-label">Password</label>
+                                    <input id="password" type="password" class="form-control" name="password" placeholder="Masukan Kata Sandi" tabindex="2" required>
+                                    <div class="invalid-feedback">
+                                        please fill in your password
+                                    </div>
+                                </div>
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </form>
                             </div>

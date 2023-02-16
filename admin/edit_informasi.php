@@ -2,8 +2,6 @@
 <html lang="en">
 
 <head>
-    <link rel="shortcut icon" href="../assets/image/favicon.ico">
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Panel Admin - SMKN 8 Bandar Lampung</title>
@@ -49,8 +47,8 @@
                         <li class="nav-item dropdown">
                             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Galeri</a>
                             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                                <li><a href="galeri_jurusan.php" class="dropdown-item">Galeri Jurusan</a></li>
-                                <li><a href="galeri_eskul.php" class="dropdown-item">Galeri Ekstrakurikuler</a></li>
+                                <li><a href="#" class="dropdown-item">Galeri Jurusan</a></li>
+                                <li><a href="#" class="dropdown-item">Galeri Ekstrakurikuler</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -72,7 +70,7 @@
                 <div class="container">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Edit Galeri Ekstrakurikuler</h1>
+                            <h1 class="m-0">Edit Informasi</h1>
                         </div><!-- /.col -->
 
                     </div><!-- /.row -->
@@ -83,13 +81,25 @@
                     <div class="col-md-12">
                         <div class="card card-outline card-info">
                             <div class="card-header">
-                                Edit Galeri Ekstrakurikuler
+                                Edit Daftar Informasi
                             </div>
                             <div class="card-body">
                             <div class="form-group">
-                                <label>Nama Ekstrakurikuler</label>
+                                <label>Judul Informasi</label>
+                                <input type="text" name="nama_jurusan" class="form-control" placeholder="Nama Jurusan">
+                            </div>
+                            <div class="form-group">
+                                <label for="isi">Isi Informasi</label>
+                                <br>
+                               <textarea name="isi" id="isi" cols="145" rows="-3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Tanggal</label>
+                                <input type="text" name="tanggal" class="form-control" placeholder="Tanggal">
+                            </div>
+                            <label>Jenis Informasi</label>
                                 <select name="nama_eskul" class="form-control" id="">
-                                    <option>-- Pilih Nama Eskul --</option>
+                                    <option>-- Pilih Jenis Informasi --</option>
                                     <option value="basket">Basket Ball</option>
                                     <option value="voly">Voly</option>
                                     <option value="merpati_putih">Merpati Putih</option>
@@ -97,14 +107,8 @@
                                     <option value="futsal">Futsal</option>
                                     <option value="pramuka">Pramuka</option>
                                 </select>
-                            </div>
                             <div class="form-group">
-                                <label for="keterangan">Keterangan</label>
-                                <br>
-                               <textarea name="keterangan" id="keterangan" cols="145" rows="-3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Foto Ekstrakurikuler</label>
+                                <label>Foto Jurusan</label>
                                 <input type="file" name="foto" class="form-control">
                             </div>
                                     <button type="submit" class="btn btn-primary">Update</button>
