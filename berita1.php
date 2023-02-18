@@ -60,88 +60,143 @@
         </nav>
     </div>
 
-    <div style="margin-top: 100px;" class="content">
-    <div class="news">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md">
-                                        <div class="section_title_container text-center">
-                                            <h2 class="section_title">Informasi Terkini</h2>
-                                            <div class="section_subtitle font-grey">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p>
-                                            </div>
+    <div class="events">
+        <div class="container">
+            <div class="row events_row">
+                <!-- Berita -->
+                <div class="col-lg-4 event_col mt-5">
+                    <div class="event event_left">
+                        <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
+                        <div class="event_body d-flex flex-row align-items-start justify-content-start">
+                            <div class="event_date">
+                                <div class="d-flex flex-column align-items-center justify-content-center trans_200">
+                                    <div class="event_day trans_200">21</div>
+                                    <div class="event_month trans_200">Aug</div>
+                                </div>
+                            </div>
+                            <div class="event_content">
+                                <div class="event_title"><a href="#">Peringatan Hari Kemerdekaan</a></div>
+                                <div class="event_info_container">
+                                    <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>15.00 - 19.30</span></div>
+                                    <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
+                                    <div class="event_text">
+                                        <p>Policy analysts generally agree on a need for reform, but not on which path...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 event_col mt-5">
+                    <div class="event event_mid">
+                        <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
+                        <div class="event_body d-flex flex-row align-items-start justify-content-start">
+                            <div class="event_date">
+                                <div class="d-flex flex-column align-items-center justify-content-center trans_200">
+                                    <div class="event_day trans_200">27</div>
+                                    <div class="event_month trans_200">Aug</div>
+                                </div>
+                            </div>
+                            <div class="event_content">
+                                <div class="event_title"><a href="#">Peringatan Hari Guru Nasional</a></div>
+                                <div class="event_info_container">
+                                    <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>09.00 - 17.30</span></div>
+                                    <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 Brooklyn City</span></div>
+                                    <div class="event_text">
+                                        <p>This Consumer Action News issue covers topics now being debated before...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 event_col mt-5">
+                    <div class="event event_mid">
+                        <div class="event_image mx-2">
+                            <p style="text-align:justify; float:left;"><img src="styling/img/siti_cantik.jpg" height="" width="150px" />
+                            <div class=" event_title" style="text-align: center;"> <a href="#">Peringatan Hari Guru Nasional</a></div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="event event_mid">
+                        <div class="event_image mx-2">
+                            <p style="text-align:justify; float:left;"><img src="styling/img/siti_cantik.jpg" height="" width="150px" />
+                            <div class=" event_title" style="text-align: center;"> <a href="#">Peringatan Hari Guru Nasional</a></div>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row events_row">
+                    <!-- Berita -->
+                    <div class="col-lg-4 event_col">
+                        <div class="event event_left">
+                            <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
+                            <div class="event_body d-flex flex-row align-items-start justify-content-start">
+                                <div class="event_date">
+                                    <div class="d-flex flex-column align-items-center justify-content-center trans_200">
+                                        <div class="event_day trans_200">21</div>
+                                        <div class="event_month trans_200">Aug</div>
+                                    </div>
+                                </div>
+                                <div class="event_content">
+                                    <div class="event_title"><a href="#">Peringatan Hari Kemerdekaan</a></div>
+                                    <div class="event_info_container">
+                                        <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>15.00 - 19.30</span></div>
+                                        <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
+                                        <div class="event_text">
+                                            <p>Policy analysts generally agree on a need for reform, but not on which path...</p>
                                         </div>
                                     </div>
                                 </div>
-                                <?php for ($i=0; $i < 5; $i++) { 
-                                    ?>
-                                <div class="row news_row">
-                                    <div class="col-md-4 news_col">
-
-                                        <!-- News Post Large -->
-                                        <div class="news_post_large_container">
-                                            <div class="news_post_large">
-                                                <div class="news_post_image"><img src="styling/img/bg-1.jpg" alt=""></div>
-                                                <div class="news_post_large_title"><a href="blog_single.html">Here’s What You Need to Know About Online Testing for the ACT and SAT</a></div>
-                                                <div class="news_post_meta">
-                                                    <ul>
-                                                        <li><a href="#">admin</a></li>
-                                                        <li><a href="#">november 11, 2017</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="news_post_text">
-                                                    <p>Policy analysts generally agree on a need for reform, but not on which path policymakers should take. Can America learn anything from other nations...</p>
-                                                </div>
-                                                <div class="news_post_link"><a href="blog_single.html">read more</a></div>
-                                            </div>
-                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 event_col">
+                        <div class="event event_mid">
+                            <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
+                            <div class="event_body d-flex flex-row align-items-start justify-content-start">
+                                <div class="event_date">
+                                    <div class="d-flex flex-column align-items-center justify-content-center trans_200">
+                                        <div class="event_day trans_200">27</div>
+                                        <div class="event_month trans_200">Aug</div>
                                     </div>
-                                    <div class="col-md-4 news_col">
-
-                                        <!-- News Post Large -->
-                                        <div class="news_post_large_container">
-                                            <div class="news_post_large">
-                                                <div class="news_post_image"><img src="styling/img/bg-1.jpg" alt=""></div>
-                                                <div class="news_post_large_title"><a href="blog_single.html">Here’s What You Need to Know About Online Testing for the ACT and SAT</a></div>
-                                                <div class="news_post_meta">
-                                                    <ul>
-                                                        <li><a href="#">admin</a></li>
-                                                        <li><a href="#">november 11, 2017</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="news_post_text">
-                                                    <p>Policy analysts generally agree on a need for reform, but not on which path policymakers should take. Can America learn anything from other nations...</p>
-                                                </div>
-                                                <div class="news_post_link"><a href="blog_single.html">read more</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4 news_col">
-                                        <div class="news_posts_small">
-
-                                            <!-- News Posts Small -->
-                                            <div class="news_post_small">
-                                            <div class="news_post_image"><img src="styling/img/firaun.jpeg" width="250" alt=""></div>
-                                                <div class="news_post_small_title"><a href="blog_single.html">Home-based business insurance issue (Spring 2017 - 2018)</a></div>
-                                                <div class="news_post_meta">
-                                                </div>
-                                            </div>
-
-                                            <!-- News Posts Small -->
-                                            <div class="news_post_small">
-                                            <div class="news_post_image"><img src="styling/img/firaun.jpeg" width="250" alt=""></div>
-                                                <div class="news_post_small_title"><a href="blog_single.html">2018 Fall Issue: Credit Card Comparison Site Survey (Summer 2018)</a></div>
-                                                <div class="news_post_meta">
-                                                </div>
-                                            </div>
+                                </div>
+                                <div class="event_content">
+                                    <div class="event_title"><a href="#">Peringatan Hari Guru Nasional</a></div>
+                                    <div class="event_info_container">
+                                        <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>09.00 - 17.30</span></div>
+                                        <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 Brooklyn City</span></div>
+                                        <div class="event_text">
+                                            <p>This Consumer Action News issue covers topics now being debated before...</p>
                                         </div>
                                     </div>
                                 </div>
-                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 event_col">
+                        <div class="event event_mid">
+                            <div class="event_image mx-2">
+                                <p style="text-align:justify; float:left;"><img src="styling/img/siti_cantik.jpg" height="" width="150px" />
+                                <div class=" event_title" style="text-align: center;"> <a href="#">Peringatan Hari Guru Nasional</a></div>
+                                </p>
                             </div>
                         </div>
 
+                        <div class="event event_mid">
+                            <div class="event_image mx-2">
+                                <p style="text-align:justify; float:left;"><img src="styling/img/siti_cantik.jpg" height="" width="150px" />
+                                <div class=" event_title" style="text-align: center;"> <a href="#">Peringatan Hari Guru Nasional</a></div>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
     <footer class="text-center text-lg-start text-white">
         <!-- Section: Social media -->

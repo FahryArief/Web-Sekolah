@@ -83,38 +83,14 @@
                             <div class="card-body">
                             <div class="form-group col-3">
                                 <img src="../styling/img/firaun.jpeg" height="80px" class="d-block mb-2" alt="" srcset="">
-                                <input type="file" name="nama_jurusan" class="form-control" placeholder="Foto Kepala Sekolah">
+                                <input type="file" class="form-control">
                             </div>
-                            <div class="d-flex align-items-end flex-column" style="height: 200px;">
-                            <div class="form-group">
-                                <label for="isi">Isi Informasi</label>
-                                <br>
-                               <textarea name="isi" id="isi" cols="40" rows="-3"></textarea>
                             </div>
-  <div class="p-2">Flex item</div>
-  <div class="mt-auto p-2">Flex item</div>
-</div>
-                           
-                            <div class="form-group">
-                                <label>Tanggal</label>
-                                <input type="text" name="tanggal" class="form-control" placeholder="Tanggal">
-                            </div>
-                            <label>Jenis Informasi</label>
-                                <select name="nama_eskul" class="form-control" id="">
-                                    <option>-- Pilih Jenis Informasi --</option>
-                                    <option value="basket">Basket Ball</option>
-                                    <option value="voly">Voly</option>
-                                    <option value="merpati_putih">Merpati Putih</option>
-                                    <option value="taekwondo">Taekwondo</option>
-                                    <option value="futsal">Futsal</option>
-                                    <option value="pramuka">Pramuka</option>
-                                </select>
-                            <div class="form-group">
-                                <label>Foto Jurusan</label>
-                                <input type="file" name="foto" class="form-control">
-                            </div>
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                </form>
+                            <div class="form-group col-5">
+                            <h2>Profile Video</h2>
+                            <div class="embed-responsive embed-responsive-16by9">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/9-tH1tFyNO0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                <input type="file" class="form-control">
                             </div>
                         </div>
                     </div>
