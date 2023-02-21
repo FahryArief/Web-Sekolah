@@ -1,71 +1,94 @@
 <?php
-include 'koneksi.php'; 
+include 'koneksi.php';
 
-if(isset($_POST['tombol']))
-{
-    if(!isset($_FILES['thumbnail']['tmp_name'])){
-        echo '<span style="color:red"><b><u><i>Pilih file gambar</i></u></b></span>';
-    }
-    else
-    {
-        $judul = $_POST['judul'];
-$isi = $_POST['isi'];
-$tanggal = $_POST['tanggal'];
-$jenis = $_POST['jenis_informasi'];
-$file_name = $_FILES['thumbnail']['name'];
-$file_size = $_FILES['thumbnail']['size'];
-$file_type = $_FILES['thumbnail']['type'];
-        if ($file_size < 2048000 and ($file_type =='image/jpeg' or $file_type == 'image/png'))
-        {
-            $thumbnail = addslashes(file_get_contents($_FILES['thumbnail']['tmp_name']));
-            mysqli_query($koneksi,"INSERT INTO informasi VALUES ('','$judul','$isi','$tanggal','$thumbnail','$jenis')");
-            header("location:informasi.php");
+if(isset($_GET['delete'])){
+    $id = $_GET['delete'];
+    $sql= "DELETE FROM informasi WHERE id_informasi='$id'";
+    $query= mysqli_query($koneksi,$sql);
+}
+if (isset($_POST['tombol'])) {
+    $judul = $_POST['judul'];
+        $isi = $_POST['isi'];
+        $tanggal = $_POST['tanggal'];
+        $jenis = $_POST['jenis_informasi'];
+        $thumbnail_informasi = $_FILES['thumbnail_informasi']['name'];
+    if ($thumbnail_informasi !="") {
+        $ekstensi_diperbolehkan = array('png','jpg','jpeg');
+        $x = explode('.', $thumbnail_informasi);
+        $extensi = strtolower(end($x));
+        $file_tmp = $_FILES['thumbnail_informasi']['tmp_name'];
+        $angka_acak = rand(1,999);
+        $nama_gambar_baru = $angka_acak.'-'.$thumbnail_informasi;
+        if (in_array($extensi || $extensii, $ekstensi_diperbolehkan)=== true) {
+         move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru);
+         $query = "INSERT INTO informasi (id_informasi,judul,isi,tanggal,thumbnail,jenis_informasi) VALUES ('','$judul
+         ','$isi','$tanggal','$nama_gambar_baru','$jenis')";
+        $result = mysqli_query($koneksi, $query);
+        if (!$result) {
+         die("Query gagal dijalankan : ".mysqli_errno($koneksi)."-".mysqli_error($koneksi));
+        } else {
+         echo "<script>alert('Data Berhasil Di Tambahkan'); </script>";
         }
-        else
-        {
-            echo '<span style="color:red"><b><u><i>Ukuruan File / Tipe File Tidak Sesuai</i></u></b></span>';
-        }
+        
+     }
+      else {
+         echo "<script>alert('Extensi gambar harus berupa .jpg atau .png'); </script>";
+     }
+     }else{
+        $query = "INSERT INTO informasi (judul,isi,tanggal,thumbnail,jenis_informasi) VALUES ('$judul', '$isi', '$tanggal','', '$jenis')";
+        $result = mysqli_query($koneksi, $query);
+        
+        if (!$result) {
+            die("Query gagal dijalankan : ".mysqli_errno($koneksi)."-".mysqli_error($koneksi));
+           } else {
+            echo "<script>alert('Data Berhasil Di Tambahkan'); </script>";
+           }
     }
 }
-if(isset($_POST['update'])){
 
-$id_informasi = $_POST['id_informasi'];
-$judul = $_POST['judul'];
-$isi = $_POST['isi'];
-$tanggal = $_POST['tanggal'];
-$thumbnail = $_FILES['thumbnail']['name'];
-$jenis = $_POST['jenis_informasi'];
-$file_name = $_FILES['thumbnail']['name'];
-$file_size = $_FILES['thumbnail']['size'];
-$file_type = $_FILES['thumbnail']['type'];
-
-if($thumbnail != "") {
-  if($file_size < 2048000 and ($file_type =='image/jpeg' or $file_type == 'image/png')){
-    $thumbnail = addslashes(file_get_contents($_FILES['thumbnail']['tmp_name']));
-    $query  = "UPDATE informasi SET judul = '$judul', isi = '$isi', tanggal = '$tanggal', thumbnail = '$thumbnail', jenis_informasi= '$jenis'";
-    $query .= "WHERE id_informasi = '$id_informasi'";
-    $result = mysqli_query($koneksi, $query);
-    if(!$result){
-      die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
-       " - ".mysqli_error($koneksi));
-    } else {
-      echo "<script>alert('Data berhasil diubah.');</script>";
+if (isset($_POST['update'])) {
+    $id_informasi = $_POST['id_informasi'];
+    $judul = $_POST['judul'];
+        $isi = $_POST['isi'];
+        $tanggal = $_POST['tanggal'];
+        $jenis = $_POST['jenis_informasi'];
+        $thumbnail_informasi = $_FILES['thumbnail_informasi']['name'];
+    if ($thumbnail_informasi !="") {
+        $ekstensi_diperbolehkan = array('png','jpg','jpeg');
+        $x = explode('.', $thumbnail_informasi);
+        $extensi = strtolower(end($x));
+        $file_tmp = $_FILES['thumbnail_informasi']['tmp_name'];
+        $angka_acak = rand(1,999);
+        $nama_gambar_baru = $angka_acak.'-'.$thumbnail_informasi;
+        if (in_array($extensi, $ekstensi_diperbolehkan)=== true) {
+         move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru);
+         $query = "UPDATE informasi SET judul = '$judul
+        ', isi = '$isi', tanggal = '$tanggal', jenis_informasi = '$jenis', thumbnail= '$nama_gambar_baru'";
+        $query .= "WHERE id_informasi = '$id_informasi'";
+        $result = mysqli_query($koneksi, $query);
+        if (!$result) {
+         die("Query gagal dijalankan : ".mysqli_errno($koneksi)."-".mysqli_error($koneksi));
+        } else {
+         echo "<script>alert('Data Berhasil Di Tambahkan'); </script>";
+        }
+        
+     }
+      else {
+         echo "<script>alert('Extensi gambar harus berupa .jpg atau .png'); </script>";
+     }
+     }else{
+        $query = "UPDATE informasi SET judul = '$judul
+        ', isi = '$isi', tanggal = '$tanggal', jenis_informasi = '$jenis'";
+        $query .= "WHERE id_informasi = '$id_informasi'";
+        $result = mysqli_query($koneksi, $query);
+            // periska query apakah ada error
+        if(!$result){
+          die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
+           " - ".mysqli_error($koneksi));
+        } else {
+          echo "<script>alert('Data berhasil diubah.'); </script>";
+        }
     }
-  } else {
-    echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');</script>";
-  }
-} else {
-  $query  = "UPDATE informasi SET judul = '$judul', isi = '$isi', tanggal = '$tanggal', jenis_informasi= '$jenis'";
-  $query .= "WHERE id_informasi = '$id_informasi'";
-  $result = mysqli_query($koneksi, $query);
-      // periska query apakah ada error
-  if(!$result){
-    die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
-     " - ".mysqli_error($koneksi));
-  } else {
-    echo "<script>alert('Data berhasil diubah.');</script>";
-  }
-}
 }
 ?>
 
@@ -183,10 +206,10 @@ if($thumbnail != "") {
                                         <td><?= $data['judul']?></td>
                                         <td><?= $data['isi']?></td>
                                         <td><?= $data['tanggal']?></td>
-                                        <td><img class="d-block" height="150px" src="ambil_data.php?id_informasi=<?= $data['id_informasi']; ?>" alt="" srcset=""></td>
+                                        <td><img class="d-block" height="150px" src="gambar/<?= $data['thumbnail']; ?>" alt="" srcset=""></td>
 
                                         <td> <a data-toggle="modal" data-target="#edit<?= $data['id_informasi']; ?>" class="btn btn-primary">Edit</a>
-                                            <a href="delete.php?id_informasi=<?php echo $data['id_informasi']; ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
+                                            <a href="informasi.php?delete=<?= $data['id_informasi'] ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
                                         </td>
                                         
                                         <div class="modal fade" id="edit<?= $data['id_informasi']; ?>">
@@ -218,15 +241,15 @@ if($thumbnail != "") {
                             <label>Jenis Informasi</label>
                                 <select name="jenis_informasi" class="form-control" id="">
                                     <option value="<?= $data['jenis_informasi']; ?>"><?= $data['jenis_informasi']; ?></option>
-                                    <option value="berita">Berita</option>
-                                    <option value="pengumuman">Pengumuman</option>
-                                    <option value="kegiatan">Kegiatan</option>
+                                    <option value="B">Berita</option>
+                                    <option value="P">Pengumuman</option>
+                                    <option value="K">Kegiatan</option>
                                 </select>
                             <div class="form-group">
                                 <label>Foto Informasi</label>
-                                <img class="d-block" src="ambil_data.php?id_informasi=<?php echo $data['id_informasi']; ?>" height="200"
+                                <img class="d-block" src="gambar/<?php echo $data['thumbnail']; ?>" height="200"
                                             >
-                                <input type="file" name="thumbnail" class="form-control">
+                                <input type="file" name="thumbnail_informasi" class="form-control">
                             </div>
                         </div>
                 </div>
@@ -291,13 +314,13 @@ if($thumbnail != "") {
                             <label>Jenis Informasi</label>
                                 <select name="jenis_informasi" class="form-control" id="">
                                     <option>-- Pilih Jenis Informasi --</option>
-                                    <option value="berita">Berita</option>
-                                    <option value="pengumuman">Pengumuman</option>
-                                    <option value="kegiatan">Kegiatan</option>
+                                    <option value="B">Berita</option>
+                                    <option value="P">Pengumuman</option>
+                                    <option value="K">Kegiatan</option>
                                 </select>
                             <div class="form-group">
                                 <label>Foto Informasi</label>
-                                <input type="file" name="thumbnail" class="form-control">
+                                <input type="file" name="thumbnail_informasi" class="form-control">
                             </div>
                         </div>
                 </div>
