@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['role'] != "1") {
+if ($_SESSION['role'] != "2") {
     header("location:../index.php");
 }
 include 'koneksi.php';
@@ -38,11 +38,9 @@ include 'koneksi.php';
                 <a href="index.php" class="navbar-brand">
                     <img width="150px" src="../styling/img/logoe.png" alt="Logo" class="brand-image">
                 </a>
-
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                     <!-- Left navbar links -->
                     <ul class="navbar-nav ml-auto">
@@ -50,16 +48,7 @@ include 'koneksi.php';
                             <a href="index.php" class="nav-link">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a href="eskul.php" class="nav-link">Ekstrakurikuler</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="jurusan.php" class="nav-link">Jurusan</a>
-                        </li>
-                        <li class="nav-item">
                             <a href="informasi.php" class="nav-link">Informasi</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="tentang.php" class="nav-link">Tentang</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Galeri</a>
@@ -69,15 +58,10 @@ include 'koneksi.php';
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="data_users.php" class="nav-link">Data Users</a>
-                        </li>
-                        <li class="nav-item">
                             <a href="logout.php" class="nav-link">Logout</a>
                         </li>
                     </ul>
-                    <!-- SEARCH FORM -->
                 </div>
-                <!-- Right navbar links -->
             </div>
         </nav>
         <!-- /.navbar -->

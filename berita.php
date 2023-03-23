@@ -77,7 +77,6 @@
                                     ?>
                                 <div class="row news_row">
                                     <div class="col-md-4 news_col">
-
                                         <!-- News Post Large -->
                                         <div class="news_post_large_container">
                                             <div class="news_post_large">
@@ -97,7 +96,6 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 news_col">
-
                                         <!-- News Post Large -->
                                         <div class="news_post_large_container">
                                             <div class="news_post_large">
@@ -119,7 +117,6 @@
 
                                     <div class="col-md-4 news_col">
                                         <div class="news_posts_small">
-
                                             <!-- News Posts Small -->
                                             <div class="news_post_small">
                                             <div class="news_post_image"><img src="styling/img/firaun.jpeg" width="250" alt=""></div>

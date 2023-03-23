@@ -1,164 +1,9 @@
 <?php
-include 'koneksi.php'; 
-if (isset($_POST['tombol'])) {
-    $nama_eskul = $_POST['nama_eskul'];
-    $keterangan = $_POST['keterangan'];
-$visi = $_POST['visi'];
-$misi = $_POST['misi'];
-$thumbnail_eskul = $_FILES['thumbnail_eskul']['name'];
-$logo_eskul = $_FILES['logo_eskul']['name'];
-
-    if ($thumbnail_eskul !="" || $logo_eskul !="") {
-        $ekstensi_diperbolehkan = array('png','jpg','jpeg');
-        $x = explode('.', $thumbnail_eskul);
-        $xx = explode('.', $logo_eskul);
-        $extensi = strtolower(end($x));
-        $extensii = strtolower(end($xx));
-        $file_tmp = $_FILES['thumbnail_eskul']['tmp_name'];
-        $file_tmpp = $_FILES['logo_eskul']['tmp_name'];
-        $angka_acak = rand(1,999);
-        $nama_gambar_baru = $angka_acak.'-'.$thumbnail_eskul;
-        $nama_gambar_baruu = $angka_acak.'-'.$logo_eskul;
-        if (in_array($extensi || $extensii, $ekstensi_diperbolehkan)=== true) {
-         move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru);
-         move_uploaded_file($file_tmpp, 'gambar/'.$nama_gambar_baruu);
-         $query = "INSERT INTO eskul (nama_eskul,keterangan,visi,misi,thumbnail_eskul,logo_eskul) VALUES ('$nama_eskul','$keterangan','$visi','$misi','$nama_gambar_baru','$nama_gambar_baruu')";
-        $result = mysqli_query($koneksi, $query);
-        if (!$result) {
-         die("Query gagal dijalankan : ".mysqli_errno($koneksi)."-".mysqli_error($koneksi));
-        } else {
-         echo "<script>alert('Data Berhasil Di Tambahkan');window.location='eskul.php';</script>";
-        }
-        
-     }
-      else {
-         echo "<script>alert('Extensi gambar harus berupa .jpg atau .png');window.location='eskul.php';</script>";
-     }
-     }else{
-        $querys = "INSERT INTO eskul (nama_eskul,keterangan,visi,misi,thumbnail_eskul,logo_eskul) VALUES ('$nama_eskul', '$keterangan', '$visi','$misi', '' ,'')";
-        $result = mysqli_query($koneksi, $querys);
-        
-        if (!$result) {
-            die("Query gagal dijalankan : ".mysqli_errno($koneksi)."-".mysqli_error($koneksi));
-           } else {
-            echo "<script>alert('Data Berhasil Di Tambahkan');window.location='eskul.php';</script>";
-           }
-    }
+session_start();
+if ($_SESSION['role'] != "1") {
+    header("location:../index.php");
 }
-
-if(isset($_GET['delete'])){
-    $id = $_GET['delete'];
-    $sql= "DELETE FROM eskul WHERE id_eskul='$id'";
-    $query= mysqli_query($koneksi,$sql);
-}
-
-if(isset($_POST['update'])){
-    $id_eskul = $_POST['id_eskul'];
-    $nama_eskul = $_POST['nama_eskul'];
-    $keterangan = $_POST['keterangan'];
-    $visi = $_POST['visi'];
-    $misi = $_POST['misi'];
-    $thumbnail_eskul = $_FILES['thumbnail_eskul']['name'];
-    $logo_eskul = $_FILES['logo_eskul']['name'];
-    if($thumbnail_eskul !="") {
-      $ekstensi_diperbolehkan = array('png','jpg','jpeg');
-        $x = explode('.', $thumbnail_eskul);
-        // $xx = explode('.', $logo_eskul);
-        $extensi = strtolower(end($x));
-        // $extensii = strtolower(end($xx));
-        $file_tmp = $_FILES['thumbnail_eskul']['tmp_name'];
-        $file_tmpp = $_FILES['logo_eskul']['tmp_name'];
-        $angka_acak = rand(1,999);
-        $nama_gambar_baru = $angka_acak.'-'.$thumbnail_eskul;
-        // $nama_gambar_baruu = $angka_acak.'-'.$logo_eskul;
-      if(in_array($extensi || $extensii, $ekstensi_diperbolehkan) == true)  {
-        move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru);
-        // move_uploaded_file($file_tmpp, 'gambar/'.$nama_gambar_baruu);
-        $query  = "UPDATE eskul SET nama_eskul = '$nama_eskul
-        ', keterangan = '$keterangan', visi = '$visi', misi = '$misi', thumbnail_eskul= '$nama_gambar_baru'";
-        $query .= "WHERE id_eskul = '$id_eskul'";
-        $result = mysqli_query($koneksi, $query);
-        if(!$result){
-          die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
-           " - ".mysqli_error($koneksi));
-        } else {
-          echo "<script>alert('Data berhasil diubah.');window.location='eskul.php';</script>";
-        }
-      } else {
-        echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='eskul.php';</script>";
-      }
-    }
-    elseif($logo_eskul !="")
-    {
-$ekstensi_diperbolehkan = array('png','jpg','jpeg');
-// $x = explode('.', $thumbnail_eskul);
-$xx = explode('.', $logo_eskul);
-// $extensi = strtolower(end($x));
-$extensii = strtolower(end($xx));
-$file_tmp = $_FILES['thumbnail_eskul']['tmp_name'];
-$file_tmpp = $_FILES['logo_eskul']['tmp_name'];
-$angka_acak = rand(1,999);
-// $nama_gambar_baru = $angka_acak.'-'.$thumbnail_eskul;
-$nama_gambar_baruu = $angka_acak.'-'.$logo_eskul;
-if(in_array($extensi || $extensii, $ekstensi_diperbolehkan) == true)  {
-// move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru);
-move_uploaded_file($file_tmpp, 'gambar/'.$nama_gambar_baruu);
-$query  = "UPDATE eskul SET nama_eskul = '$nama_eskul
-', keterangan = '$keterangan', visi = '$visi', misi = '$misi', logo_eskul= '$nama_gambar_baruu'";
-$query .= "WHERE id_eskul = '$id_eskul'";
-$result = mysqli_query($koneksi, $query);
-if(!$result){
-  die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
-   " - ".mysqli_error($koneksi));
-} else {
-  echo "<script>alert('Data berhasil diubah.');window.location='eskul.php';</script>";
-}
-} elseif($logo_eskul !="") {
-echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='eskul.php';</script>";
-}
-    }
-    elseif ($logo_eskul !="" && $thumbnail_eskul !="") {
-        $ekstensi_diperbolehkan = array('png','jpg','jpeg');
-$x = explode('.', $thumbnail_eskul);
-$xx = explode('.', $logo_eskul);
-$extensi = strtolower(end($x));
-$extensii = strtolower(end($xx));
-$file_tmp = $_FILES['thumbnail_eskul']['tmp_name'];
-$file_tmpp = $_FILES['logo_eskul']['tmp_name'];
-$angka_acak = rand(1,999);
-$nama_gambar_baru = $angka_acak.'-'.$thumbnail_eskul;
-$nama_gambar_baruu = $angka_acak.'-'.$logo_eskul;
-if(in_array($extensi || $extensii, $ekstensi_diperbolehkan) == true)  {
-move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru);
-move_uploaded_file($file_tmpp, 'gambar/'.$nama_gambar_baruu);
-$query  = "UPDATE eskul SET nama_eskul = '$nama_eskul
-', keterangan = '$keterangan', visi = '$visi', misi = '$misi',thumbnail_eskul = '$nama_gambar_baru', logo_eskul= '$nama_gambar_baruu'";
-$query .= "WHERE id_eskul = '$id_eskul'";
-$result = mysqli_query($koneksi, $query);
-if(!$result){
-  die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
-   " - ".mysqli_error($koneksi));
-} else {
-  echo "<script>alert('Data berhasil diubah.');window.location='eskul.php';</script>";
-}
-} elseif($logo_eskul !="") {
-echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='eskul.php';</script>";
-}
-    }
-    else {
-      $query  = "UPDATE eskul SET nama_eskul = '$nama_eskul
-      ', keterangan = '$keterangan', visi = '$visi', misi = '$misi'";
-      $query .= "WHERE id_eskul = '$id_eskul'";
-      $result = mysqli_query($koneksi, $query);
-          // periska query apakah ada error
-      if(!$result){
-        die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
-         " - ".mysqli_error($koneksi));
-      } else {
-        echo "<script>alert('Data berhasil diubah.');window.location='eskul.php';</script>";
-      }
-    }
-}
+include 'koneksi.php';
 ?>
 
 <!DOCTYPE html>
@@ -174,8 +19,8 @@ echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.loc
     <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../assets/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="../assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="../assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 </head>
 
 <body class="hold-transition layout-top-nav layout-navbar-fixed">
@@ -187,11 +32,9 @@ echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.loc
                 <a href="index.php" class="navbar-brand">
                     <img width="150px" src="../styling/img/logoe.png" alt="Logo" class="brand-image">
                 </a>
-
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                     <!-- Left navbar links -->
                     <ul class="navbar-nav ml-auto">
@@ -265,83 +108,81 @@ echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.loc
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php
-                                $db = "SELECT * FROM eskul ORDER BY id_eskul ASC";
-                                    $hasil = mysqli_query($koneksi,$db);
-                                    
+                                    <?php
+                                    $db = "SELECT * FROM eskul ORDER BY id_eskul ASC";
+                                    $hasil = mysqli_query($koneksi, $db);
                                     $no = 1;
                                     $querys = mysqli_query($koneksi, "select * from eskul");
                                     $rows = mysqli_fetch_array($querys);
-                                    while($data = mysqli_fetch_assoc($hasil)){
-                                        ?>
-                                    <tr>
-                                        <td><?=$no; ?></td>
-                                        <td><?= $data['nama_eskul']?></td>
-                                        <td><?= $data['keterangan']?></td>
-                                        <td><?= $data['visi']?></td>
-                                        <td><?= $data['misi']?></td>
-                                        <td><img class="d-block" height="150px" src="gambar/<?php echo $data['thumbnail_eskul']; ?>" alt="" srcset=""></td>
-                                        
-                                        <td><img class="d-block" height="150px" src="gambar/<?php echo $data['logo_eskul']; ?>" alt="" srcset=""></td>
-                                        <td> <a data-toggle="modal" data-target="#edit<?= $data['id_eskul']; ?>" class="btn btn-primary" data-toggle="tooltip" >Edit</a>
-                                            <a href="eskul.php?delete=<?php echo $data['id_eskul']; ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
-                                        </td>
-                                        <div class="modal fade" id="edit<?= $data['id_eskul']; ?>">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Ekstrakurikuler</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" action="" enctype="multipart/form-data">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label>Nama Ekstrakurikuler</label>
-                                <input type="hidden" value="<?= $data['id_eskul']; ?>" name="id_eskul">
-                                <input type="text" name="nama_eskul" class="form-control"  value="<?= $data['nama_eskul']?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="keterangan">Keterangan</label>
-                                <br>
-                               <textarea name="keterangan" id="keterangan" cols="56" rows="-3"><?= $data['keterangan']?></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="visi">Visi</label>
-                                <br>
-                               <textarea name="visi" id="visi" cols="56" rows="-3"><?= $data['visi']?></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="misi">Misi</label>
-                                <br>
-                               <textarea name="misi" id="misi" cols="56" rows="-3"><?= $data['misi']?></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Foto Ekstrakurikuler</label>
-                                <img class="d-block" src="gambar/<?php echo $data['thumbnail_eskul']; ?>" height="200"
-                                            width="200">
-                                <input type="file" name="thumbnail_eskul" class="form-control">
-                            <div class="form-group">
-                                <label>Logo Ekstrakurikuler</label>
-                                <img class="d-block" src="gambar/<?php echo $data['logo_eskul']; ?>" height="200"
-                                            width="200">
-                                <input type="file" value="gambar/<?= $data['logo_eskul']; ?>" name="logo_eskul" class="form-control">
-                            </div>
-                        </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" name="update" class="btn btn-primary">Simpan</button>
-                </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
+                                    while ($data = mysqli_fetch_assoc($hasil)) {
+
+                                    ?>
+                                        <tr>
+                                            <td><?= $no; ?></td>
+                                            <td><?= $data['nama_eskul'] ?></td>
+                                            <td><?= $data['keterangan'] ?></td>
+                                            <td><?= $data['visi'] ?></td>
+                                            <td><?= $data['misi'] ?></td>
+                                            <td><img class="d-block" height="150px" src="gambar/<?php echo $data['thumbnail_eskul']; ?>" alt="" srcset=""></td>
+                                            <td><img class="d-block" height="150px" src="gambar/<?php echo $data['logo_eskul']; ?>" alt="" srcset=""></td>
+                                            <td> <a data-toggle="modal" data-target="#edit<?= $data['id_eskul']; ?>" class="btn btn-primary" data-toggle="tooltip">Edit</a>
+                                                <a href="proses.php?deletees=<?php echo $data['id_eskul']; ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
+                                            </td>
+                                            <div class="modal fade" id="edit<?= $data['id_eskul']; ?>">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Edit Ekstrakurikuler</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="post" action="proses.php" enctype="multipart/form-data">
+                                                                <div class="card-body">
+                                                                    <div class="form-group">
+                                                                        <label>Nama Ekstrakurikuler</label>
+                                                                        <input type="hidden" value="<?= $data['id_eskul']; ?>" name="id_eskul">
+                                                                        <input type="text" name="nama_eskul" class="form-control" value="<?= $data['nama_eskul'] ?>">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="keterangan">Keterangan</label>
+                                                                        <br>
+                                                                        <textarea name="keterangan" id="keterangan" cols="56" rows="-3"><?= $data['keterangan'] ?></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="visi">Visi</label>
+                                                                        <br>
+                                                                        <textarea name="visi" id="visi" cols="56" rows="-3"><?= $data['visi'] ?></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="misi">Misi</label>
+                                                                        <br>
+                                                                        <textarea name="misi" id="misi" cols="56" rows="-3"><?= $data['misi'] ?></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Foto Ekstrakurikuler</label>
+                                                                        <img class="d-block" src="gambar/<?php echo $data['thumbnail_eskul']; ?>" height="200" width="200">
+                                                                        <input type="file" name="thumbnail_eskul" class="form-control">
+                                                                        <div class="form-group">
+                                                                            <label>Logo Ekstrakurikuler</label>
+                                                                            <img class="d-block" src="gambar/<?php echo $data['logo_eskul']; ?>" height="200" width="200">
+                                                                            <input type="file" value="gambar/<?= $data['logo_eskul']; ?>" name="logo_eskul" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer justify-content-between">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                        <button type="submit" name="updatees" class="btn btn-primary">Simpan</button>
+                                                                    </div>
+                                                            </form>
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
+                                                </div>
                                         </tr>
-                                        <?php $no++; }?>
+                                    <?php $no++;
+                                    } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -372,7 +213,7 @@ echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.loc
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="" enctype="multipart/form-data">
+                    <form method="post" action="proses.php" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Nama Ekstrakurikuler</label>
@@ -381,17 +222,17 @@ echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.loc
                             <div class="form-group">
                                 <label for="keterangan">Keterangan</label>
                                 <br>
-                               <textarea name="keterangan" id="keterangan" cols="56" rows="-3"></textarea>
+                                <textarea name="keterangan" id="keterangan" cols="56" rows="-3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="visi">Visi</label>
                                 <br>
-                               <textarea name="visi" id="visi" cols="56" rows="-3"></textarea>
+                                <textarea name="visi" id="visi" cols="56" rows="-3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="misi">Misi</label>
                                 <br>
-                               <textarea name="misi" id="misi" cols="56" rows="-3"></textarea>
+                                <textarea name="misi" id="misi" cols="56" rows="-3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Foto Ekstrakurikuler</label>
@@ -402,56 +243,58 @@ echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.loc
                                 <input type="file" name="logo_eskul" class="form-control">
                             </div>
                         </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" name="tombol" class="btn btn-primary">Simpan</button>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" name="tomboles" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
                 </div>
-                </form>
+                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-content -->
+            <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal-dialog -->
-    </div>
-    
-    <!-- REQUIRED SCRIPTS -->
 
-    <!-- jQuery -->
-    <script src="../assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../assets/dist/js/adminlte.min.js"></script>
-    <script src="../assets/plugins/jquery/jquery.min.js"></script>
-<script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../assets/plugins/jszip/jszip.min.js"></script>
-<script src="../assets/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="../assets/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="../assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="../assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="../assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
+        <!-- REQUIRED SCRIPTS -->
+
+        <!-- jQuery -->
+        <script src="../assets/plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../assets/dist/js/adminlte.min.js"></script>
+        <script src="../assets/plugins/jquery/jquery.min.js"></script>
+        <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="../assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+        <script src="../assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="../assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+        <script src="../assets/plugins/jszip/jszip.min.js"></script>
+        <script src="../assets/plugins/pdfmake/pdfmake.min.js"></script>
+        <script src="../assets/plugins/pdfmake/vfs_fonts.js"></script>
+        <script src="../assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+        <script src="../assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+        <script src="../assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+        <!-- Page specific script -->
+        <script>
+            $(function() {
+                $("#example1").DataTable({
+                    "responsive": true,
+                    "lengthChange": false,
+                    "autoWidth": false,
+                    "buttons": ["csv", "excel", "pdf", "print", "colvis"]
+                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false,
+                    "responsive": true,
+                });
+            });
+        </script>
 </body>
 
 </html>

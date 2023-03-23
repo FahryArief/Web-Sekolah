@@ -1,3 +1,11 @@
+<?php
+session_start();
+if($_SESSION['role']!="1"){
+    header("location:../index.php");
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,26 +107,84 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php
+                                require 'koneksi.php';
+                                $db = "SELECT * FROM galeri_jurusan ORDER BY id_galeri_jurusan ASC";
+                                    $hasil = mysqli_query($koneksi,$db);
+                                    $no = 1;
+                                    $querys = mysqli_query($koneksi, "select * from galeri_jurusan");
+                                    $rows = mysqli_fetch_array($querys);
+                                    while($data = mysqli_fetch_assoc($hasil)){
+                                        ?>
                                     <tr>
-                                        <td>1.</td>
-                                        <td>Rekayasa Perangkat Lunak</td>
-                                        <td>Juara 1 Desain Website Tingkat Nasional</td>
-                                        <td><img class="d-block" height="150px" src="../styling/img/crush.jpg" alt="" srcset=""></td>
-
-                                        <td> <a data-toggle="modal" data-target="#edit" class="btn btn-primary">Edit</a>
-                                            <a href="hapus_galeri_jurusan.php" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
+                                        <td><?= $no; ?></td>
+                                        <td><?php 
+                                                  $id_jurusan = mysqli_query($koneksi, "select * from jurusan");
+                                                  while ($a = mysqli_fetch_array($id_jurusan)) {
+                                                    if ($a['id_jurusan'] == $data['id_jurusan']) { ?>
+                                                <?php echo $a['nama_jurusan']; ?>
+                                                <?php
+                                                }
+                                            }
+                                            ?></td>
+                                        <td><?= $data['keterangan'];?></td>
+                                        <td><img class="d-block" height="150px" src="gambar/<?= $data['foto_galeri']; ?>" alt="" srcset=""></td>
+                                        <td> <a data-toggle="modal" data-target="#edit<?= $data['id_galeri_jurusan']; ?>" class="btn btn-primary">Edit</a>
+                                         <a href="proses.php?delete=<?= $data['id_galeri_jurusan'] ?>" name="delete" id="delete" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
                                         </td>
+                                        <div class="modal fade" id="edit<?= $data['id_galeri_jurusan']; ?>">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Jurusan</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="proses.php
+                    " enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Nama Jurusan</label>
+                                <input type="hidden" name="id_galeri_jurusan" value="<?= $data['id_galeri_jurusan']; ?>">
+                                <select name="id_jurusan" class="form-control">
+                                    <?php
+                                    $dataa = mysqli_query($koneksi,"select * from jurusan WHERE id_jurusan");
+                                    while ($d = mysqli_fetch_array($dataa)) {
+                                        ?>
+                                    <option selected disabled value="<?php echo $d['id_jurusan'];?>"><?php echo $d['nama_jurusan']; ?></option>
+                                    <option value="<?php echo $d['id_jurusan'];?>"><?php echo $d['nama_jurusan']; ?>
+                                    </option>
+                                    <?php  
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="keterangan">Keterangan</label>
+                                <br>
+                               <textarea name="keterangan" id="keterangan" cols="56" rows="-3"><?= $data['keterangan']; ?></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Foto Galeri Jurusan</label>
+                                <img class="d-block mb-2" src="gambar/<?php echo $data['foto_galeri']; ?>" height="200px">
+                                <input type="file" name="foto_galeri" class="form-control">
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" name="update" class="btn btn-primary">Update</button>
+                </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
                                     </tr>
-                                    <tr>
-                                        <td>2.</td>
-                                        <td>Rekayasa Perangkat Lunak</td>
-                                        <td>Juara 2 Desain Website Tingkat Provinsi Lampung</td>
-                                        <td><img class="d-block" height="150px" src="../styling/img/crush.jpg" alt="" srcset=""></td>
-
-                                        <td> <a data-toggle="modal" data-target="#edit" class="btn btn-primary">Edit</a>
-                                            <a href="hapus_galeri_jurusan.php" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
-                                        </td>
-                                    </tr>
+                                    <?php $no++; } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -139,73 +205,32 @@
     <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-    <div class="modal fade" id="edit">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Jurusan</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" action="" enctype="multipart/form-data">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label>Nama Jurusan</label>
-                                <select name="nama_eskul" class="form-control" id="">
-                                    <option>-- Pilih Nama Jurusan --</option>
-                                    <option value="basket">Rekayasa Perangkat Lunak</option>
-                                    <option value="voly">Multi Media</option>
-                                    <option value="merpati_putih">Akuntansi</option>
-                                    <option value="taekwondo">Kimia Industri</option>
-                                    <option value="futsal">Kimia Analisis</option>
-                                    <option value="pramuka">Pemasaran</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="keterangan">Keterangan</label>
-                                <br>
-                               <textarea name="keterangan" id="keterangan" cols="56" rows="-3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Foto Ekstrakurikuler</label>
-                                <input type="file" name="foto" class="form-control">
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" name="tombol" class="btn btn-primary">Simpan</button>
-                </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
+    
     <div class="modal fade" id="Tambah">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Tambah Jurusan</h4>
+                    <h4 class="modal-title">Tambah Galeri Jurusan</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="" enctype="multipart/form-data">
+                    <form method="post" action="proses.php" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Nama Jurusan</label>
-                                <select name="nama_eskul" class="form-control" id="">
-                                    <option>-- Pilih Nama Jurusan --</option>
-                                    <option value="basket">Rekayasa Perangkat Lunak</option>
-                                    <option value="voly">Multi Media</option>
-                                    <option value="merpati_putih">Akuntansi</option>
-                                    <option value="taekwondo">Kimia Industri</option>
-                                    <option value="futsal">Kimia Analisis</option>
-                                    <option value="pramuka">Pemasaran</option>
+                                <select name="id_jurusan" class="form-control">
+                                    <option disabled selected value="">--- Pilih Jurusan ---</option>
+                                    <?php
+                                    $data = mysqli_query($koneksi,"select * from jurusan");
+                                    while ($d = mysqli_fetch_array($data)) {
+                                        ?>
+                                    <option value="<?php echo $d['id_jurusan'];?>"><?php echo $d['nama_jurusan']; ?>
+                                    </option>
+                                    <?php  
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -214,14 +239,14 @@
                                <textarea name="keterangan" id="keterangan" cols="56" rows="-3"></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Foto Ekstrakurikuler</label>
-                                <input type="file" name="foto" class="form-control">
+                                <label>Foto Galeri Jurusan</label>
+                                <input type="file" name="foto_galeri" class="form-control">
                             </div>
                         </div>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" name="tombol" class="btn btn-primary">Simpan</button>
+                    <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
                 </div>
                 </form>
             </div>

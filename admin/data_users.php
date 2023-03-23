@@ -1,3 +1,9 @@
+<?php
+session_start();
+if ($_SESSION['role'] != "1") {
+    header("location:../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,8 +17,8 @@
     <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../assets/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="../assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="../assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 </head>
 
 <body class="hold-transition layout-top-nav layout-navbar-fixed">
@@ -95,31 +101,85 @@
                                         <th>Nama Lengkap</th>
                                         <th>Nama Pengguna</th>
                                         <th>Role</th>
-                                        <th>Kata Sandi</th>
+                                        <!-- <th>Kata Sandi</th> -->
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1.</td>
-                                        <td>Administrator</td>
-                                        <td>admin</td>
-                                        <td>Administrator</td>
-                                        <td>*********</td>
-                                        <td> <a data-toggle="modal" data-target="#edit" class="btn btn-primary">Edit</a>
-                                            <a href="hapus_informasi.php?id_kamar=<?php echo $data['id_kamar']; ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2.</td>
-                                        <td>Petugas</td>
-                                        <td>Petugas</td>
-                                        <td>Petugas</td>
-                                        <td>*********</td>
-                                        <td> <a data-toggle="modal" data-target="#edit" class="btn btn-primary">Edit</a>
-                                            <a href="hapus_informasi.php?id_kamar=<?php echo $data['id_kamar']; ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
-                                        </td>
-                                    </tr>
+                                    <?php
+                                    include 'koneksi.php';
+                                    $db = "SELECT * FROM user ORDER BY id_user ASC";
+                                    $hasil = mysqli_query($koneksi, $db);
+                                    $no = 1;
+                                    while ($data = mysqli_fetch_assoc($hasil)) {
+                                    ?>
+                                        <tr>
+                                            <td><?= $no; ?></td>
+                                            <td><?= $data['full_name']; ?></td>
+                                            <td><?= $data['username']; ?></td>
+                                            <td><?php
+                                                if ($data['role'] == 1) {
+                                                    echo "<span class=\"badge badge-success\">Administrator</span>";
+                                                } else {
+                                                    echo "<span class=\"badge badge-primary\">Petugas</span>";
+                                                }
+                                                ?></td>
+                                            <td><?php
+                                                if ($data['role'] != 1) { ?>
+                                                    <a data-toggle="modal" data-target="#edit<?= $data['id_user']; ?>" class="btn btn-primary">Edit</a>
+                                                    <a href="proses.php?deleteuser=<?= $data['id_user']; ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
+                                                <?php } else { ?>
+                                                    <button type="button" class="btn btn-primary disabled">Edit</button>
+                                                    <button type="button" class="btn btn-danger disabled">Hapus</button>
+                                                <?php } ?>
+                                            </td>
+                                            <div class="modal fade" id="edit<?= $data['id_user'] ?>">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Edit Data Users</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="post" action="proses.php" enctype="multipart/form-data">
+                                                                <div class="card-body">
+                                                                    <div class="form-group">
+                                                                        <label for="nama">Nama Lengkap</label>
+                                                                        <input type="hidden" value="<?= $data['id_user'] ?>" name="id_user">
+                                                                        <input value="<?= $data['full_name'] ?>" id="nama" type="text" name="nama_lengkap" class="form-control" placeholder="Nama Lengkap">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Nama Pengguna</label>
+                                                                        <input type="text" name="nama" class="form-control" placeholder="Nama Pengguna">
+                                                                    </div>
+                                                                    <!-- <label>Jenis Role</label> -->
+                                                                    <!-- <select name="role" class="form-control" id="">
+                                                                        <option selected disabled value="">-- Pilih Role --</option>
+                                                                        <option value="1">Administrator</option>
+                                                                        <option value="2">Petugas</option>
+                                                                    </select> -->
+                                                                    <div class="form-group">
+                                                                        <label for="password" class="control-label">Password</label>
+                                                                        <input id="password" type="password" class="form-control" name="password" placeholder="Masukan Kata Sandi" tabindex="2" required>
+                                                                        <div class="invalid-feedback">
+                                                                            please fill in your password
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer justify-content-between">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                        <button type="submit" name="edituser" class="btn btn-primary">Simpan</button>
+                                                                    </div>
+                                                            </form>
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
+                                                </div>
+                                        </tr>
+                                    <?php $no++;
+                                    } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -140,49 +200,6 @@
     <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-    <div class="modal fade" id="edit">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Data Users</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" action="" enctype="multipart/form-data">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="nama">Nama Lengkap</label>
-                                <input id="nama" type="text" name="nama_lengkap" class="form-control" placeholder="Nama Lengkap">
-                            </div>
-                            <div class="form-group">
-                                <label>Nama Pengguna</label>
-                                <input type="text" name="nama" class="form-control" placeholder="Nama Pengguna">
-                            </div>
-                            <label>Jenis Role</label>
-                                <select name="nama_eskul" class="form-control" id="">
-                                    <option>-- Pilih Role --</option>
-                                    <option value="basket">Administrator</option>
-                                    <option value="voly">Petugas</option>
-                                </select>
-                            <div class="form-group">
-                                    <label for="password" class="control-label">Password</label>
-                                    <input id="password" type="password" class="form-control" name="password" placeholder="Masukan Kata Sandi" tabindex="2" required>
-                                    <div class="invalid-feedback">
-                                        please fill in your password
-                                    </div>
-                                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" name="tombol" class="btn btn-primary">Simpan</button>
-                </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
     <div class="modal fade" id="Tambah">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -193,7 +210,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="" enctype="multipart/form-data">
+                    <form method="post" action="proses.php" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="nama">Nama Lengkap</label>
@@ -204,66 +221,69 @@
                                 <input type="text" name="nama" class="form-control" placeholder="Nama Pengguna">
                             </div>
                             <label>Jenis Role</label>
-                                <select name="nama_eskul" class="form-control" id="">
-                                    <option>-- Pilih Role --</option>
-                                    <option value="basket">Administrator</option>
-                                    <option value="voly">Petugas</option>
-                                </select>
+                            <select name="role" class="form-control" id="">
+                                <option selected disabled>-- Pilih Role --</option>
+                                <option value="1">Administrator</option>
+                                <option value="2">Petugas</option>
+                            </select>
                             <div class="form-group">
-                                    <label for="password" class="control-label">Password</label>
-                                    <input id="password" type="password" class="form-control" name="password" placeholder="Masukan Kata Sandi" tabindex="2" required>
-                                    <div class="invalid-feedback">
-                                        please fill in your password
-                                    </div>
+                                <label for="password" class="control-label">Password</label>
+                                <input id="password" type="password" class="form-control" name="password" placeholder="Masukan Kata Sandi" tabindex="2" required>
+                                <div class="invalid-feedback">
+                                    please fill in your password
                                 </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" name="tombol" class="btn btn-primary">Simpan</button>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" name="adduser" class="btn btn-primary">Simpan</button>
+                            </div>
+                    </form>
                 </div>
-                </form>
+                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-content -->
+            <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- REQUIRED SCRIPTS -->
+        <!-- REQUIRED SCRIPTS -->
 
-    <!-- jQuery -->
-    <script src="../assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App --><script src="../assets/dist/js/adminlte.min.js"></script>
-    <script src="../assets/plugins/jquery/jquery.min.js"></script>
-<script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../assets/plugins/jszip/jszip.min.js"></script>
-<script src="../assets/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="../assets/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="../assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="../assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="../assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
+        <!-- jQuery -->
+        <script src="../assets/plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../assets/dist/js/adminlte.min.js"></script>
+        <script src="../assets/plugins/jquery/jquery.min.js"></script>
+        <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="../assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+        <script src="../assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="../assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+        <script src="../assets/plugins/jszip/jszip.min.js"></script>
+        <script src="../assets/plugins/pdfmake/pdfmake.min.js"></script>
+        <script src="../assets/plugins/pdfmake/vfs_fonts.js"></script>
+        <script src="../assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+        <script src="../assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+        <script src="../assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+        <!-- Page specific script -->
+        <script>
+            $(function() {
+                $("#example1").DataTable({
+                    "responsive": true,
+                    "lengthChange": false,
+                    "autoWidth": false,
+                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false,
+                    "responsive": true,
+                });
+            });
+        </script>
 </body>
 
 </html>

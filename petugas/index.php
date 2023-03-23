@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['role'] != "1") {
+if ($_SESSION['role'] != "2") {
     header("location:../index.php");
 }
 
@@ -22,7 +22,6 @@ if ($_SESSION['role'] != "1") {
 
 <body class="hold-transition layout-top-nav layout-navbar-fixed">
     <div class="content-wrapper">
-
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand-md navbar-primary navbar-dark">
             <div class="container">
@@ -39,16 +38,7 @@ if ($_SESSION['role'] != "1") {
                             <a href="index.php" class="nav-link">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a href="eskul.php" class="nav-link">Ekstrakurikuler</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="jurusan.php" class="nav-link">Jurusan</a>
-                        </li>
-                        <li class="nav-item">
                             <a href="informasi.php" class="nav-link">Informasi</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="tentang.php" class="nav-link">Tentang</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Galeri</a>
@@ -56,9 +46,6 @@ if ($_SESSION['role'] != "1") {
                                 <li><a href="galeri_jurusan.php" class="dropdown-item">Galeri Jurusan</a></li>
                                 <li><a href="galeri_eskul.php" class="dropdown-item">Galeri Ekstrakurikuler</a></li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="data_users.php" class="nav-link">Data Users</a>
                         </li>
                         <li class="nav-item">
                             <a href="logout.php" class="nav-link">Logout</a>

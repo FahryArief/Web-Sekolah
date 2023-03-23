@@ -1,9 +1,9 @@
 <?php
 session_start();
-if ($_SESSION['role'] != "1") {
+if ($_SESSION['role'] != "2") {
     header("location:../index.php");
 }
-include 'koneksi.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -14,16 +14,10 @@ include 'koneksi.php';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Panel Admin - SMKN 8 Bandar Lampung</title>
     <link rel="icon" href="../styling/img/favicon.ico" type="image/x-icon" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
-    <!-- summernote -->
-    <link rel="stylesheet" href="../assets/plugins/summernote/summernote-bs4.min.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../assets/dist/css/adminlte.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
@@ -38,11 +32,9 @@ include 'koneksi.php';
                 <a href="index.php" class="navbar-brand">
                     <img width="150px" src="../styling/img/logoe.png" alt="Logo" class="brand-image">
                 </a>
-
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                     <!-- Left navbar links -->
                     <ul class="navbar-nav ml-auto">
@@ -50,16 +42,7 @@ include 'koneksi.php';
                             <a href="index.php" class="nav-link">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a href="eskul.php" class="nav-link">Ekstrakurikuler</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="jurusan.php" class="nav-link">Jurusan</a>
-                        </li>
-                        <li class="nav-item">
                             <a href="informasi.php" class="nav-link">Informasi</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="tentang.php" class="nav-link">Tentang</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Galeri</a>
@@ -69,15 +52,10 @@ include 'koneksi.php';
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="data_users.php" class="nav-link">Data Users</a>
-                        </li>
-                        <li class="nav-item">
                             <a href="logout.php" class="nav-link">Logout</a>
                         </li>
                     </ul>
-                    <!-- SEARCH FORM -->
                 </div>
-                <!-- Right navbar links -->
             </div>
         </nav>
         <!-- /.navbar -->
@@ -86,7 +64,7 @@ include 'koneksi.php';
             <div class="container">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Daftar Informasi</h1>
+                        <h1 class="m-0">Galeri Jurusan</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -106,90 +84,82 @@ include 'koneksi.php';
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Judul Informasi</th>
-                                        <!-- <th>Isi</th> -->
-                                        <th>Tanggal</th>
+                                        <th>Nama Jurusan</th>
+                                        <th>Keterangan</th>
                                         <th>Gambar</th>
-                                        <th>Jenis Informasi</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $db = "SELECT * FROM informasi ORDER BY id_informasi ASC";
+                                    require 'koneksi.php';
+                                    $db = "SELECT * FROM galeri_jurusan ORDER BY id_galeri_jurusan ASC";
                                     $hasil = mysqli_query($koneksi, $db);
                                     $no = 1;
+                                    $querys = mysqli_query($koneksi, "select * from galeri_jurusan");
+                                    $rows = mysqli_fetch_array($querys);
                                     while ($data = mysqli_fetch_assoc($hasil)) {
                                     ?>
                                         <tr>
                                             <td><?= $no; ?></td>
-                                            <td><?= $data['judul']; ?></td>
-                                            <td><?= $data['tanggal']; ?></td>
-                                            <td><img class="d-block" height="150px" src="gambar/<?= $data['thumbnail']; ?>" alt="" srcset=""></td>
                                             <td><?php
-                                                if ($data['jenis_informasi'] == 'B') {
-                                                    echo "<span class=\"badge badge-info\">Berita</span>";
-                                                } elseif ($data['jenis_informasi'] == 'P') {
-                                                    echo "<span class=\"badge badge-success\">Pengumuman</span>";
-                                                } else {
-                                                    echo "<span class=\"badge badge-primary\">Kegiatan</span>";
+                                                $id_jurusan = mysqli_query($koneksi, "select * from jurusan");
+                                                while ($a = mysqli_fetch_array($id_jurusan)) {
+                                                    if ($a['id_jurusan'] == $data['id_jurusan']) { ?>
+                                                        <?php echo $a['nama_jurusan']; ?>
+                                                <?php
+                                                    }
                                                 }
-                                                ?>
+                                                ?></td>
+                                            <td><?= $data['keterangan']; ?></td>
+                                            <td><img class="d-block" height="150px" src="gambar/<?= $data['foto_galeri']; ?>" alt="" srcset=""></td>
+                                            <td> <a data-toggle="modal" data-target="#edit<?= $data['id_galeri_jurusan']; ?>" class="btn btn-primary">Edit</a>
+                                                <a href="proses.php?delete=<?= $data['id_galeri_jurusan'] ?>" name="delete" id="delete" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
                                             </td>
-                                            <td> <a data-toggle="modal" data-target="#edit<?= $data['id_informasi']; ?>" class="btn btn-primary">Edit</a>
-                                                <a href="proses.php?deleteinf=<?= $data['id_informasi']; ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
-                                            </td>
-                                            <div class="modal fade" id="edit<?= $data['id_informasi']; ?>">
+                                            <div class="modal fade" id="edit<?= $data['id_galeri_jurusan']; ?>">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">Edit Informasi</h4>
+                                                            <h4 class="modal-title">Edit Jurusan</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form method="post" action="proses.php" enctype="multipart/form-data">
+                                                            <form method="post" action="proses.php
+                    " enctype="multipart/form-data">
                                                                 <div class="card-body">
                                                                     <div class="form-group">
-                                                                        <label for="judul">Judul Informasi</label>
-                                                                        <input type="hidden" name="id_informasi" value="<?= $data['id_informasi']; ?>">
-                                                                        <input id="judul" type="text" name="judul" value="<?= $data['judul']; ?>" class="form-control" placeholder="Judul Informasi">
+                                                                        <label>Nama Jurusan</label>
+                                                                        <input type="hidden" name="id_galeri_jurusan" value="<?= $data['id_galeri_jurusan']; ?>">
+                                                                        <select name="id_jurusan" class="form-control">
+                                                                            <?php
+                                                                            $dataa = mysqli_query($koneksi, "select * from jurusan WHERE id_jurusan");
+                                                                            while ($d = mysqli_fetch_array($dataa)) {
+                                                                            ?>
+                                                                                <option selected disabled value="<?php echo $d['id_jurusan']; ?>"><?php echo $d['nama_jurusan']; ?></option>
+                                                                                <option value="<?php echo $d['id_jurusan']; ?>"><?php echo $d['nama_jurusan']; ?>
+                                                                                </option>
+                                                                            <?php
+                                                                            }
+                                                                            ?>
+                                                                        </select>
                                                                     </div>
-                                                                    <div class="form-group summernote-form-group">
-                                                                        <label for="isi">Konten</label>
+                                                                    <div class="form-group">
+                                                                        <label for="keterangan">Keterangan</label>
                                                                         <br>
-                                                                        <textarea name="isi" id="summernote"><?= $data['isi'] ?></textarea>
+                                                                        <textarea name="keterangan" id="keterangan" cols="56" rows="-3"><?= $data['keterangan']; ?></textarea>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>Tanggal</label>
-                                                                        <input type="date" name="tanggal" class="form-control" value="<?= $data['tanggal']; ?>">
-                                                                    </div>
-                                                                    <label>Jenis Informasi</label>
-                                                                    <select name="jenis_informasi" class="form-control" id="">
-                                                                        <option disabled selected value="<?= $data['jenis_informasi']; ?>"><?php
-                                                                                                                                            if ($data['jenis_informasi'] == 'B') {
-                                                                                                                                                echo "Berita";
-                                                                                                                                            } elseif ($data['jenis_informasi'] == 'P') {
-                                                                                                                                                echo "Pengumuman";
-                                                                                                                                            } else {
-                                                                                                                                                echo "Kegiatan";
-                                                                                                                                            }
-                                                                                                                                            ?></option>
-                                                                        <option value="B">Berita</option>
-                                                                        <option value="P">Pengumuman</option>
-                                                                        <option value="K">Kegiatan</option>
-                                                                    </select>
-                                                                    <div class="form-group">
-                                                                        <label>Foto Informasi</label>
-                                                                        <img class="d-block" src="gambar/<?php echo $data['thumbnail']; ?>" height="200">
-                                                                        <input type="file" name="thumbnail_informasi" class="form-control">
+                                                                        <label>Foto Galeri Jurusan</label>
+                                                                        <img class="d-block mb-2" src="gambar/<?php echo $data['foto_galeri']; ?>" height="200px">
+                                                                        <input type="file" name="foto_galeri" class="form-control">
                                                                     </div>
                                                                 </div>
                                                         </div>
                                                         <div class="modal-footer justify-content-between">
                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                            <button type="submit" name="updateinf" class="btn btn-primary">Update</button>
+                                                            <button type="submit" name="update" class="btn btn-primary">Update</button>
                                                         </div>
                                                         </form>
                                                     </div>
@@ -225,7 +195,7 @@ include 'koneksi.php';
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Tambah Informasi</h4>
+                    <h4 class="modal-title">Tambah Galeri Jurusan</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -234,34 +204,34 @@ include 'koneksi.php';
                     <form method="post" action="proses.php" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="judul">Judul Informasi</label>
-                                <input required id="judul" type="text" name="judul" class="form-control" placeholder="Judul Informasi">
+                                <label>Nama Jurusan</label>
+                                <select name="id_jurusan" class="form-control">
+                                    <option disabled selected value="">--- Pilih Jurusan ---</option>
+                                    <?php
+                                    $data = mysqli_query($koneksi, "select * from jurusan");
+                                    while ($d = mysqli_fetch_array($data)) {
+                                    ?>
+                                        <option value="<?php echo $d['id_jurusan']; ?>"><?php echo $d['nama_jurusan']; ?>
+                                        </option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
                             </div>
-                            <div class="form-group summernote-form-group">
-                                <label for="isi">Konten</label>
+                            <div class="form-group">
+                                <label for="keterangan">Keterangan</label>
                                 <br>
-                                <textarea name="isi" id="summernote">Ketik Disini...</textarea>
+                                <textarea name="keterangan" id="keterangan" cols="56" rows="-3"></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Tanggal</label>
-                                <input type="date" name="tanggal" class="form-control" placeholder="Tanggal">
-                            </div>
-                            <label>Jenis Informasi</label>
-                            <select required name="jenis_informasi" class="form-control" id="">
-                                <option selected disabled>-- Pilih Jenis Informasi --</option>
-                                <option value="B">Berita</option>
-                                <option value="P">Pengumuman</option>
-                                <option value="K">Kegiatan</option>
-                            </select>
-                            <div class="form-group">
-                                <label>Foto Informasi</label>
-                                <input type="file" name="thumbnail_informasi" class="form-control">
+                                <label>Foto Galeri Jurusan</label>
+                                <input type="file" name="foto_galeri" class="form-control">
                             </div>
                         </div>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" name="tombolinf" class="btn btn-primary">Simpan</button>
+                    <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
                 </div>
                 </form>
             </div>
@@ -272,12 +242,10 @@ include 'koneksi.php';
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
-    <!-- jQuery -->
     <script src="../assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Summernote -->
-    <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- AdminLTE App -->
     <script src="../assets/dist/js/adminlte.min.js"></script>
     <script src="../assets/plugins/jquery/jquery.min.js"></script>
     <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
@@ -292,46 +260,11 @@ include 'koneksi.php';
     <script src="../assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-
+    <!-- AdminLTE App -->
+    <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
-
     <script>
-        $(document).ready(function() {
-            $("#summernote").summernote({
-
-                callbacks: {
-                    onImageUpload: function(files) {
-                        for (let i = 0; i < files.length; i++) {
-                            $.upload(files[i]);
-                        }
-                    }
-                },
-                height: 200
-            });
-            // $('.dropdown-toggle').dropdown();
-            $.upload = function(file) {
-                let out = new FormData();
-                out.append('file', file, file.name);
-
-                $.ajax({
-                    method: 'POST',
-                    url: 'upload.php',
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    data: out,
-                    success: function(img) {
-                        $('#summernote').summernote('insertImage', img);
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        console.error(textStatus + " " + errorThrown);
-                    }
-                });
-            };
-        });
         $(function() {
-
             $("#example1").DataTable({
                 "responsive": true,
                 "lengthChange": false,

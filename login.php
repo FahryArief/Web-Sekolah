@@ -33,9 +33,9 @@
     <img class="card-img-top" src="styling/img/logo.png" alt="Card image cap">
     <div class="card-body">
       <p class="login-box-msg">Silahkan Login Dengan Username dan Password</p>
-      <form action="assets/index3.html" method="post">
+      <form action="proses_login.php" method="post">
         <div class="input-group mb-3">
-          <input type="text" name="user" class="form-control" placeholder="Username">
+          <input type="text" name="username" class="form-control" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -52,7 +52,7 @@
         </div>
         <div class="row">
           <div class="mx-auto col-4">
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <button type="submit" name="submit" class="btn btn-primary btn-block">Login</button>
           </div>
         </div>
       </form>

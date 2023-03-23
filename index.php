@@ -154,73 +154,54 @@
                                 </div>
                                 <div class="row news_row">
                                     <div class="col-md-7 news_col">
-
+                                        <?php
+                                        include 'koneksi.php';
+                                        $db = "SELECT * FROM informasi ORDER BY id_informasi DESC LIMIT 5";
+                                        $hasil = mysqli_query($koneksi, $db);
+                                        $no = 1;
+                                        $data = mysqli_fetch_assoc($hasil); ?>
                                         <!-- News Post Large -->
                                         <div class="news_post_large_container">
                                             <div class="news_post_large">
-                                                <div class="news_post_image"><img src="styling/img/bg-1.jpg" alt=""></div>
-                                                <div class="news_post_large_title"><a href="blog_single.html">Here’s What You Need to Know About Online Testing for the ACT and SAT</a></div>
+                                                <div class="news_post_image"><img src="admin/gambar/<?= $data['thumbnail']; ?>" height="350px" alt=""></div>
+                                                <div class="news_post_large_title"><a href="blog_single.html"><?= $data['judul']; ?></a></div>
                                                 <div class="news_post_meta">
                                                     <ul>
-                                                        <li><a href="#">admin</a></li>
-                                                        <li><a href="#">november 11, 2017</a></li>
+                                                        <li><a href="#"><?= $data['tanggal']; ?></a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="news_post_text">
-                                                    <p>Policy analysts generally agree on a need for reform, but not on which path policymakers should take. Can America learn anything from other nations...</p>
+                                                    <p><?= substr($data['isi'], 0, 300); ?></p>
                                                 </div>
-                                                <div class="news_post_link"><a href="blog_single.html">read more</a></div>
+                                                <div class="news_post_link"><a href="detailberita.php?id_informasi=<?= $data['id_informasi']; ?>">read more</a></div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-5 news_col">
-                                        <div class="news_posts_small">
+                                        <?php
+                                        include 'koneksi.php';
+                                        $db = "SELECT * FROM informasi ORDER BY id_informasi DESC LIMIT 5";
+                                        $hasil = mysqli_query($koneksi, $db);
+                                        $data = mysqli_fetch_assoc($hasil);
+                                        $a = 0;
+                                        while ($a < 5) {
 
+
+                                        ?>
                                             <!-- News Posts Small -->
                                             <div class="news_post_small">
-                                                <div class="news_post_small_title"><a href="blog_single.html">Home-based business insurance issue (Spring 2017 - 2018)</a></div>
+                                                <div class="news_post_small_title"><a href="blog_single.html"><?= $data['judul'] ?></a></div>
                                                 <div class="news_post_meta">
                                                     <ul>
                                                         <li><a href="#">admin</a></li>
-                                                        <li><a href="#">november 11, 2017</a></li>
+                                                        <li><a href="#"><?= $data['tanggal'] ?></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
+                                        <?php $a++;
+                                        } ?>
 
-                                            <!-- News Posts Small -->
-                                            <div class="news_post_small">
-                                                <div class="news_post_small_title"><a href="blog_single.html">2018 Fall Issue: Credit Card Comparison Site Survey (Summer 2018)</a></div>
-                                                <div class="news_post_meta">
-                                                    <ul>
-                                                        <li><a href="#">admin</a></li>
-                                                        <li><a href="#">november 11, 2017</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-
-                                            <!-- News Posts Small -->
-                                            <div class="news_post_small">
-                                                <div class="news_post_small_title"><a href="blog_single.html">Cuentas de cheques gratuitas una encuesta de Consumer Action</a></div>
-                                                <div class="news_post_meta">
-                                                    <ul>
-                                                        <li><a href="#">admin</a></li>
-                                                        <li><a href="#">november 11, 2017</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!-- News Posts Small -->
-                                            <div class="news_post_small">
-                                                <div class="news_post_small_title"><a href="blog_single.html">Troubled borrowers have fewer repayment or forgiveness options</a></div>
-                                                <div class="news_post_meta">
-                                                    <ul>
-                                                        <li><a href="#">admin</a></li>
-                                                        <li><a href="#">november 11, 2017</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -235,88 +216,39 @@
                                             <h2 class="section_title">Kegiatan</h2>
                                             <div class="section_subtitle">
                                                 <p class="font-grey" style="padding: 
-                                                20px 10%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p>
+                                                20px 10%;">Ini </p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row events_row">
-
                                     <!-- Event -->
-                                    <div class="col-lg-4 event_col">
-                                        <div class="event event_left">
-                                            <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
-                                            <div class="event_body d-flex flex-row align-items-start justify-content-start">
-                                                <div class="event_date">
-                                                    <div class="d-flex flex-column align-items-center justify-content-center trans_200">
-                                                        <div class="event_day trans_200">21</div>
-                                                        <div class="event_month trans_200">Aug</div>
+                                    <?php for ($i = 0; $i < 3; $i++) {
+                                    ?>
+                                        <div class="col-lg-4 event_col">
+                                            <div class="event event_left">
+                                                <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
+                                                <div class="event_body d-flex flex-row align-items-start justify-content-start">
+                                                    <div class="event_date">
+                                                        <div class="d-flex flex-column align-items-center justify-content-center trans_200">
+                                                            <div class="event_day trans_200">21</div>
+                                                            <div class="event_month trans_200">Aug</div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="event_content">
-                                                    <div class="event_title"><a href="#">Peringatan Hari Kemerdekaan</a></div>
-                                                    <div class="event_info_container">
-                                                        <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>15.00 - 19.30</span></div>
-                                                        <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
-                                                        <div class="event_text">
-                                                            <p>Policy analysts generally agree on a need for reform, but not on which path...</p>
+                                                    <div class="event_content">
+                                                        <div class="event_title"><a href="#">Peringatan Hari Kemerdekaan</a></div>
+                                                        <div class="event_info_container">
+                                                            <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>15.00 - 19.30</span></div>
+                                                            <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
+                                                            <div class="event_text">
+                                                                <p>Policy analysts generally agree on a need for reform, but not on which path...</p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <!-- Event -->
-                                    <div class="col-lg-4 event_col">
-                                        <div class="event event_mid">
-                                            <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
-                                            <div class="event_body d-flex flex-row align-items-start justify-content-start">
-                                                <div class="event_date">
-                                                    <div class="d-flex flex-column align-items-center justify-content-center trans_200">
-                                                        <div class="event_day trans_200">27</div>
-                                                        <div class="event_month trans_200">Aug</div>
-                                                    </div>
-                                                </div>
-                                                <div class="event_content">
-                                                    <div class="event_title"><a href="#">Peringatan Hari Guru Nasional</a></div>
-                                                    <div class="event_info_container">
-                                                        <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>09.00 - 17.30</span></div>
-                                                        <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 Brooklyn City</span></div>
-                                                        <div class="event_text">
-                                                            <p>This Consumer Action News issue covers topics now being debated before...</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Start Kegiatan -->
-                                    <div class="col-lg-4 event_col">
-                                        <div class="event event_right">
-                                            <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
-                                            <div class="event_body d-flex flex-row align-items-start justify-content-start">
-                                                <div class="event_date">
-                                                    <div class="d-flex flex-column align-items-center justify-content-center trans_200">
-                                                        <div class="event_day trans_200">01</div>
-                                                        <div class="event_month trans_200">Sep</div>
-                                                    </div>
-                                                </div>
-                                                <div class="event_content">
-                                                    <div class="event_title"><a href="#">Lomba Classmeeting</a></div>
-                                                    <div class="event_info_container">
-                                                        <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>13.00 - 18.30</span></div>
-                                                        <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
-                                                        <div class="event_text">
-                                                            <p>Policy analysts generally agree on a need for reform, but not on which path...</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

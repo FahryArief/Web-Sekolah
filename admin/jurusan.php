@@ -1,172 +1,15 @@
 <?php
+session_start();
+if($_SESSION['role']!="1"){
+    header("location:../index.php");
+  }
 include 'koneksi.php'; 
-if (isset($_POST['tombol'])) {
-    $nama_jurusan = $_POST['nama_jurusan'];
-$keterangan = $_POST['keterangan'];
-$visi = $_POST['visi'];
-$misi = $_POST['misi'];
-$thumbnail_jurusan = $_FILES['thumbnail_jurusan']['name'];
-$logo_jurusan = $_FILES['logo_jurusan']['name'];
-
-    if ($thumbnail_jurusan !="" || $logo_jurusan !="") {
-        $ekstensi_diperbolehkan = array('png','jpg','jpeg');
-        $x = explode('.', $thumbnail_jurusan);
-        $xx = explode('.', $logo_jurusan);
-        $extensi = strtolower(end($x));
-        $extensii = strtolower(end($xx));
-        $file_tmp = $_FILES['thumbnail_jurusan']['tmp_name'];
-        $file_tmpp = $_FILES['logo_jurusan']['tmp_name'];
-        $angka_acak = rand(1,999);
-        $nama_gambar_baru = $angka_acak.'-'.$thumbnail_jurusan;
-        $nama_gambar_baruu = $angka_acak.'-'.$logo_jurusan;
-        if (in_array($extensi || $extensii, $ekstensi_diperbolehkan)=== true) {
-         move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru);
-         move_uploaded_file($file_tmpp, 'gambar/'.$nama_gambar_baruu);
-         $query = "INSERT INTO jurusan (nama_jurusan,keterangan,visi,misi,thumbnail_jurusan,logo_jurusan) VALUES ('$nama_jurusan','$keterangan','$visi','$misi','$nama_gambar_baru','$nama_gambar_baruu')";
-        $result = mysqli_query($koneksi, $query);
-        if (!$result) {
-         die("Query gagal dijalankan : ".mysqli_errno($koneksi)."-".mysqli_error($koneksi));
-        } else {
-         echo "<script>alert('Data Berhasil Di Tambahkan');window.location='jurusan.php';</script>";
-        }
-        
-     }
-      else {
-         echo "<script>alert('Extensi gambar harus berupa .jpg atau .png');window.location='jurusan.php';</script>";
-     }
-     }else{
-        $querys = "INSERT INTO jurusan (nama_jurusan,keterangan,visi,misi,thumbnail_jurusan,logo_jurusan) VALUES ('$nama_jurusan', '$keterangan', '$visi','$misi', '' ,'')";
-        $result = mysqli_query($koneksi, $querys);
-        
-        if (!$result) {
-            die("Query gagal dijalankan : ".mysqli_errno($koneksi)."-".mysqli_error($koneksi));
-           } else {
-            echo "<script>alert('Data Berhasil Di Tambahkan');window.location='jurusan.php';</script>";
-           }
-    }
-}
-
-if(isset($_GET['delete'])){
-    $id = $_GET['delete'];
-    $sql= "DELETE FROM jurusan WHERE id_jurusan='$id'";
-    $query= mysqli_query($koneksi,$sql);
-}
-
-if(isset($_POST['update'])){
-    $id_jurusan = $_POST['id_jurusan'];
-    $nama_jurusan = $_POST['nama_jurusan'];
-    $keterangan = $_POST['keterangan'];
-    $visi = $_POST['visi'];
-    $misi = $_POST['misi'];
-    $thumbnail_jurusan = $_FILES['thumbnail_jurusan']['name'];
-    $logo_jurusan = $_FILES['logo_jurusan']['name'];
-    if($thumbnail_jurusan !="") {
-      $ekstensi_diperbolehkan = array('png','jpg','jpeg');
-        $x = explode('.', $thumbnail_jurusan);
-        // $xx = explode('.', $logo_jurusan);
-        $extensi = strtolower(end($x));
-        // $extensii = strtolower(end($xx));
-        $file_tmp = $_FILES['thumbnail_jurusan']['tmp_name'];
-        $file_tmpp = $_FILES['logo_jurusan']['tmp_name'];
-        $angka_acak = rand(1,999);
-        $nama_gambar_baru = $angka_acak.'-'.$thumbnail_jurusan;
-        // $nama_gambar_baruu = $angka_acak.'-'.$logo_jurusan;
-      if(in_array($extensi || $extensii, $ekstensi_diperbolehkan) == true)  {
-        move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru);
-        // move_uploaded_file($file_tmpp, 'gambar/'.$nama_gambar_baruu);
-        $query  = "UPDATE jurusan SET nama_jurusan = '$nama_jurusan
-        ', keterangan = '$keterangan', visi = '$visi', misi = '$misi', thumbnail_jurusan= '$nama_gambar_baru'";
-        $query .= "WHERE id_jurusan = '$id_jurusan'";
-        $result = mysqli_query($koneksi, $query);
-        if(!$result){
-          die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
-           " - ".mysqli_error($koneksi));
-        } else {
-          echo "<script>alert('Data berhasil diubah.');window.location='jurusan.php';</script>";
-        }
-      } else {
-        echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='jurusan.php';</script>";
-      }
-    }
-    elseif($logo_jurusan !="")
-    {
-$ekstensi_diperbolehkan = array('png','jpg','jpeg');
-// $x = explode('.', $thumbnail_jurusan);
-$xx = explode('.', $logo_jurusan);
-// $extensi = strtolower(end($x));
-$extensii = strtolower(end($xx));
-$file_tmp = $_FILES['thumbnail_jurusan']['tmp_name'];
-$file_tmpp = $_FILES['logo_jurusan']['tmp_name'];
-$angka_acak = rand(1,999);
-// $nama_gambar_baru = $angka_acak.'-'.$thumbnail_jurusan;
-$nama_gambar_baruu = $angka_acak.'-'.$logo_jurusan;
-if(in_array($extensi || $extensii, $ekstensi_diperbolehkan) == true)  {
-// move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru);
-move_uploaded_file($file_tmpp, 'gambar/'.$nama_gambar_baruu);
-$query  = "UPDATE jurusan SET nama_jurusan = '$nama_jurusan
-', keterangan = '$keterangan', visi = '$visi', misi = '$misi', logo_jurusan= '$nama_gambar_baruu'";
-$query .= "WHERE id_jurusan = '$id_jurusan'";
-$result = mysqli_query($koneksi, $query);
-if(!$result){
-  die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
-   " - ".mysqli_error($koneksi));
-} else {
-  echo "<script>alert('Data berhasil diubah.');window.location='jurusan.php';</script>";
-}
-} elseif($logo_jurusan !="") {
-echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='jurusan.php';</script>";
-}
-    }
-    elseif ($logo_jurusan !="" && $thumbnail_jurusan !="") {
-        $ekstensi_diperbolehkan = array('png','jpg','jpeg');
-$x = explode('.', $thumbnail_jurusan);
-$xx = explode('.', $logo_jurusan);
-$extensi = strtolower(end($x));
-$extensii = strtolower(end($xx));
-$file_tmp = $_FILES['thumbnail_jurusan']['tmp_name'];
-$file_tmpp = $_FILES['logo_jurusan']['tmp_name'];
-$angka_acak = rand(1,999);
-$nama_gambar_baru = $angka_acak.'-'.$thumbnail_jurusan;
-$nama_gambar_baruu = $angka_acak.'-'.$logo_jurusan;
-if(in_array($extensi || $extensii, $ekstensi_diperbolehkan) == true)  {
-move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru);
-move_uploaded_file($file_tmpp, 'gambar/'.$nama_gambar_baruu);
-$query  = "UPDATE jurusan SET nama_jurusan = '$nama_jurusan
-', keterangan = '$keterangan', visi = '$visi', misi = '$misi',thumbnail_jurusan = '$nama_gambar_baru', logo_jurusan= '$nama_gambar_baruu'";
-$query .= "WHERE id_jurusan = '$id_jurusan'";
-$result = mysqli_query($koneksi, $query);
-if(!$result){
-  die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
-   " - ".mysqli_error($koneksi));
-} else {
-  echo "<script>alert('Data berhasil diubah.');window.location='jurusan.php';</script>";
-}
-} elseif($logo_jurusan !="") {
-echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='jurusan.php';</script>";
-}
-    }
-    else {
-      $query  = "UPDATE jurusan SET nama_jurusan = '$nama_jurusan
-      ', keterangan = '$keterangan', visi = '$visi', misi = '$misi'";
-      $query .= "WHERE id_jurusan = '$id_jurusan'";
-      $result = mysqli_query($koneksi, $query);
-          // periska query apakah ada error
-      if(!$result){
-        die ("Query gagal dijalankan: ".mysqli_errno($koneksi).
-         " - ".mysqli_error($koneksi));
-      } else {
-        echo "<script>alert('Data berhasil diubah.');window.location='jurusan.php';</script>";
-      }
-    }
-}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <link rel="shortcut icon" href="../assets/image/favicon.ico">
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Panel Admin - SMKN 8 Bandar Lampung</title>
@@ -286,7 +129,7 @@ echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.loc
                                         
                                         <td><img class="d-block" height="150px" src="gambar/<?php echo $data['logo_jurusan']; ?>" alt="" srcset=""></td>
                                         <td> <a data-toggle="modal" data-target="#edit<?= $data['id_jurusan']; ?>" class="btn btn-primary" data-toggle="tooltip" >Edit</a>
-                                            <a href="jurusan.php?delete=<?php echo $data['id_jurusan']; ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
+                                            <a href="proses.php?deletej=<?php echo $data['id_jurusan']; ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
                                         </td>
                                         <div class="modal fade" id="edit<?= $data['id_jurusan']; ?>">
         <div class="modal-dialog">
@@ -298,7 +141,7 @@ echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.loc
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="" enctype="multipart/form-data">
+                    <form method="post" action="proses.php" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Nama Jurusan</label>
@@ -336,7 +179,7 @@ echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.loc
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" name="update" class="btn btn-primary">update</button>
+                    <button type="submit" name="updatej" class="btn btn-primary">update</button>
                 </div>
                 </form>
             </div>
@@ -377,7 +220,7 @@ echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.loc
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="" enctype="multipart/form-data">
+                    <form method="post" action="proses.php" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Nama Jurusan</label>
@@ -408,7 +251,7 @@ echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.loc
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" name="tombol" class="btn btn-primary">Simpan</button>
+                    <button type="submit" name="tombolj" class="btn btn-primary">Simpan</button>
                 </div>
                 </form>
             </div>

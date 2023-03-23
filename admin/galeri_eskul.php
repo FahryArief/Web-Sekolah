@@ -1,3 +1,11 @@
+<?php
+session_start();
+if ($_SESSION['role'] != "1") {
+    header("location:../index.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,8 +19,8 @@
     <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../assets/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="../assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="../assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 </head>
 
 <body class="hold-transition layout-top-nav layout-navbar-fixed">
@@ -88,7 +96,7 @@
                             <button class="btn btn-sm btn-primary " data-toggle="modal" data-target="#Tambah">Tambah</button>
                         </div>
                         <div class="card-body">
-                        <table id="example2" class="table table-bordered table-striped">
+                            <table id="example2" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -99,26 +107,85 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1.</td>
-                                        <td>Basket Ball</td>
-                                        <td>Juara 2 DBL Play SMA/SMK Tingkat Provinsi Lampung</td>
-                                        <td><img class="d-block" height="150px" src="../styling/img/crush.jpg" alt="" srcset=""></td>
-
-                                        <td> <a data-toggle="modal" data-target="#edit" class="btn btn-primary">Edit</a>
-                                            <a href="hapus_kamar.php" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2.</td>
-                                        <td>Basket Ball</td>
-                                        <td>Juara 2 3X3 DBL Play SMA/SMK Tingkat Provinsi Lampung</td>
-                                        <td><img class="d-block" height="150px" src="../styling/img/crush.jpg" alt="" srcset=""></td>
-
-                                        <td> <a data-toggle="modal" data-target="#edit" class="btn btn-primary">Edit</a>
-                                            <a href="hapus_galeri_eskul.php" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
-                                        </td>
-                                    </tr>
+                                    <?php
+                                    require 'koneksi.php';
+                                    $db = "SELECT * FROM galeri_eskul ORDER BY id_galeri_eskul ASC";
+                                    $hasil = mysqli_query($koneksi, $db);
+                                    $no = 1;
+                                    $querys = mysqli_query($koneksi, "select * from galeri_eskul");
+                                    $rows = mysqli_fetch_array($querys);
+                                    while ($data = mysqli_fetch_assoc($hasil)) {
+                                    ?>
+                                        <tr>
+                                            <td><?= $no; ?></td>
+                                            <td><?php
+                                                $id_eskul = mysqli_query($koneksi, "select * from eskul");
+                                                while ($a = mysqli_fetch_array($id_eskul)) {
+                                                    if ($a['id_eskul'] == $data['id_eskul']) { ?>
+                                                        <?php echo $a['nama_eskul']; ?>
+                                                <?php
+                                                    }
+                                                }
+                                                ?></td>
+                                            <td><?= $data['keterangan']; ?></td>
+                                            <td><img class="d-block" height="150px" src="gambar/<?= $data['foto_galeri']; ?>" alt="" srcset=""></td>
+                                            <td> <a data-toggle="modal" data-target="#edit<?= $data['id_galeri_eskul']; ?>" class="btn btn-primary">Edit</a>
+                                                <a href="proses.php?deletee=<?= $data['id_galeri_eskul'] ?>" name="deletee" id="deletee" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
+                                            </td>
+                                            <div class="modal fade" id="edit<?= $data['id_galeri_eskul']; ?>">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Edit Ekstrakurikuler</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="post" action="proses.php
+                    " enctype="multipart/form-data">
+                                                                <div class="card-body">
+                                                                    <div class="form-group">
+                                                                        <label>Nama eskul</label>
+                                                                        <input type="hidden" name="id_galeri_eskul" value="<?= $data['id_galeri_eskul']; ?>">
+                                                                        <select name="id_eskul" class="form-control">
+                                                                            <?php
+                                                                            $dataa = mysqli_query($koneksi, "select * from eskul WHERE id_eskul");
+                                                                            while ($d = mysqli_fetch_array($dataa)) {
+                                                                            ?>
+                                                                                <option selected value="<?php echo $d['id_eskul']; ?>"><?php echo $d['nama_eskul']; ?></option>
+                                                                                <option value="<?php echo $d['id_eskul']; ?>"><?php echo $d['nama_eskul']; ?>
+                                                                                </option>
+                                                                            <?php
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="keterangan">Keterangan</label>
+                                                                        <br>
+                                                                        <textarea name="keterangan" id="keterangan" cols="56" rows="-3"><?= $data['keterangan']; ?></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Foto Galeri Ekstrakurikuler</label>
+                                                                        <img class="d-block mb-2" src="gambar/<?php echo $data['foto_galeri']; ?>" height="200px">
+                                                                        <input type="file" name="foto_galeri" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                        <div class="modal-footer justify-content-between">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                            <button type="submit" name="updatee" class="btn btn-primary">Update</button>
+                                                        </div>
+                                                        </form>
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+                                        </tr>
+                                    <?php $no++;
+                                    } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -139,89 +206,48 @@
     <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-    <div class="modal fade" id="edit">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Ekstrakurikuler</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" action="" enctype="multipart/form-data">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label>Nama Ekstrakurikuler</label>
-                                <select name="nama_eskul" class="form-control" id="">
-                                    <option>-- Pilih Nama Eskul --</option>
-                                    <option value="basket">Basket Ball</option>
-                                    <option value="voly">Voly</option>
-                                    <option value="merpati_putih">Merpati Putih</option>
-                                    <option value="taekwondo">Taekwondo</option>
-                                    <option value="futsal">Futsal</option>
-                                    <option value="pramuka">Pramuka</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="keterangan">Keterangan</label>
-                                <br>
-                               <textarea name="keterangan" id="keterangan" cols="56" rows="-3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Foto Ekstrakurikuler</label>
-                                <input type="file" name="foto" class="form-control">
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" name="tombol" class="btn btn-primary">Simpan</button>
-                </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
+
     <div class="modal fade" id="Tambah">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Tambah Ekstrakurikuler</h4>
+                    <h4 class="modal-title">Tambah Galeri Ekstrakurikuler</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="" enctype="multipart/form-data">
+                    <form method="post" action="proses.php" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Nama Ekstrakurikuler</label>
-                                <select name="nama_eskul" class="form-control" id="">
-                                    <option>-- Pilih Nama Eskul --</option>
-                                    <option value="basket">Basket Ball</option>
-                                    <option value="voly">Voly</option>
-                                    <option value="merpati_putih">Merpati Putih</option>
-                                    <option value="taekwondo">Taekwondo</option>
-                                    <option value="futsal">Futsal</option>
-                                    <option value="pramuka">Pramuka</option>
+                                <select name="id_eskul" class="form-control">
+                                    <option disabled selected value="">--- Pilih Eskul ---</option>
+                                    <?php
+                                    $data = mysqli_query($koneksi, "select * from eskul");
+                                    while ($d = mysqli_fetch_array($data)) {
+                                    ?>
+                                        <option value="<?php echo $d['id_eskul']; ?>"><?php echo $d['nama_eskul']; ?>
+                                        </option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="keterangan">Keterangan</label>
                                 <br>
-                               <textarea name="keterangan" id="keterangan" cols="56" rows="-3"></textarea>
+                                <textarea name="keterangan" id="keterangan" cols="56" rows="-3"></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Foto Ekstrakurikuler</label>
-                                <input type="file" name="foto" class="form-control">
+                                <label>Foto Galeri Ekstrakurikuler</label>
+                                <input type="file" name="foto_galeri" class="form-control">
                             </div>
                         </div>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" name="tombol" class="btn btn-primary">Simpan</button>
+                    <button type="submit" name="simpann" class="btn btn-primary">Simpan</button>
                 </div>
                 </form>
             </div>
@@ -238,38 +264,40 @@
     <!-- AdminLTE App -->
     <script src="../assets/dist/js/adminlte.min.js"></script>
     <script src="../assets/plugins/jquery/jquery.min.js"></script>
-<script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../assets/plugins/jszip/jszip.min.js"></script>
-<script src="../assets/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="../assets/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="../assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="../assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="../assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- AdminLTE App -->
-<!-- AdminLTE for demo purposes -->
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
+    <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="../assets/plugins/jszip/jszip.min.js"></script>
+    <script src="../assets/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="../assets/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="../assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="../assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="../assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE App -->
+    <!-- AdminLTE for demo purposes -->
+    <!-- Page specific script -->
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
 </body>
 
 </html>
