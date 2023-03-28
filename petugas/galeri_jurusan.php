@@ -112,7 +112,7 @@ if ($_SESSION['role'] != "2") {
                                                 }
                                                 ?></td>
                                             <td><?= $data['keterangan']; ?></td>
-                                            <td><img class="d-block" height="150px" src="gambar/<?= $data['foto_galeri']; ?>" alt="" srcset=""></td>
+                                            <td><img class="d-block" height="150px" src="../admin/gambar/<?= $data['foto_galeri']; ?>" alt="" srcset=""></td>
                                             <td> <a data-toggle="modal" data-target="#edit<?= $data['id_galeri_jurusan']; ?>" class="btn btn-primary">Edit</a>
                                                 <a href="proses.php?delete=<?= $data['id_galeri_jurusan'] ?>" name="delete" id="delete" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
                                             </td>
@@ -152,7 +152,7 @@ if ($_SESSION['role'] != "2") {
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Foto Galeri Jurusan</label>
-                                                                        <img class="d-block mb-2" src="gambar/<?php echo $data['foto_galeri']; ?>" height="200px">
+                                                                        <img class="d-block mb-2" src="../admin/gambar/<?php echo $data['foto_galeri']; ?>" height="200px">
                                                                         <input type="file" name="foto_galeri" class="form-control">
                                                                     </div>
                                                                 </div>

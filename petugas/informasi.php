@@ -109,7 +109,7 @@ include 'koneksi.php';
                                             <td><?= $no; ?></td>
                                             <td><?= $data['judul']; ?></td>
                                             <td><?= $data['tanggal']; ?></td>
-                                            <td><img class="d-block" height="150px" src="gambar/<?= $data['thumbnail']; ?>" alt="" srcset=""></td>
+                                            <td><img class="d-block" height="150px" src="../admin/gambar/<?= $data['thumbnail']; ?>" alt="" srcset=""></td>
                                             <td><?php
                                                 if ($data['jenis_informasi'] == 'B') {
                                                     echo "<span class=\"badge badge-info\">Berita</span>";
@@ -166,7 +166,7 @@ include 'koneksi.php';
                                                                     </select>
                                                                     <div class="form-group">
                                                                         <label>Foto Informasi</label>
-                                                                        <img class="d-block" src="gambar/<?php echo $data['thumbnail']; ?>" height="200">
+                                                                        <img class="d-block" src="../admin/gambar/<?php echo $data['thumbnail']; ?>" height="200">
                                                                         <input type="file" name="thumbnail_informasi" class="form-control">
                                                                     </div>
                                                                 </div>

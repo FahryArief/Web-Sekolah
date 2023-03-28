@@ -159,7 +159,7 @@ include 'koneksi.php';
                                                                     <div class="form-group summernote-form-group">
                                                                         <label for="isi">Konten</label>
                                                                         <br>
-                                                                        <textarea name="isi" id="summernote"><?= $data['isi'] ?></textarea>
+                                                                        <textarea name="isi" id="summernotes"><?= $data['isi'] ?></textarea>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Tanggal</label>
@@ -323,6 +323,37 @@ include 'koneksi.php';
                     data: out,
                     success: function(img) {
                         $('#summernote').summernote('insertImage', img);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error(textStatus + " " + errorThrown);
+                    }
+                });
+            };
+            $("#summernotes").summernote({
+
+                callbacks: {
+                    onImageUpload: function(files) {
+                        for (let i = 0; i < files.length; i++) {
+                            $.upload(files[i]);
+                        }
+                    }
+                },
+                height: 200
+            });
+            // $('.dropdown-toggle').dropdown();
+            $.upload = function(file) {
+                let out = new FormData();
+                out.append('file', file, file.name);
+
+                $.ajax({
+                    method: 'POST',
+                    url: 'upload.php',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    data: out,
+                    success: function(img) {
+                        $('#summernotes').summernote('insertImage', img);
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         console.error(textStatus + " " + errorThrown);

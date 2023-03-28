@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SMKN 8 Bandar Lampung</title>
+    <title>BERITA - SMKN 8 BANDAR LAMPUNG</title>
 
     <link rel="icon" href="styling/img/favicon.ico" type="image/x-icon" />
     <!------------ GOOGLE FONTS ------------>
@@ -61,83 +61,83 @@
     </div>
 
     <div style="margin-top: 100px;" class="content">
-    <div class="news">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md">
-                                        <div class="section_title_container text-center">
-                                            <h2 class="section_title">Informasi Terkini</h2>
-                                            <div class="section_subtitle font-grey">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php for ($i=0; $i < 5; $i++) { 
-                                    ?>
-                                <div class="row news_row">
-                                    <div class="col-md-4 news_col">
-                                        <!-- News Post Large -->
-                                        <div class="news_post_large_container">
-                                            <div class="news_post_large">
-                                                <div class="news_post_image"><img src="styling/img/bg-1.jpg" alt=""></div>
-                                                <div class="news_post_large_title"><a href="blog_single.html">Here’s What You Need to Know About Online Testing for the ACT and SAT</a></div>
-                                                <div class="news_post_meta">
-                                                    <ul>
-                                                        <li><a href="#">admin</a></li>
-                                                        <li><a href="#">november 11, 2017</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="news_post_text">
-                                                    <p>Policy analysts generally agree on a need for reform, but not on which path policymakers should take. Can America learn anything from other nations...</p>
-                                                </div>
-                                                <div class="news_post_link"><a href="blog_single.html">read more</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 news_col">
-                                        <!-- News Post Large -->
-                                        <div class="news_post_large_container">
-                                            <div class="news_post_large">
-                                                <div class="news_post_image"><img src="styling/img/bg-1.jpg" alt=""></div>
-                                                <div class="news_post_large_title"><a href="blog_single.html">Here’s What You Need to Know About Online Testing for the ACT and SAT</a></div>
-                                                <div class="news_post_meta">
-                                                    <ul>
-                                                        <li><a href="#">admin</a></li>
-                                                        <li><a href="#">november 11, 2017</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="news_post_text">
-                                                    <p>Policy analysts generally agree on a need for reform, but not on which path policymakers should take. Can America learn anything from other nations...</p>
-                                                </div>
-                                                <div class="news_post_link"><a href="blog_single.html">read more</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4 news_col">
-                                        <div class="news_posts_small">
-                                            <!-- News Posts Small -->
-                                            <div class="news_post_small">
-                                            <div class="news_post_image"><img src="styling/img/firaun.jpeg" width="250" alt=""></div>
-                                                <div class="news_post_small_title"><a href="blog_single.html">Home-based business insurance issue (Spring 2017 - 2018)</a></div>
-                                                <div class="news_post_meta">
-                                                </div>
-                                            </div>
-
-                                            <!-- News Posts Small -->
-                                            <div class="news_post_small">
-                                            <div class="news_post_image"><img src="styling/img/firaun.jpeg" width="250" alt=""></div>
-                                                <div class="news_post_small_title"><a href="blog_single.html">2018 Fall Issue: Credit Card Comparison Site Survey (Summer 2018)</a></div>
-                                                <div class="news_post_meta">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php } ?>
+        <div class="news">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md">
+                        <div class="section_title_container text-center">
+                            <h2 class="section_title">Informasi Terkini</h2>
+                            <div class="section_subtitle font-grey">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <?php for ($i = 0; $i < 5; $i++) {
+                ?>
+                    <div class="row news_row">
+                        <div class="col-md-4 news_col">
+                            <!-- News Post Large -->
+                            <div class="news_post_large_container">
+                                <div class="news_post_large">
+                                    <div class="news_post_image"><img src="styling/img/bg-1.jpg" alt=""></div>
+                                    <div class="news_post_large_title"><a href="blog_single.html">Here’s What You Need to Know About Online Testing for the ACT and SAT</a></div>
+                                    <div class="news_post_meta">
+                                        <ul>
+                                            <li><a href="#">admin</a></li>
+                                            <li><a href="#">november 11, 2017</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="news_post_text">
+                                        <p>Policy analysts generally agree on a need for reform, but not on which path policymakers should take. Can America learn anything from other nations...</p>
+                                    </div>
+                                    <div class="news_post_link"><a href="blog_single.html">read more</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 news_col">
+                            <!-- News Post Large -->
+                            <div class="news_post_large_container">
+                                <div class="news_post_large">
+                                    <div class="news_post_image"><img src="styling/img/bg-1.jpg" alt=""></div>
+                                    <div class="news_post_large_title"><a href="blog_single.html">Here’s What You Need to Know About Online Testing for the ACT and SAT</a></div>
+                                    <div class="news_post_meta">
+                                        <ul>
+                                            <li><a href="#">admin</a></li>
+                                            <li><a href="#">november 11, 2017</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="news_post_text">
+                                        <p>Policy analysts generally agree on a need for reform, but not on which path policymakers should take. Can America learn anything from other nations...</p>
+                                    </div>
+                                    <div class="news_post_link"><a href="blog_single.html">read more</a></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 news_col">
+                            <div class="news_posts_small">
+                                <!-- News Posts Small -->
+                                <div class="news_post_small">
+                                    <div class="news_post_image"><img src="styling/img/firaun.jpeg" width="250" alt=""></div>
+                                    <div class="news_post_small_title"><a href="blog_single.html">Home-based business insurance issue (Spring 2017 - 2018)</a></div>
+                                    <div class="news_post_meta">
+                                    </div>
+                                </div>
+
+                                <!-- News Posts Small -->
+                                <div class="news_post_small">
+                                    <div class="news_post_image"><img src="styling/img/firaun.jpeg" width="250" alt=""></div>
+                                    <div class="news_post_small_title"><a href="blog_single.html">2018 Fall Issue: Credit Card Comparison Site Survey (Summer 2018)</a></div>
+                                    <div class="news_post_meta">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
 
     </div>
     <footer class="text-center text-lg-start text-white">

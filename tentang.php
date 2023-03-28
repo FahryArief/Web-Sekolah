@@ -59,18 +59,25 @@
             </div>
         </nav>
     </div>
+    <?php
+    include 'koneksi.php';
+    $db = "SELECT * FROM tentang";
+    $hasil = mysqli_query($koneksi, $db);
+    $data = mysqli_fetch_assoc($hasil);
+    ?>
     <div class="content-wrapper">
         <div class="container-fluid">
             <div class="row mt-5">
                 <div class="col-md-12 mt-5 ccenter">
-                    <h1>Welcome To SMK NEGERI 8 Bandar Lampung</h1>
+                    <h1>Welcome To <?= $data['nm_sekolah'] ?></h1>
                     <hr style="width: 50%; margin:auto;">
                     <h1 style="margin-top: 25px;">Sambutan Kepala Sekolah </h1>
                     <hr size="10" style="width: 15%; margin:auto; color:darkred; height:4px;">
-                    <a href="">
-                        <img src="styling/img/firdaus-bulet.jpeg" style="margin-top:20px; height: 200px;" srcset="">
-                    </a>
-                    <p class="font-grey ccenter" style="margin-top: 15px; padding: 20px 10%;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut consequatur ipsum illo praesentium voluptas dignissimos sequi magni, aliquid quis, eos ratione laudantium cum quae beatae tenetur impedit eius, laboriosam tempora similique animi. Vel, iste molestiae dolorum quis repudiandae ipsa necessitatibus.</p>
+
+                    <img src="admin/gambar/<?= $data['foto_sambutan'] ?>" style="margin-top:20px; margin-bottom: 15px; height: 200px;" srcset="">
+                    <hr size="10" style="width: 15%; margin:auto; color:darkred; height:4px;">
+                    <h4><?= $data['nm_kepsek'] ?></h4>
+                    <p class="font-grey ccenter" style="padding: 20px 10%;"><?= $data['sambutan'] ?></p>
                 </div>
             </div>
         </div>
@@ -85,7 +92,7 @@
                         </h2>
                         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                             <div class="accordion-body">
-                                <strong>VISI SMK NEGERI 8 Bandar Lampung</strong> Menjadikan lembaga pendidikan kejuruan tingkat menengah berstandar industri.
+                                <strong>VISI <?= $data['nm_sekolah'] ?></strong> <?= $data['visi'] ?>
                             </div>
                         </div>
                     </div>
@@ -97,13 +104,7 @@
                         </h2>
                         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                             <div class="accordion-body">
-                                <strong>MISI SMK NEGERI 8 Bandar Lampung</strong> 
-                                1. Menyiapkan tamatan yang berkarakter dan berprilaku  sesuai dengan nilai-nilai Pancasila.
-                                2. Menyiapkan tenaga terampil yang mampu bersaing dilapangan kerja
-                                3. Membentuk tamatan yang kompeten dalam bidang Seni dan Industri Kreatif serta Teknologi Manufaktur dan Rekayasa
-                                4. Melaksanakan pembelajaran dengan kurikulum berstandar industri
-                                5. Memenuhi sarana dan prasarana pendidikan, dan
-                                6. Meningkatkan kompetensi pendidik dan tenaga kependidikan.
+                                <strong>MISI <?= $data['nm_sekolah'] ?></strong> <?= $data['misi'] ?>
                             </div>
                         </div>
                     </div>
@@ -115,7 +116,7 @@
                         </h2>
                         <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                             <div class="accordion-body">
-                                <strong>TUJUAN SMK NEGERI 8 Bandar Lampung</strong> 
+                                <strong>TUJUAN SMK NEGERI 8 Bandar Lampung</strong>
                                 1. Menciptakan tamatan yang bertaqwa kepada Tuhan Yang Maha Esa dan berakhlak mulia.
                                 2. Membekali peserta didik untuk mengembangkan kepribadian akademik dan dasar-dasar keahlian yang kuat dan benar melalui pembelajaran mata pelajaran muatan nasional, muatan kewilayahan dan mata pelajaran kejuruan.
                                 3. Menyiapkan peserta didik untuk memasuki dunia kerja serta mengembangkan sikap profesionalisme dan mampu berwirausaha.
@@ -132,7 +133,7 @@
                         </h2>
                         <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
                             <div class="accordion-body">
-                                <strong>SEJARAH SMK NEGERI 8 Bandar Lampung</strong> 
+                                <strong>SEJARAH SMK NEGERI 8 Bandar Lampung</strong>
                                 merupakan salah satu sekolah kejuruan favorit. Sekolah berakreditasi A ini beralamat di Jalan Imam Bonjol Nomor 52, Kecamatan Kemiling, Kota Bandar Lampung. Firdaus, Kepala SMKN 8 Bandar Lampung, mengatakan, sekolahnya berdiri pada tahun 2014. "SMK Negeri 8 Bandar Lampung berdiri pada tahun 2014, tepatnya tanggal 11 April. Jika dihitung, kurang lebih sudah delapan tahun," terang Firdaus, Senin (4/7/2022).
                                 berdiri berdasarkan Surat Keputusan Wali Kota Bandar Lampung Nomor 511/14.40/HK/2014 tanggal 11 April 2014.
 
@@ -151,7 +152,7 @@
                         </h2>
                         <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
                             <div class="accordion-body">
-                                <strong>IDENTITAS SMK NEGERI 8 Bandar Lampung</strong> 
+                                <strong>IDENTITAS SMK NEGERI 8 Bandar Lampung</strong>
                                 NPSN : 69853159
 
                                 Status : Negeri

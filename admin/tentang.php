@@ -3,6 +3,7 @@ session_start();
 if ($_SESSION['role'] != "1") {
     header("location:../index.php");
 }
+include("koneksi.php");
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +18,7 @@ if ($_SESSION['role'] != "1") {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../assets/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../assets/plugins/summernote/summernote-bs4.min.css">
 </head>
 
 <body class="hold-transition layout-top-nav layout-navbar-fixed">
@@ -81,66 +83,79 @@ if ($_SESSION['role'] != "1") {
             <div class="content">
                 <div class="container">
                     <div class="col-md-auto">
-                        <div class="card card-outline card-info">
-                            <div class="card-body">
-                                <div class="form-group col-3">
-                                    <img src="../styling/img/firaun.jpeg" height="80px" class="d-block mb-2" alt="" srcset="">
-                                    <input type="file" class="form-control">
-                                </div>
-                                <div class="row mx-auto">
+                        <?php
+                        $db = "SELECT * FROM tentang";
+                        $hasil = mysqli_query($koneksi, $db);
+
+                        $no = 1;
+                        $querys = mysqli_query($koneksi, "select * from tentang");
+                        $rows = mysqli_fetch_array($querys);
+                        $data = mysqli_fetch_assoc($hasil);
+                        ?>
+                        <form action="proses.php" enctype="multipart/form-data" method="post">
+                            <div class="card card-outline card-info">
+                                <div class="card-body">
                                     <div class="form-group col-3">
-                                        <h2>Profile Video</h2>
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe width="560" height="315" src="https://www.youtube.com/embed/9-tH1tFyNO0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                        </div>
-                                        <input type="file" class="form-control">
+                                        <img src="gambar/<?php echo $data['foto_sambutan']; ?>" height="80px" class="d-block mb-2" alt="" srcset="">
+                                        <input type="file" name="foto_sambutan" class="form-control">
                                     </div>
-                                    <div class="row mx-auto"></div>
                                     <div class="row mx-auto">
-                                        <div class="col-sm-12">
-                                            <h3>NAMA SEKOLAH</h3>
-                                            <input type="text" name="" id="">
+                                        <div class="form-group col-3">
+                                            <h2>Profile Video</h2>
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                                <iframe width="560" height="315" src="<?= $data['link_profile']; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                            </div>
+                                            <br>
+                                            <input type="text" placeholder="<?= $data['link_profile']; ?>" value="<?= $data['link_profile']; ?>" name="link_profile" class="form-control">
                                         </div>
-                                        <div class="col-sm-12">
-                                            <h3>Nama Kepala Sekolah</h3>
-                                            <input type="text" name="" id="">
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <h3>NIP</h3>
-                                            <input type="text" name="" id="">
+                                        <div class="row mx-auto"></div>
+                                        <div class="row mx-auto">
+                                            <div class="form-group col-sm-12">
+                                                <h3>Nama Sekolah</h3>
+                                                <input type="text" name="nama" value="<?= $data['nm_sekolah']; ?>" id="">
+                                            </div>
+                                            <div class="form-group col-sm-12">
+                                                <h3>Nama Kepala Sekolah</h3>
+                                                <input type="text" value="<?= $data['nm_kepsek']; ?>" name="kepsek" id="">
+                                            </div>
+                                            <div class="form-group col-sm-12">
+                                                <h3>Sambutan</h3>
+                                                <textarea name="sambutan" id="sambutan" placeholder="<?= $data['sambutan']; ?>" cols="30" rows="-3"><?= $data['sambutan']; ?></textarea>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="form-group ml-2 col-3">
+                                        <h2>VISI</h2>
+                                        <textarea name="visi" id="visi" cols="30" rows="-3"><?= $data['visi']; ?></textarea>
+                                    </div>
+                                    <div class="form-group ml-5 col-3">
+                                        <h2>MISI</h2>
+                                        <textarea name="misi" id="misi" cols="30" rows="-3"><?= $data['misi']; ?></textarea>
+                                    </div>
+                                    <div class="form-group ml-5 col-3">
+                                        <h2>Tujuan</h2>
+                                        <textarea name="tujuan" id="tujuan" cols="30" rows="-3"><?= $data['tujuan']; ?></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group ml-2 col-3">
+                                        <h2>SEJARAH</h2>
+                                        <textarea name="sejarah" id="sejarah" cols="30" rows="-3"><?= $data['sejarah']; ?></textarea>
+                                    </div>
+                                    <div class="form-group ml-5 col-3">
+                                        <h2>IDENTITAS</h2>
+                                        <textarea name="identitas" id="identitas" cols="30" rows="-3"><?= $data['identitas']; ?></textarea>
+                                    </div>
+                                    <div class="form-group ml-5 col-3">
+                                        <h2>STRUKTUR</h2>
+                                        <input type="file" name="struktur" class="form-control">
+                                    </div>
+                                </div>
+                                <button type="submit" name="tentang" class="btn btn-primary">Update</button>
                             </div>
-                            <div class="row">
-                                <div class="form-group ml-2 col-3">
-                                    <h2>VISI</h2>
-                                    <textarea name="keterangan" id="keterangan" cols="30" rows="-3"></textarea>
-                                </div>
-                                <div class="form-group ml-5 col-3">
-                                    <h2>VISI</h2>
-                                    <textarea name="keterangan" id="keterangan" cols="30" rows="-3"></textarea>
-                                </div>
-                                <div class="form-group ml-5 col-3">
-                                    <h2>VISI</h2>
-                                    <textarea name="keterangan" id="keterangan" cols="30" rows="-3"></textarea>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group ml-2 col-3">
-                                    <h2>IDENTITAS</h2>
-                                    <input type="file" class="form-control">
-                                </div>
-                                <div class="form-group ml-5 col-3">
-                                    <h2>STRUKTUR</h2>
-                                    <input type="file" class="form-control">
-                                </div>
-                                <div class="form-group ml-5 col-3">
-                                    <h2>SARPRAS</h2>
-                                    <input type="file" class="form-control">
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -165,6 +180,19 @@ if ($_SESSION['role'] != "1") {
     <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../assets/dist/js/adminlte.min.js"></script>
+    <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script>
+    <script>
+        $(function() {
+            // Summernote
+            $('#summernote').summernote()
+
+            // CodeMirror
+            CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+                mode: "htmlmixed",
+                theme: "monokai"
+            });
+        })
+    </script>
 </body>
 
 </html>

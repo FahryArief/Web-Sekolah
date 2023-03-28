@@ -30,7 +30,7 @@ if (isset($_POST['simpan'])) {
     $angka_acak = rand(1, 999);
     $nama_gambar_baru = $angka_acak . '-' . $foto_galeri;
     if (in_array($extensi, $ekstensi_diperbolehkan) === true) {
-      move_uploaded_file($file_tmp, 'gambar/' . $nama_gambar_baru);
+      move_uploaded_file($file_tmp, '../admin/gambar/' . $nama_gambar_baru);
       $query = "INSERT INTO galeri_jurusan (id_jurusan,keterangan,foto_galeri) VALUES ('$id_jurusan','$keterangan','$nama_gambar_baru')";
       $result = mysqli_query($koneksi, $query);
       if (!$result) {
@@ -66,7 +66,7 @@ if (isset($_POST['update'])) {
     $angka_acak = rand(1, 999);
     $nama_gambar_baru = $angka_acak . '-' . $foto_galeri;
     if (in_array($extensi, $ekstensi_diperbolehkan) === true) {
-      move_uploaded_file($file_tmp, 'gambar/' . $nama_gambar_baru);
+      move_uploaded_file($file_tmp, '../admin/gambar/' . $nama_gambar_baru);
       $query = "UPDATE galeri_jurusan SET id_jurusan = '$id_jurusan
         ', keterangan = '$keterangan', foto_galeri= '$nama_gambar_baru'";
       $query .= "WHERE id_galeri_jurusan = '$id_galeri_jurusan'";
@@ -106,7 +106,7 @@ if (isset($_POST['simpann'])) {
     $angka_acak = rand(1, 999);
     $nama_gambar_baru = $angka_acak . '-' . $foto_galeri;
     if (in_array($extensi, $ekstensi_diperbolehkan) === true) {
-      move_uploaded_file($file_tmp, 'gambar/' . $nama_gambar_baru);
+      move_uploaded_file($file_tmp, '../admin/gambar/' . $nama_gambar_baru);
       $query = "INSERT INTO galeri_eskul (id_eskul,keterangan,foto_galeri) VALUES ('$id_eskul','$keterangan','$nama_gambar_baru')";
       $result = mysqli_query($koneksi, $query);
       if (!$result) {
@@ -141,7 +141,7 @@ if (isset($_POST['updatee'])) {
     $angka_acak = rand(1, 999);
     $nama_gambar_baru = $angka_acak . '-' . $foto_galeri;
     if (in_array($extensi, $ekstensi_diperbolehkan) === true) {
-      move_uploaded_file($file_tmp, 'gambar/' . $nama_gambar_baru);
+      move_uploaded_file($file_tmp, '../admin/gambar/' . $nama_gambar_baru);
       $query = "UPDATE galeri_eskul SET id_eskul = '$id_eskul
         ', keterangan = '$keterangan', foto_galeri= '$nama_gambar_baru'";
       $query .= "WHERE id_galeri_eskul = '$id_galeri_eskul'";
@@ -192,7 +192,7 @@ if (isset($_POST['tombolinf'])) {
     $angka_acak = rand(1, 999);
     $nama_gambar_baru = $angka_acak . '-' . $thumbnail_informasi;
     if (in_array($extensi || $extensii, $ekstensi_diperbolehkan) === true) {
-      move_uploaded_file($file_tmp, 'gambar/' . $nama_gambar_baru);
+      move_uploaded_file($file_tmp, '../admin/gambar/' . $nama_gambar_baru);
       $query = "INSERT INTO informasi (id_informasi,judul,isi,tanggal,thumbnail,jenis_informasi) VALUES ('','$judul
        ','$isi','$tanggal','$nama_gambar_baru','$jenis')";
       $result = mysqli_query($koneksi, $query);
@@ -231,7 +231,7 @@ if (isset($_POST['updateinf'])) {
     $angka_acak = rand(1, 999);
     $nama_gambar_baru = $angka_acak . '-' . $thumbnail_informasi;
     if (in_array($extensi, $ekstensi_diperbolehkan) === true) {
-      move_uploaded_file($file_tmp, 'gambar/' . $nama_gambar_baru);
+      move_uploaded_file($file_tmp, '../admin/gambar/' . $nama_gambar_baru);
       $query = "UPDATE informasi SET judul = '$judul
       ', isi = '$isi', tanggal = '$tanggal', jenis_informasi = '$jenis', thumbnail= '$nama_gambar_baru'";
       $query .= "WHERE id_informasi = '$id_informasi'";
