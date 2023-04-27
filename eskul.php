@@ -66,21 +66,25 @@
             <div class="col-md-9 mx-auto pt-10" style="width: 1000px;">
                 <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                    <?php for ($i=1; $i < 15; $i++) { 
-                            # code...
+                        <?php
+                        include("koneksi.php");
+                        $db = "SELECT * FROM eskul ORDER BY id_eskul ASC";
+                        $hasil = mysqli_query($koneksi, $db);
+                        while ($data = mysqli_fetch_assoc($hasil)) {
                         ?>
-                        <div class="carousel-item active">
-                            <div class="card">
-                                <div class="img-wrapper"><img src="styling/img/a.jpg" class="d-block w-100" alt="styling/img/a.jpg"> </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title <?= $i; ?></h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
-                                    <a href="detailjurusan.php" class="btn btn-primary">Go somewhere</a>
+
+                            <div class="carousel-item active">
+                                <div class="card">
+                                    <div class="img-wrapper"><img src="admin/gambar/<?= $data['thumbnail_eskul'] ?>" class="d-block w-100" alt="styling/img/a.jpg"> </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?= $data['nama_eskul'] ?></h5>
+                                        <p class="card-text"><?= $data['keterangan'] ?></p>
+                                        <a href="detaileskul.php?id=<?= $data['id_eskul']; ?>" class="btn btn-primary">Detail Eskul</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                       <?php }  ?>
+                        <?php
+                        }  ?>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

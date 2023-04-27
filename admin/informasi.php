@@ -136,7 +136,7 @@ include 'koneksi.php';
                                                 }
                                                 ?>
                                             </td>
-                                            <td> <a data-toggle="modal" data-target="#edit<?= $data['id_informasi']; ?>" class="btn btn-primary">Edit</a>
+                                            <td> <a href="edit.php?id=<?= $data['id_informasi']; ?>" class="btn btn-primary">Edit</a>
                                                 <a href="proses.php?deleteinf=<?= $data['id_informasi']; ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ...?') ">Hapus</a>
                                             </td>
                                             <div class="modal fade" id="edit<?= $data['id_informasi']; ?>">
@@ -240,7 +240,7 @@ include 'koneksi.php';
                             <div class="form-group summernote-form-group">
                                 <label for="isi">Konten</label>
                                 <br>
-                                <textarea name="isi" id="summernote">Ketik Disini...</textarea>
+                                <textarea name="isi" id="summernote" placeholder="Ketik Disini"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Tanggal</label>
@@ -362,7 +362,6 @@ include 'koneksi.php';
             };
         });
         $(function() {
-
             $("#example1").DataTable({
                 "responsive": true,
                 "lengthChange": false,
@@ -372,7 +371,7 @@ include 'koneksi.php';
             $('#example2').DataTable({
                 "paging": true,
                 "lengthChange": false,
-                "searching": false,
+                "searching": true,
                 "ordering": true,
                 "info": true,
                 "autoWidth": false,

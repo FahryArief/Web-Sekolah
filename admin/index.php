@@ -1,9 +1,9 @@
 <?php
 session_start();
 if ($_SESSION['role'] != "1") {
-    header("location:../index.php");
+    header("location:../login.php");
 }
-
+include("koneksi.php");
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +92,8 @@ if ($_SESSION['role'] != "1") {
                                         <!-- small card -->
                                         <div class="small-box bg-secondary">
                                             <div class="inner">
-                                                <h3>1</h3>
+                                                <h3><?php echo mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM eskul"));
+                                                    ?></h3>
 
                                                 <p>Ekstrakurikuler</p>
                                             </div>
@@ -109,8 +110,8 @@ if ($_SESSION['role'] != "1") {
                                         <!-- small card -->
                                         <div class="small-box bg-secondary">
                                             <div class="inner">
-                                                <h3><?php # echo $id_fasilitas_kamar;
-                                                    ?> 5</h3>
+                                                <h3><?php echo mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM jurusan"));
+                                                    ?></h3>
 
                                                 <p>jurusan</p>
                                             </div>
@@ -127,8 +128,8 @@ if ($_SESSION['role'] != "1") {
                                         <!-- small card -->
                                         <div class="small-box bg-secondary">
                                             <div class="inner">
-                                                <h3>6 <?php # echo $id_fasilitas;
-                                                        ?></h3>
+                                                <h3><?php echo mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM informasi"));
+                                                    ?></h3>
 
                                                 <p>Informasi</p>
                                             </div>
@@ -144,70 +145,22 @@ if ($_SESSION['role'] != "1") {
                                         <!-- small card -->
                                         <div class="small-box bg-secondary">
                                             <div class="inner">
-                                                <h3><?php #echo $row['jmlh_kamar'];
-                                                    ?></h3>
-                                                <p>Tentang</p>
-                                            </div>
-                                            <div class="icon">
-                                                <i class="fas fa-home"></i>
-                                            </div>
-                                            <a href="tentang.php" class="small-box-footer">
-                                                Lihat Data Tentang <i class="fas fa-arrow-circle-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-6">
-                                        <!-- small card -->
-                                        <div class="small-box bg-secondary">
-                                            <div class="inner">
-                                                <h3><?php #echo $row['jmlh_kamar'];
-                                                    ?></h3>
-                                                <p>Jumlah Kamar Hotel</p>
-                                            </div>
-                                            <div class="icon">
-                                                <i class="fas fa-home"></i>
-                                            </div>
-                                            <a href="kamar.php" class="small-box-footer">
-                                                Lihat Data Kamar <i class="fas fa-arrow-circle-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-6">
-                                        <!-- small card -->
-                                        <div class="small-box bg-secondary">
-                                            <div class="inner">
-                                                <h3><?php # echo  $row['stok_sum'];
-                                                    ?></h3>
-                                                <p>Kamar Tersedia</p>
-                                            </div>
-                                            <div class="icon">
-                                                <i class="fas fa-duotone fa-home"></i>
-                                            </div>
-                                            <a href="kamar.php" class="small-box-footer">
-                                                Lihat Data Kamar <i class="fas fa-arrow-circle-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-6">
-                                        <!-- small card -->
-                                        <div class="small-box bg-secondary">
-                                            <div class="inner">
-                                                <h3><?php # echo  $row['jmlh_kamar'] - $row['stok_sum'];
+                                                <h3><?php echo mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM user"));
                                                     ?></h3>
 
-                                                <p>Kamar Disewa</p>
+                                                <p>Users</p>
                                             </div>
                                             <div class="icon">
-                                                <i class="fas fa-home"></i>
+                                                <i class="fas fa-image"></i>
                                             </div>
-                                            <a href="kamar.php" class="small-box-footer">
-                                                Lihat Data Kamar <i class="fas fa-arrow-circle-right"></i>
+                                            <a href="data_users.php" class="small-box-footer">
+                                                Lihat Data Users <i class="fas fa-arrow-circle-right"></i>
                                             </a>
                                         </div>
                                     </div>
+
                                 </div>
+
                             </div>
                         </div>
                     </div>

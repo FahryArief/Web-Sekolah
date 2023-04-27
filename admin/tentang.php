@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SESSION['role'] != "1") {
-    header("location:../index.php");
+    header("location:../login.php");
 }
 include("koneksi.php");
 ?>
@@ -86,7 +86,6 @@ include("koneksi.php");
                         <?php
                         $db = "SELECT * FROM tentang";
                         $hasil = mysqli_query($koneksi, $db);
-
                         $no = 1;
                         $querys = mysqli_query($koneksi, "select * from tentang");
                         $rows = mysqli_fetch_array($querys);
@@ -96,7 +95,7 @@ include("koneksi.php");
                             <div class="card card-outline card-info">
                                 <div class="card-body">
                                     <div class="form-group col-3">
-                                        <img src="gambar/<?php echo $data['foto_sambutan']; ?>" height="80px" class="d-block mb-2" alt="" srcset="">
+                                        <img src="gambar/<?php echo $data['foto_sambutan']; ?>" height="200px" class="d-block mb-2" alt="" srcset="">
                                         <input type="file" name="foto_sambutan" class="form-control">
                                     </div>
                                     <div class="row mx-auto">
@@ -150,7 +149,7 @@ include("koneksi.php");
                                     </div>
                                     <div class="form-group ml-5 col-3">
                                         <h2>STRUKTUR</h2>
-                                        <input type="file" name="struktur" class="form-control">
+                                        <textarea name="struktur" id="struktur" cols="30" rows="10"><?= $data['struktur'] ?></textarea>
                                     </div>
                                 </div>
                                 <button type="submit" name="tentang" class="btn btn-primary">Update</button>
@@ -165,11 +164,6 @@ include("koneksi.php");
     <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
     <!-- Main Footer -->
     </div>
     <!-- ./wrapper -->
@@ -182,15 +176,121 @@ include("koneksi.php");
     <script src="../assets/dist/js/adminlte.min.js"></script>
     <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script>
     <script>
-        $(function() {
+        $(document).ready(function() {
             // Summernote
-            $('#summernote').summernote()
-
-            // CodeMirror
-            CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-                mode: "htmlmixed",
-                theme: "monokai"
+            $('#sambutan').summernote({
+                height: 200,
+                width: 500,
+                toolbar: [
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['table', ['table']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['view', ['fullscreen']],
+                ]
             });
+            $('#visi').summernote({
+                height: 200,
+                width: 300,
+                toolbar: [
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['table', ['table']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['view', ['fullscreen']],
+                ]
+            });
+            $('#misi').summernote({
+                height: 200,
+                width: 300,
+                toolbar: [
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['table', ['table']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['view', ['fullscreen']],
+                ]
+            });
+            $('#tujuan').summernote({
+                height: 200,
+                width: 300,
+                toolbar: [
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['table', ['table']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['view', ['fullscreen']],
+                ]
+            });
+            $('#sejarah').summernote({
+                height: 200,
+                width: 300,
+                toolbar: [
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['table', ['table']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['view', ['fullscreen']],
+                ]
+            });
+            $('#identitas').summernote({
+                height: 200,
+                width: 300,
+                toolbar: [
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['view', ['fullscreen']],
+                ]
+            });
+
+            $("#struktur").summernote({
+                callbacks: {
+                    onImageUpload: function(files) {
+                        for (let i = 0; i < files.length; i++) {
+                            $.upload(files[i]);
+                        }
+                    }
+                },
+                height: 200,
+                width: 300,
+                toolbar: [
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen']],
+                ]
+            });
+            // $('.dropdown-toggle').dropdown();
+            $.upload = function(file) {
+                let out = new FormData();
+                out.append('file', file, file.name);
+
+                $.ajax({
+                    method: 'POST',
+                    url: 'upload.php',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    data: out,
+                    success: function(img) {
+                        $('#summernote').summernote('insertImage', img);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error(textStatus + " " + errorThrown);
+                    }
+                });
+            };
         })
     </script>
 </body>

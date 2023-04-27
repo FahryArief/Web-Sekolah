@@ -1,8 +1,8 @@
 <?php
-session_start();
-if ($_SESSION['role'] != "1") {
-    header("location:../index.php");
-}
+// session_start();
+// if ($_SESSION['role'] != "1") {
+//     header("location:../index.php");
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">

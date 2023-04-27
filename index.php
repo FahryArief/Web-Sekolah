@@ -122,23 +122,26 @@
             </section>
         </div>
         <!-- /.container-fluid -->
-
+        <?php
+        include 'koneksi.php';
+        $db = "SELECT * FROM tentang";
+        $hasilt = mysqli_query($koneksi, $db);
+        $tentang = mysqli_fetch_assoc($hasilt);
+        ?>
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row mt-5">
                     <div class="col-md-12 ccenter">
                         <!-- Default box -->
-                        <h1>Welcome To SMK NEGERI 8 Bandar Lampung</h1>
+                        <h1>Welcome To <?= $tentang['nm_sekolah'] ?></h1>
                         <hr style="width: 50%; margin:auto;">
-                        <p class="font-grey" style="margin-top: 5px; padding: 20px 10%;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi minima mollitia unde. Laboriosam a quas asperiores possimus labore? Mollitia, non!</p>
-                        <!-- /.card -->
                         <h1 style="margin-top: 25px;">Sambutan Kepala Sekolah </h1>
                         <hr style="width: 15%; margin:auto; color:darkred; height:4px;">
                         <a href="">
-                            <img src="styling/img/firdaus-bulet.jpeg" style="margin-top:20px; height: 200px;" srcset="">
+                            <img src="admin/gambar/<?= $tentang['foto_sambutan'] ?>" style="margin-top:20px; height: 200px;" srcset="">
                         </a>
-                        <p class="font-grey ccenter" style="margin-top: 15px; padding: 20px 10%;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut consequatur ipsum illo praesentium voluptas dignissimos sequi magni, aliquid quis, eos ratione laudantium cum quae beatae tenetur impedit eius, laboriosam tempora similique animi. Vel, iste molestiae dolorum quis repudiandae ipsa necessitatibus.</p>
+                        <p class="font-grey ccenter" style="margin-top: 15px; padding: 20px 10%;"><?= $tentang['sambutan'] ?></p>
                         <!-- Start Informasi -->
                         <div class="news">
                             <div class="container">
@@ -156,22 +159,47 @@
                                     <div class="col-md-7 news_col">
                                         <?php
                                         include 'koneksi.php';
-                                        $db = "SELECT * FROM informasi ORDER BY id_informasi DESC LIMIT 5";
+                                        $db = "SELECT * FROM informasi WHERE jenis_informasi = 'B' ORDER BY id_informasi DESC ";
                                         $hasil = mysqli_query($koneksi, $db);
-                                        $no = 1;
+                                        $queryss = mysqli_query($koneksi, "SELECT
+    CASE DAYOFWEEK(tanggal)
+        WHEN 1 THEN 'Minggu'
+        WHEN 2 THEN 'Senin'
+        WHEN 3 THEN 'Selasa'
+        WHEN 4 THEN 'Rabu'
+        WHEN 5 THEN 'Kamis'
+        WHEN 6 THEN 'Jumat'
+        WHEN 7 THEN 'Sabtu'
+    END AS hari
+FROM informasi");
+                                        $results = mysqli_fetch_assoc($queryss);
+                                        $day = $results['hari'];
                                         $data = mysqli_fetch_assoc($hasil); ?>
                                         <!-- News Post Large -->
                                         <div class="news_post_large_container">
                                             <div class="news_post_large">
                                                 <div class="news_post_image"><img src="admin/gambar/<?= $data['thumbnail']; ?>" height="350px" alt=""></div>
-                                                <div class="news_post_large_title"><a href="blog_single.html"><?= $data['judul']; ?></a></div>
+                                                <div class="news_post_large_title"><a href="detailberita.php?id_informasi=<?= $data['id_informasi']; ?>"><?= $data['judul']; ?></a></div>
                                                 <div class="news_post_meta">
                                                     <ul>
-                                                        <li><a href="#"><?= $data['tanggal']; ?></a></li>
+                                                        <li>
+                                                            <p>
+                                                                <?= $day;   ?>
+                                                                <span>
+                                                                    <?php setlocale(LC_TIME, 'id_ID', 'Indonesian_Indonesia.1252');
+                                                                    echo strftime('| %e %B  %Y', strtotime($data['tanggal']));
+                                                                    ?>
+                                                                </span>
+                                                            </p>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                                 <div class="news_post_text">
-                                                    <p><?= substr($data['isi'], 0, 300); ?></p>
+                                                    <?php
+                                                    $html = $data['isi'];
+                                                    $p = str_replace('src="gambar/', 'src="admin/gambar/', $html);
+                                                    ?>
+                                                    <p><?= substr($p, 0, 800); ?></p>
                                                 </div>
                                                 <div class="news_post_link"><a href="detailberita.php?id_informasi=<?= $data['id_informasi']; ?>">read more</a></div>
                                             </div>
@@ -181,27 +209,22 @@
                                     <div class="col-md-5 news_col">
                                         <?php
                                         include 'koneksi.php';
-                                        $db = "SELECT * FROM informasi ORDER BY id_informasi DESC LIMIT 5";
+                                        $db = "SELECT * FROM informasi WHERE jenis_informasi = 'B' ORDER BY id_informasi DESC LIMIT 5";
                                         $hasil = mysqli_query($koneksi, $db);
-                                        $data = mysqli_fetch_assoc($hasil);
-                                        $a = 0;
-                                        while ($a < 5) {
-
-
+                                        while ($data = mysqli_fetch_assoc($hasil)) {
                                         ?>
                                             <!-- News Posts Small -->
                                             <div class="news_post_small">
-                                                <div class="news_post_small_title"><a href="blog_single.html"><?= $data['judul'] ?></a></div>
+                                                <div class="news_post_small_title"><a href="detailberita.php?id_informasi=<?= $data['id_informasi']; ?>"><?= $data['judul'] ?></a></div>
                                                 <div class="news_post_meta">
                                                     <ul>
-                                                        <li><a href="#">admin</a></li>
+                                                        <li><a href="#">Admin</a></li>
                                                         <li><a href="#"><?= $data['tanggal'] ?></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
-                                        <?php $a++;
+                                        <?php
                                         } ?>
-
                                     </div>
                                 </div>
                             </div>
@@ -223,26 +246,43 @@
                                 </div>
                                 <div class="row events_row">
                                     <!-- Event -->
-                                    <?php for ($i = 0; $i < 3; $i++) {
+                                    <?php
+                                    include 'koneksi.php';
+                                    $db = "SELECT * FROM informasi WHERE jenis_informasi = 'K' ORDER BY id_informasi DESC LIMIT 3 ";
+                                    $hasil = mysqli_query($koneksi, $db);
+                                    $queryss = mysqli_query($koneksi, "SELECT
+    CASE DAYOFWEEK(tanggal)
+        WHEN 1 THEN 'Minggu'
+        WHEN 2 THEN 'Senin'
+        WHEN 3 THEN 'Selasa'
+        WHEN 4 THEN 'Rabu'
+        WHEN 5 THEN 'Kamis'
+        WHEN 6 THEN 'Jumat'
+        WHEN 7 THEN 'Sabtu'
+    END AS hari
+FROM informasi");
+                                    $results = mysqli_fetch_assoc($queryss);
+                                    $day = $results['hari'];
+                                    while ($dataa = mysqli_fetch_assoc($hasil)) {
                                     ?>
                                         <div class="col-lg-4 event_col">
                                             <div class="event event_left">
-                                                <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
+                                                <div class="event_image"><img src="admin/gambar/<?= $dataa['thumbnail'] ?>" height="350px" alt=""></div>
                                                 <div class="event_body d-flex flex-row align-items-start justify-content-start">
                                                     <div class="event_date">
                                                         <div class="d-flex flex-column align-items-center justify-content-center trans_200">
-                                                            <div class="event_day trans_200">21</div>
-                                                            <div class="event_month trans_200">Aug</div>
+                                                            <div class="event_day trans_200"><?php setlocale(LC_TIME, 'id_ID', 'Indonesian_Indonesia.1252');
+                                                                                                echo strftime('%e', strtotime($dataa['tanggal']));
+                                                                                                ?></div>
+                                                            <div class="event_month trans_200"><?php setlocale(LC_TIME, 'id_ID', 'Indonesian_Indonesia.1252');
+                                                                                                echo strftime(' %B', strtotime($dataa['tanggal']));
+                                                                                                ?></div>
                                                         </div>
                                                     </div>
                                                     <div class="event_content">
-                                                        <div class="event_title"><a href="#">Peringatan Hari Kemerdekaan</a></div>
+                                                        <div class="event_title"><a href="detailberita.php?id_informasi=<?= $dataa['id_informasi']; ?>"><?= $dataa['judul'] ?></a></div>
                                                         <div class="event_info_container">
-                                                            <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>15.00 - 19.30</span></div>
-                                                            <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
-                                                            <div class="event_text">
-                                                                <p>Policy analysts generally agree on a need for reform, but not on which path...</p>
-                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -260,7 +300,6 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
     <!-- Footer -->
     <footer class="text-center text-lg-start text-white">
         <!-- Section: Social media -->
@@ -390,11 +429,6 @@
         </div>
         <!-- Copyright -->
     </footer>
-    <!-- Footer -->
-
-    <!-- End Footer -->
-    <!-- Control Sidebar -->
-    <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

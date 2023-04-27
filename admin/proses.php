@@ -621,7 +621,7 @@ if (isset($_POST['tentang'])) {
   $sejarah = $_POST['sejarah'];
   $identitas = $_POST['identitas'];
   $foto_sambutan = $_FILES['foto_sambutan']['name'];
-  $struktur = $_FILES['struktur']['name'];
+  $struktur = $_POST['struktur'];
   if ($foto_sambutan != "") {
     $ekstensi_diperbolehkan = array('png', 'jpg', 'jpeg');
     $x = explode('.', $foto_sambutan);
@@ -636,7 +636,7 @@ if (isset($_POST['tentang'])) {
     if (in_array($extensi || $extensii, $ekstensi_diperbolehkan) == true) {
       move_uploaded_file($file_tmp, 'gambar/' . $nama_gambar_baru);
       // move_uploaded_file($file_tmpp, 'gambar/'.$nama_gambar_baruu);
-      $query  = "UPDATE tentang SET nm_sekolah = '$nm_sekolah', nm_kepsek = '$nm_kepsek', sambutan = '$sambutan', foto_sambutan= '$nama_gambar_baru', link_profile = '$link_profile',visi='$visi',misi='$misi',tujuan='$tujuan',sejarah='$sejarah',identitas='$identitas'";
+      $query  = "UPDATE tentang SET nm_sekolah = '$nm_sekolah', nm_kepsek = '$nm_kepsek', sambutan = '$sambutan', foto_sambutan= '$nama_gambar_baru', struktur = '$struktur', link_profile = '$link_profile',visi='$visi',misi='$misi',tujuan='$tujuan',sejarah='$sejarah',identitas='$identitas'";
       $query .= "WHERE id_tentang = '$id_tentang'";
       $result = mysqli_query($koneksi, $query);
       if (!$result) {
@@ -648,60 +648,8 @@ if (isset($_POST['tentang'])) {
     } else {
       echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='tentang.php';</script>";
     }
-  } elseif ($struktur != "") {
-    $ekstensi_diperbolehkan = array('png', 'jpg', 'jpeg');
-    // $x = explode('.', $thumbnail_jurusan);
-    $xx = explode('.', $struktur);
-    // $extensi = strtolower(end($x));
-    $extensii = strtolower(end($xx));
-    // $file_tmp = $_FILES['foto_sambutan']['tmp_name'];
-    $file_tmpp = $_FILES['struktur']['tmp_name'];
-    $angka_acak = rand(1, 999);
-    // $nama_gambar_baru = $angka_acak.'-'.$thumbnail_jurusan;
-    $nama_gambar_baruu = $angka_acak . '-' . $struktur;
-    if (in_array($extensi || $extensii, $ekstensi_diperbolehkan) == true) {
-      // move_uploaded_file($file_tmp, 'gambar/'.$nama_gambar_baru);
-      move_uploaded_file($file_tmpp, 'gambar/' . $nama_gambar_baruu);
-      $query  = "UPDATE tentang SET nm_sekolah = '$nm_sekolah', nm_kepsek = '$nm_kepsek', sambutan = '$sambutan', struktur= '$nama_gambar_baruu', link_profile = '$link_profile',visi='$visi',misi='$misi',tujuan='$tujuan',sejarah='$sejarah',identitas='$identitas'";
-      $query .= "WHERE id_tentang = '$id_tentang'";
-      $result = mysqli_query($koneksi, $query);
-      if (!$result) {
-        die("Query gagal dijalankan: " . mysqli_errno($koneksi) .
-          " - " . mysqli_error($koneksi));
-      } else {
-        echo "<script>alert('Data berhasil diubah.');window.location='tentang.php';</script>";
-      }
-    } elseif ($logo_jurusan != "") {
-      echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='tentang.php';</script>";
-    }
-  } elseif ($foto_sambutan != "" && $struktur != "") {
-    $ekstensi_diperbolehkan = array('png', 'jpg', 'jpeg');
-    $x = explode('.', $foto_sambutan);
-    $xx = explode('.', $struktur);
-    $extensi = strtolower(end($x));
-    $extensii = strtolower(end($xx));
-    $file_tmp = $_FILES['foto_sambutan']['tmp_name'];
-    $file_tmpp = $_FILES['struktur']['tmp_name'];
-    $angka_acak = rand(1, 999);
-    $nama_gambar_baru = $angka_acak . '-' . $foto_sambutan;
-    $nama_gambar_baruu = $angka_acak . '-' . $struktur;
-    if (in_array($extensi || $extensii, $ekstensi_diperbolehkan) == true) {
-      move_uploaded_file($file_tmp, 'gambar/' . $nama_gambar_baru);
-      move_uploaded_file($file_tmpp, 'gambar/' . $nama_gambar_baruu);
-      $query  = "UPDATE tentang SET nm_sekolah = '$nm_sekolah', nm_kepsek = '$nm_kepsek',struktur = '$struktur', sambutan = '$sambutan', foto_sambutan= '$nama_gambar_baru', link_profile = '$link_profile',visi='$visi',misi='$misi',tujuan='$tujuan',sejarah='$sejarah',identitas='$identitas'";
-      $query .= "WHERE id_tentang = '$id_tentang'";
-      $result = mysqli_query($koneksi, $query);
-      if (!$result) {
-        die("Query gagal dijalankan: " . mysqli_errno($koneksi) .
-          " - " . mysqli_error($koneksi));
-      } else {
-        echo "<script>alert('Data berhasil diubah.');window.location='tentang.php';</script>";
-      }
-    } elseif ($foto_sambutan != "") {
-      echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='tentang.php';</script>";
-    }
   } else {
-    $query  = "UPDATE tentang SET nm_sekolah = '$nm_sekolah', nm_kepsek = '$nm_kepsek', sambutan = '$sambutan', link_profile = '$link_profile',visi='$visi',misi='$misi',tujuan='$tujuan',sejarah='$sejarah',identitas='$identitas'";
+    $query  = "UPDATE tentang SET nm_sekolah = '$nm_sekolah', nm_kepsek = '$nm_kepsek', sambutan = '$sambutan', link_profile = '$link_profile',visi='$visi',misi='$misi',tujuan='$tujuan',sejarah='$sejarah',identitas='$identitas',struktur = '$struktur'";
     $query .= "WHERE id_tentang = '$id_tentang'";
     $result = mysqli_query($koneksi, $query);
     // periska query apakah ada error

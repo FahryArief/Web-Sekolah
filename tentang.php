@@ -116,12 +116,8 @@
                         </h2>
                         <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                             <div class="accordion-body">
-                                <strong>TUJUAN SMK NEGERI 8 Bandar Lampung</strong>
-                                1. Menciptakan tamatan yang bertaqwa kepada Tuhan Yang Maha Esa dan berakhlak mulia.
-                                2. Membekali peserta didik untuk mengembangkan kepribadian akademik dan dasar-dasar keahlian yang kuat dan benar melalui pembelajaran mata pelajaran muatan nasional, muatan kewilayahan dan mata pelajaran kejuruan.
-                                3. Menyiapkan peserta didik untuk memasuki dunia kerja serta mengembangkan sikap profesionalisme dan mampu berwirausaha.
-                                4. Memberikan pengalaman yang sesungguhnya agar peserta didik menguasai keahlian produktif berstandar budaya industri yang berorentasi kepada standar mutu, nilai-nilai ekonomi serta membentuk etos kerja yang tinggi, produktif dan kompetitif.
-                                5. Mewujudkan status sekolah menjadi SMK berstandar industri melalui teaching factory.
+                                <strong>TUJUAN <?= $data['nm_sekolah'] ?></strong>
+                                <?= $data['tujuan'] ?>
                             </div>
                         </div>
                     </div>
@@ -133,14 +129,8 @@
                         </h2>
                         <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
                             <div class="accordion-body">
-                                <strong>SEJARAH SMK NEGERI 8 Bandar Lampung</strong>
-                                merupakan salah satu sekolah kejuruan favorit. Sekolah berakreditasi A ini beralamat di Jalan Imam Bonjol Nomor 52, Kecamatan Kemiling, Kota Bandar Lampung. Firdaus, Kepala SMKN 8 Bandar Lampung, mengatakan, sekolahnya berdiri pada tahun 2014. "SMK Negeri 8 Bandar Lampung berdiri pada tahun 2014, tepatnya tanggal 11 April. Jika dihitung, kurang lebih sudah delapan tahun," terang Firdaus, Senin (4/7/2022).
-                                berdiri berdasarkan Surat Keputusan Wali Kota Bandar Lampung Nomor 511/14.40/HK/2014 tanggal 11 April 2014.
-
-                                Pada tahun pertama, SMKN 8 Bandar Lampung menerima sebanyak 228 siswa di empat jurusan, yaitu Rekayasa Perangkat Lunak (RPL), Multimedia (MM), Akuntansi Keuangan, dan AP. Memasuki tahun kedua, ada satu jurusan baru yang dibuka, yaitu Kimia Analis. "Pada tahun 2015, total siswa kami saat itu sebanyak 554 orang dengan 16 rombongan belajar," kata Firdaus.
-
-                                Pada Januari 2016, SMKN 8 Bandar Lampung pindah ke eks gedung SMPN 26 Bandar Lampung di Jalan Imam Bonjol Nomor 52 Kemiling, Bandar Lampung. Memasuki tahun ketiga, SMK Negeri 8 Bandar Lampung sudah memiliki 1.122 siswa dengan 33 rombongan belajar. Di tahun yang sama, sekolah ini menambah dua jurusan yaitu Kimia Industri dan Perbankan Syariah. Firdaus memprediksi pada tahun ajaran 2022/2023 jumlah siswa SMK Negeri 8 Bandar Lampung mencapai 1.400 orang.
-
+                                <strong>SEJARAH <?= $data['nm_sekolah'] ?></strong>
+                                <?= $data['sejarah'] ?>
                             </div>
                         </div>
                     </div>
@@ -152,41 +142,27 @@
                         </h2>
                         <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
                             <div class="accordion-body">
-                                <strong>IDENTITAS SMK NEGERI 8 Bandar Lampung</strong>
-                                NPSN : 69853159
-
-                                Status : Negeri
-
-                                Bentuk Pendidikan : SMK
-
-                                Status Kepemilikan : Pemerintah Daerah
-
-                                SK Pendirian Sekolah : 511/IV.40/HK/2014
-
-                                Tanggal SK Pendirian : 2014-04-11
-
-                                SK Izin Operasional : 511/IV.40/HK/2014
-
-                                Tanggal SK Izin Operasional : 2014-04-11
+                                <strong>IDENTITAS <?= $data['nm_sekolah'] ?></strong>
+                                <?= $data['identitas'] ?>
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingSix">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
-                                Accordion Item #3
+                                STRUKTUR
                             </button>
                         </h2>
                         <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
                             <div class="accordion-body">
-                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                <strong>STRUKTUR <?= $data['nm_sekolah'] ?></strong> <?= $data['struktur'] ?>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col col-md-5">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/e2a1J4W-sjg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="<?= $data['link_profile'] ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </div>

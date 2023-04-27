@@ -1,27 +1,187 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BERITA - SMKN 8 BANDAR LAMPUNG</title>
+    <title>SMKN 8 Bandar Lampung</title>
 
     <link rel="icon" href="styling/img/favicon.ico" type="image/x-icon" />
     <!------------ GOOGLE FONTS ------------>
     <link href="https://fonts.googleapis.com/css?family=Anton|Cabin|Lato|Fjalla+One|Montserrat|Roboto&display=swap" rel="stylesheet">
     <!------------ FONT AWESOME ------------>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <title>Events SMKN 8 Bandar Lampung</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    <link rel="stylesheet" href="styling/style.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        footer {
+            background-image: url(styling/img/footer.jpg);
+            background-size: cover;
+            filter: grayscale("100%");
+
+        }
+
+        .body {
+            min-height: 100vh;
+            width: 100%;
+            font-size: 16px;
+            /* background: #eee; */
+            color: #777;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .item-container {
+            position: relative;
+            margin: 24px;
+            width: 320px;
+            height: 570px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+        }
+
+        .img-container,
+        .body-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .img-container img {
+            width: 100%;
+        }
+
+        .body-container {
+            position: relative;
+        }
+
+        .overlay {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background-color: rgba(24, 83, 122, 0.6);
+            opacity: 0;
+            transition: height linear 0.4s, opacity linear 0.2s;
+        }
+
+        .item-container:hover .overlay {
+            opacity: 1;
+            height: 200px;
+        }
+
+        .event-info {
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+        }
+
+        .title,
+        .price {
+            color: #18537a;
+            font-size: 1.5em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin: 12px;
+        }
+
+        .info {
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .separator {
+            width: 20%;
+            height: 6px;
+            background-color: #17537a;
+            margin-bottom: 16px;
+        }
+
+        .additional-info {
+            border-top: 1px solid #bbb;
+            margin-top: 12px;
+            padding: 28px;
+            padding-bottom: 0;
+        }
+
+        .additional-info .info {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .info i {
+            color: #18537a;
+            font-size: 1.1em;
+            margin-right: 4px;
+        }
+
+        .info span {
+            color: #18537a;
+            font-weight: bolder;
+        }
+
+        .action {
+            color: #fff;
+            border: 3px solid #fff;
+            background-color: transparent;
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            outline: none;
+            cursor: pointer;
+            padding: 12px;
+            text-transform: uppercase;
+            font-size: 1.3em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: background-color 0.4s, top 0.4s;
+        }
+
+        .item-container:hover .action {
+            top: 50px;
+        }
+
+        .action:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
 </head>
 
-<body>
+<body class="">
+    <!-- Site wrapper -->
     <div class="wrapper">
+        <!-- Navbar -->
         <nav class="navbar fixed-top navbar-expand-lg bg-light">
             <div class="container-fluid">
                 <a href="index.php" class="navbar-brand">
@@ -58,88 +218,84 @@
                 </div>
             </div>
         </nav>
-    </div>
+        <!-- /end-navbar -->
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="body container">
 
-    <div style="margin-top: 100px;" class="content">
-        <div class="news">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md">
-                        <div class="section_title_container text-center">
-                            <h2 class="section_title">Informasi Terkini</h2>
-                            <div class="section_subtitle font-grey">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p>
+            <?php
+            include("koneksi.php");
+            $jumlahDataPerhalaman = 4;
+            $db = mysqli_query($koneksi, "SELECT * FROM informasi WHERE jenis_informasi = 'B' ORDER BY id_informasi DESC");
+            $jumlahData = mysqli_num_rows($db);
+            $jumlahhalaman = ceil($jumlahData / $jumlahDataPerhalaman);
+            $halamanaktif = (isset($_GET['halaman']) ? $_GET['halaman'] : 1);
+            $awalData = ($jumlahDataPerhalaman * $halamanaktif) - $jumlahDataPerhalaman;
+            $hasil = mysqli_query($koneksi, "SELECT * FROM informasi WHERE jenis_informasi = 'B' ORDER BY id_informasi DESC LIMIT $awalData, $jumlahDataPerhalaman");
+
+            $row = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
+            foreach ($row as $data) :
+            ?>
+                <div class="item-container">
+                    <div class="img-container">
+                        <img src="admin/gambar/<?= $data['thumbnail'] ?>" height="400px" alt="Event image">
+                    </div>
+
+                    <div class="body-container">
+                        <div class="overlay"></div>
+
+                        <div class="event-info">
+                            <p class="title"><?= $data['judul'] ?></p>
+                            <div class="separator"></div>
+
+                            <div class="additional-info">
+
+                                <p class="info">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <?php setlocale(LC_TIME, 'id_ID', 'Indonesian_Indonesia.1252');
+                                    echo strftime('%A, %e %B %Y', strtotime($data['tanggal']));
+                                    ?>
+                                </p>
+
+                                <p class="info description">
+
+                                    <a href="detailberita.php?id_informasi=<?= $data['id_informasi']; ?>"><span>Baca Berita</span></a>
+                                </p>
                             </div>
                         </div>
+                        <button class="action"><a href="detailberita.php?id_informasi=<?= $data['id_informasi']; ?>">Baca Selengkapnya </a></button>
                     </div>
+
                 </div>
-                <?php for ($i = 0; $i < 5; $i++) {
-                ?>
-                    <div class="row news_row">
-                        <div class="col-md-4 news_col">
-                            <!-- News Post Large -->
-                            <div class="news_post_large_container">
-                                <div class="news_post_large">
-                                    <div class="news_post_image"><img src="styling/img/bg-1.jpg" alt=""></div>
-                                    <div class="news_post_large_title"><a href="blog_single.html">Here’s What You Need to Know About Online Testing for the ACT and SAT</a></div>
-                                    <div class="news_post_meta">
-                                        <ul>
-                                            <li><a href="#">admin</a></li>
-                                            <li><a href="#">november 11, 2017</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="news_post_text">
-                                        <p>Policy analysts generally agree on a need for reform, but not on which path policymakers should take. Can America learn anything from other nations...</p>
-                                    </div>
-                                    <div class="news_post_link"><a href="blog_single.html">read more</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 news_col">
-                            <!-- News Post Large -->
-                            <div class="news_post_large_container">
-                                <div class="news_post_large">
-                                    <div class="news_post_image"><img src="styling/img/bg-1.jpg" alt=""></div>
-                                    <div class="news_post_large_title"><a href="blog_single.html">Here’s What You Need to Know About Online Testing for the ACT and SAT</a></div>
-                                    <div class="news_post_meta">
-                                        <ul>
-                                            <li><a href="#">admin</a></li>
-                                            <li><a href="#">november 11, 2017</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="news_post_text">
-                                        <p>Policy analysts generally agree on a need for reform, but not on which path policymakers should take. Can America learn anything from other nations...</p>
-                                    </div>
-                                    <div class="news_post_link"><a href="blog_single.html">read more</a></div>
-                                </div>
-                            </div>
-                        </div>
+            <?php endforeach; ?>
 
-                        <div class="col-md-4 news_col">
-                            <div class="news_posts_small">
-                                <!-- News Posts Small -->
-                                <div class="news_post_small">
-                                    <div class="news_post_image"><img src="styling/img/firaun.jpeg" width="250" alt=""></div>
-                                    <div class="news_post_small_title"><a href="blog_single.html">Home-based business insurance issue (Spring 2017 - 2018)</a></div>
-                                    <div class="news_post_meta">
-                                    </div>
-                                </div>
-
-                                <!-- News Posts Small -->
-                                <div class="news_post_small">
-                                    <div class="news_post_image"><img src="styling/img/firaun.jpeg" width="250" alt=""></div>
-                                    <div class="news_post_small_title"><a href="blog_single.html">2018 Fall Issue: Credit Card Comparison Site Survey (Summer 2018)</a></div>
-                                    <div class="news_post_meta">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
         </div>
-
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <?php if ($halamanaktif > 1) : ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?halaman=<?= $halamanaktif - 1 ?>">Previous</a>
+                    </li>
+                <?php endif; ?>
+                <?php for ($i = 1; $i <= $jumlahhalaman; $i++) : ?>
+                    <?php if ($i == $halamanaktif) : ?>
+                        <li class="page-item active"><a class="page-link" href="?halaman=<?= $i ?>"><?= $i ?></a></li>
+                    <?php else : ?>
+                        <li class="page-item"><a class="page-link" href="?halaman=<?= $i ?>"><?= $i ?></a></li>
+                    <?php endif; ?>
+                <?php endfor; ?>
+                <?php if ($halamanaktif < $jumlahhalaman) : ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?halaman=<?= $halamanaktif + 1 ?>">Next</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </nav>
     </div>
+    <br>
+    <!-- Footer -->
     <footer class="text-center text-lg-start text-white">
         <!-- Section: Social media -->
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -260,7 +416,6 @@
             </div>
         </section>
         <!-- Section: Links  -->
-
         <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
             © 2023 Copyright:
@@ -268,12 +423,9 @@
         </div>
         <!-- Copyright -->
     </footer>
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <!-- End Footer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="styling/style.js"></script>
+
 </body>
 
 </html>
