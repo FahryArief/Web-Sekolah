@@ -384,16 +384,16 @@
                             Useful links
                         </h6>
                         <p>
-                            <a href="#!" class="text-reset">Pricing</a>
+                            <a href="berita.php" class="text-reset">Berita</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Settings</a>
+                            <a href="kegiatan.php" class="text-reset">Kegiatan</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Orders</a>
+                            <a href="pengumuman.php" class="text-reset">Pengumuman </a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Help</a>
+                            <a href="login.php" class="text-reset">Login</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -407,8 +407,7 @@
                             <i class="fas fa-envelope md-3 text-light"></i>
                             smkn8bdl@yahoo.com
                         </p>
-                        <p><i class="fas fa-phone md-3 text-light"></i> + 01 234 567 88</p>
-                        <p><i class="fas fa-print md-3 text-light"></i> + 01 234 567 89</p>
+                        <p><i class="fas fa-phone md-3 text-light"></i> (0721) 8019298</p>
                     </div>
                     <!-- Grid column -->
                 </div>
@@ -416,6 +415,7 @@
             </div>
         </section>
         <!-- Section: Links  -->
+
         <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
             © 2023 Copyright:

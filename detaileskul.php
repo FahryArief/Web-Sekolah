@@ -1,8 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SMKN 8 Bandar Lampung</title>
@@ -12,17 +11,97 @@
     <link href="https://fonts.googleapis.com/css?family=Anton|Cabin|Lato|Fjalla+One|Montserrat|Roboto&display=swap" rel="stylesheet">
     <!------------ FONT AWESOME ------------>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
-    <link rel="stylesheet" href="styling/style.css">
+    <!-- <link rel="stylesheet" href="styling/style.css"> -->
 </head>
+<style>
+    .ccenter {
+        text-align: center;
+    }
 
-<body>
-    <div class="wrapper mb-5">
-        <nav class="navbar fixed-top navbar-expand-lg bg-light mb-5">
+    footer {
+        background-image: url(styling/img/footer.jpg);
+        background-size: cover;
+        filter: grayscale("100%");
+    }
+
+    .carousel-inner {
+        padding: 1em;
+    }
+
+    .card {
+        margin: 0 0.5em;
+        box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+        border: none;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        background-color: #e1e1e1;
+        width: 6vh;
+        height: 6vh;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    @media (min-width: 375px) {
+        .carousel-item {
+            margin-right: 0;
+            flex: 0 0 33.333333%;
+            display: block;
+        }
+
+        .carousel-inner {
+            display: flex;
+        }
+    }
+
+    .card .img-wrapper {
+        max-width: 100%;
+        height: 13em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card img {
+        max-height: 100%;
+    }
+
+    @media (max-width: 374px) {
+        .card .img-wrapper {
+            height: 17em;
+        }
+    }
+</style>
+
+<body class="">
+    <?php
+    include("koneksi.php");
+    if (isset($_GET['id'])) {
+        $id = ($_GET['id']);
+        $query = "SELECT * FROM eskul WHERE id_eskul='$id'";
+        $result = mysqli_query($koneksi, $query);
+        if (!$result) {
+            die("Query gagal dijalankan : " . mysqli_errno($koneksi) . "-" . mysqli_error($koneksi));
+        }
+        $data = mysqli_fetch_assoc($result);
+        if ($data == NULL) {
+            echo "<script>alert('Data Tidak Di Temukan Di Database');window.location='informasi.php';</script>";
+        }
+    } else {
+        echo "<script>alert('Masukan Data');window.location='informasi.php';</script>";
+    }
+
+    ?>
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg bg-light">
             <div class="container-fluid">
                 <a href="index.php" class="navbar-brand">
                     <img src="styling/img/logoe.png" alt="Logo" height="50px" class="">
@@ -58,116 +137,107 @@
                 </div>
             </div>
         </nav>
-    </div>
-    <?php
-    include 'koneksi.php';
-    $db = "SELECT * FROM tentang";
-    $hasil = mysqli_query($koneksi, $db);
-    $data = mysqli_fetch_assoc($hasil);
-    ?>
-    <div class="content-wrapper">
-        <div class="container-fluid">
-            <div class="row mt-5">
-                <div class="col-md-12 mt-5 ccenter">
-                    <h1>Welcome To <?= $data['nm_sekolah'] ?></h1>
-                    <hr style="width: 50%; margin:auto;">
-                    <h1 style="margin-top: 25px;">Sambutan Kepala Sekolah </h1>
-                    <hr size="10" style="width: 15%; margin:auto; color:darkred; height:4px;">
+        <!-- /end-navbar -->
 
-                    <img src="admin/gambar/<?= $data['foto_sambutan'] ?>" style="margin-top:20px; margin-bottom: 15px; height: 200px;" srcset="">
-                    <hr size="10" style="width: 15%; margin:auto; color:darkred; height:4px;">
-                    <h4><?= $data['nm_kepsek'] ?></h4>
-                    <p class="font-grey ccenter" style="padding: 20px 10%;"><?= $data['sambutan'] ?></p>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-5">
-            <div class="col col-md-5 ms-5">
-                <div class="accordion" id="accordionPanelsStayOpenExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                VISI
-                            </button>
-                        </h2>
-                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                            <div class="accordion-body">
-                                <strong>VISI <?= $data['nm_sekolah'] ?></strong> <?= $data['visi'] ?>
-                            </div>
-                        </div>
+        <!-- Main Sidebar Container -->
+
+        <!-- Content Wrapper. Contains page content -->
+
+        <!-- /.container-fluid -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row mt-5">
+                    <div class="col mt-5 ccenter">
+                        <img src="admin/gambar/<?= $data['logo_eskul'] ?>" style="height: 200px;" srcset="">
+
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                                MISI
-                            </button>
-                        </h2>
-                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                            <div class="accordion-body">
-                                <strong>MISI <?= $data['nm_sekolah'] ?></strong> <?= $data['misi'] ?>
+                    <div class="col-md-12 ccenter">
+                        <!-- Default box -->
+                        <h1><?= $data['nama_eskul'] ?></h1>
+                        <hr style="width: 50%; margin:auto;">
+                        <p class="font-grey" style="margin-top: 5px; padding: 20px 10%;"><?= $data['keterangan'] ?></p>
+                        <!-- /.card -->
+                        <h1 style="margin-top: 25px;">VISI </h1>
+                        <hr style="width: 15%; margin:auto; color:darkred; height:4px;">
+                        <p class="font-grey ccenter" style="margin-top: 15px; padding: 20px 10%;"><?= $data['visi'] ?></p>
+                        <!-- Start Informasi -->
+                        <div class="news">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <div class="section_title_container text-center">
+                                            <h2 class="section_title">MISI</h2>
+                                            <div class="section_subtitle font-grey">
+                                                <p><?= $data['misi'] ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                                TUJUAN
-                            </button>
-                        </h2>
-                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-                            <div class="accordion-body">
-                                <strong>TUJUAN <?= $data['nm_sekolah'] ?></strong>
-                                <?= $data['tujuan'] ?>
+                        <!-- End Informasi -->
+                        <!-- Start Kegiatan -->
+                        <div class="events">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="section_title_container text-center">
+                                            <h2 class="section_title">PRESTASI EKSTRAKURIKULER</h2>
+                                            <div class="section_subtitle">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-9 mx-auto pt-10" style="width: 1000px;">
+                                        <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
+                                            <div class="carousel-inner">
+
+                                                <?php
+                                                include("koneksi.php");
+                                                $db = "SELECT * FROM galeri_eskul WHERE id_eskul = '$id'";
+                                                $hasil = mysqli_query($koneksi, $db);
+                                                $no = 1;
+                                                while ($data = mysqli_fetch_assoc($hasil)) {
+                                                ?>
+
+                                                    <div class="carousel-item active">
+                                                        <div class="card">
+                                                            <div class="img-wrapper"><img src="admin/gambar/<?= $data['foto_galeri'] ?>" class="d-block w-100" alt="styling/img/a.jpg"> </div>
+                                                            <div class="card-body">
+                                                                <h5 class="card-title"><?= $data['keterangan'] ?></h5>
+                                                                <!-- <a href="detaileskul.php?id=<?= $data['id_eskul']; ?>" class="btn btn-primary">Selengkapnya</a> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php $no++;
+                                                }  ?>
+                                            </div>
+                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-                                SEJARAH SEKOLAH
-                            </button>
-                        </h2>
-                        <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
-                            <div class="accordion-body">
-                                <strong>SEJARAH <?= $data['nm_sekolah'] ?></strong>
-                                <?= $data['sejarah'] ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingFive">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
-                                IDENTITAS SEKOLAH
-                            </button>
-                        </h2>
-                        <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
-                            <div class="accordion-body">
-                                <strong>IDENTITAS <?= $data['nm_sekolah'] ?></strong>
-                                <?= $data['identitas'] ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingSix">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
-                                STRUKTUR
-                            </button>
-                        </h2>
-                        <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
-                            <div class="accordion-body">
-                                <strong>STRUKTUR <?= $data['nm_sekolah'] ?></strong> <?= $data['struktur'] ?>
-                            </div>
-                        </div>
+                        <!-- End Kegiatan -->
                     </div>
                 </div>
             </div>
-            <div class="col col-md-5">
-                <iframe width="560" height="315" src="<?= $data['link_profile'] ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-        </div>
+        </section>
+        <!-- /.content -->
     </div>
-    </div>
-
+    <!-- /.content-wrapper -->
+    <!-- Footer -->
     <footer class="text-center text-lg-start text-white">
         <!-- Section: Social media -->
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -256,16 +326,16 @@
                             Useful links
                         </h6>
                         <p>
-                            <a href="berita.php" class="text-reset">Berita</a>
+                            <a href="#!" class="text-reset">Pricing</a>
                         </p>
                         <p>
-                            <a href="kegiatan.php" class="text-reset">Kegiatan</a>
+                            <a href="#!" class="text-reset">Settings</a>
                         </p>
                         <p>
-                            <a href="pengumuman.php" class="text-reset">Pengumuman </a>
+                            <a href="#!" class="text-reset">Orders</a>
                         </p>
                         <p>
-                            <a href="login.php" class="text-reset">Login</a>
+                            <a href="#!" class="text-reset">Help</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -279,7 +349,8 @@
                             <i class="fas fa-envelope md-3 text-light"></i>
                             smkn8bdl@yahoo.com
                         </p>
-                        <p><i class="fas fa-phone md-3 text-light"></i> (0721) 8019298</p>
+                        <p><i class="fas fa-phone md-3 text-light"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print md-3 text-light"></i> + 01 234 567 89</p>
                     </div>
                     <!-- Grid column -->
                 </div>
@@ -295,13 +366,12 @@
         </div>
         <!-- Copyright -->
     </footer>
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
+    </div>
+    <!-- ./wrapper -->
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="styling/style.js"></script>
-
+    <!-- jQuery -->
 </body>
 
 </html>

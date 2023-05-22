@@ -1,5 +1,4 @@
 <?php
-
 // Konfigurasi Database
 $host       = 'localhost'; // host
 $username   = 'root'; // username database

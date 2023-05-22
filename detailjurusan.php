@@ -15,10 +15,90 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
-    <link rel="stylesheet" href="styling/style.css">
+    <!-- <link rel="stylesheet" href="styling/style.css"> -->
 </head>
 
+<style>
+    .ccenter {
+        text-align: center;
+    }
+
+    footer {
+        background-image: url(styling/img/footer.jpg);
+        background-size: cover;
+        filter: grayscale("100%");
+    }
+
+    .carousel-inner {
+        padding: 1em;
+    }
+
+    .card {
+        margin: 0 0.5em;
+        box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+        border: none;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        background-color: #e1e1e1;
+        width: 6vh;
+        height: 6vh;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    @media (min-width: 375px) {
+        .carousel-item {
+            margin-right: 0;
+            flex: 0 0 33.333333%;
+            display: block;
+        }
+
+        .carousel-inner {
+            display: flex;
+        }
+    }
+
+    .card .img-wrapper {
+        max-width: 100%;
+        height: 13em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card img {
+        max-height: 100%;
+    }
+
+    @media (max-width: 374px) {
+        .card .img-wrapper {
+            height: 17em;
+        }
+    }
+</style>
+
 <body class="">
+    <?php
+    include("koneksi.php");
+    if (isset($_GET['id'])) {
+        $id = ($_GET['id']);
+        $query = "SELECT * FROM jurusan WHERE id_jurusan='$id'";
+        $result = mysqli_query($koneksi, $query);
+        if (!$result) {
+            die("Query gagal dijalankan : " . mysqli_errno($koneksi) . "-" . mysqli_error($koneksi));
+        }
+        $data = mysqli_fetch_assoc($result);
+        if ($data == NULL) {
+            echo "<script>alert('Data Tidak Di Temukan Di Database');window.location='informasi.php';</script>";
+        }
+    } else {
+        echo "<script>alert('Masukan Data');window.location='informasi.php';</script>";
+    }
+
+    ?>
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
@@ -59,45 +139,38 @@
             </div>
         </nav>
         <!-- /end-navbar -->
-
-        <!-- Main Sidebar Container -->
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <input type="radio" name="slide" id="slide-1" checked>
-                <input type="radio" name="slide" id="slide-2">
-                <input type="radio" name="slide" id="slide-3">
-                <div class="slides">
-                </div>
-        </div>
-        </section>
     </div>
+    <!-- Main Sidebar Container -->
+
+    <!-- Content Wrapper. Contains page content -->
     <!-- /.container-fluid -->
 
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             <div class="row mt-5">
+                <div class="col mt-5 ccenter">
+                    <img src="admin/gambar/<?= $data['logo_jurusan'] ?>" style="height: 200px;" srcset="">
+
+                </div>
                 <div class="col-md-12 ccenter">
                     <!-- Default box -->
-                    <h1>JURUSAN</h1>
+                    <h1><?= $data['nama_jurusan'] ?></h1>
                     <hr style="width: 50%; margin:auto;">
-                    <p class="font-grey" style="margin-top: 5px; padding: 20px 10%;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi minima mollitia unde. Laboriosam a quas asperiores possimus labore? Mollitia, non!</p>
+                    <p class="font-grey" style="margin-top: 5px; padding: 20px 10%;"><?= $data['keterangan'] ?></p>
                     <!-- /.card -->
                     <h1 style="margin-top: 25px;">VISI </h1>
                     <hr style="width: 15%; margin:auto; color:darkred; height:4px;">
-                    <p class="font-grey ccenter" style="margin-top: 15px; padding: 20px 10%;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut consequatur ipsum illo praesentium voluptas dignissimos sequi magni, aliquid quis, eos ratione laudantium cum quae beatae tenetur impedit eius, laboriosam tempora similique animi. Vel, iste molestiae dolorum quis repudiandae ipsa necessitatibus.</p>
+                    <p class="font-grey ccenter" style="margin-top: 15px; padding: 20px 10%;"><?= $data['visi'] ?></p>
                     <!-- Start Informasi -->
                     <div class="news">
                         <div class="container">
                             <div class="row">
-                                <div class="col-md">
+                                <div class="col-md-12">
                                     <div class="section_title_container text-center">
                                         <h2 class="section_title">MISI</h2>
                                         <div class="section_subtitle font-grey">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p>
+                                            <p><?= $data['misi'] ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -117,83 +190,42 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row events_row">
+                            <div class="row">
+                                <div class="col-md-9 mx-auto pt-10" style="width: 1000px;">
+                                    <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
 
-                                <!-- Event -->
-                                <div class="col-lg-4 event_col">
-                                    <div class="event event_left">
-                                        <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
-                                        <div class="event_body d-flex flex-row align-items-start justify-content-start">
-                                            <div class="event_date">
-                                                <div class="d-flex flex-column align-items-center justify-content-center trans_200">
-                                                    <div class="event_day trans_200">21</div>
-                                                    <div class="event_month trans_200">Aug</div>
-                                                </div>
-                                            </div>
-                                            <div class="event_content">
-                                                <div class="event_title"><a href="#">Peringatan Hari Kemerdekaan</a></div>
-                                                <div class="event_info_container">
-                                                    <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>15.00 - 19.30</span></div>
-                                                    <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
-                                                    <div class="event_text">
-                                                        <p>Policy analysts generally agree on a need for reform, but not on which path...</p>
+                                            <?php
+                                            include("koneksi.php");
+                                            $db = "SELECT * FROM galeri_jurusan WHERE id_jurusan = '$id'";
+                                            $hasil = mysqli_query($koneksi, $db);
+                                            $no = 1;
+                                            while ($data = mysqli_fetch_assoc($hasil)) {
+                                            ?>
+
+                                                <div class="carousel-item active">
+                                                    <div class="card">
+                                                        <div class="img-wrapper"><img src="admin/gambar/<?= $data['foto_galeri'] ?>" class="d-block w-100" alt="styling/img/a.jpg"> </div>
+                                                        <div class="card-body">
+                                                            <h5 class="card-title"><?= $data['keterangan'] ?></h5>
+                                                            <!-- <a href="detailjurusan.php?id=<?= $data['id_jurusan']; ?>" class="btn btn-primary">Selengkapnya</a> -->
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            <?php $no++;
+                                            }  ?>
                                         </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
                                     </div>
-                                </div>
 
-                                <!-- Event -->
-                                <div class="col-lg-4 event_col">
-                                    <div class="event event_mid">
-                                        <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
-                                        <div class="event_body d-flex flex-row align-items-start justify-content-start">
-                                            <div class="event_date">
-                                                <div class="d-flex flex-column align-items-center justify-content-center trans_200">
-                                                    <div class="event_day trans_200">27</div>
-                                                    <div class="event_month trans_200">Aug</div>
-                                                </div>
-                                            </div>
-                                            <div class="event_content">
-                                                <div class="event_title"><a href="#">Peringatan Hari Guru Nasional</a></div>
-                                                <div class="event_info_container">
-                                                    <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>09.00 - 17.30</span></div>
-                                                    <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 Brooklyn City</span></div>
-                                                    <div class="event_text">
-                                                        <p>This Consumer Action News issue covers topics now being debated before...</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
-
-                                <!-- Start Kegiatan -->
-                                <div class="col-lg-4 event_col">
-                                    <div class="event event_right">
-                                        <div class="event_image"><img src="styling/img/bg-2.jpg" alt=""></div>
-                                        <div class="event_body d-flex flex-row align-items-start justify-content-start">
-                                            <div class="event_date">
-                                                <div class="d-flex flex-column align-items-center justify-content-center trans_200">
-                                                    <div class="event_day trans_200">01</div>
-                                                    <div class="event_month trans_200">Sep</div>
-                                                </div>
-                                            </div>
-                                            <div class="event_content">
-                                                <div class="event_title"><a href="#">Lomba Classmeeting</a></div>
-                                                <div class="event_info_container">
-                                                    <div class="event_info"><i class="fa fa-clock-o" aria-hidden="true"></i><span>13.00 - 18.30</span></div>
-                                                    <div class="event_info"><i class="fa fa-map-marker" aria-hidden="true"></i><span>25 New York City</span></div>
-                                                    <div class="event_text">
-                                                        <p>Policy analysts generally agree on a need for reform, but not on which path...</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -202,10 +234,6 @@
             </div>
         </div>
     </section>
-    <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <!-- Footer -->
     <footer class="text-center text-lg-start text-white">
         <!-- Section: Social media -->
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -334,9 +362,10 @@
         </div>
         <!-- Copyright -->
     </footer>
-    </div>
     <!-- ./wrapper -->
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="styling/style.js"></script>
     <!-- jQuery -->
 </body>
 
